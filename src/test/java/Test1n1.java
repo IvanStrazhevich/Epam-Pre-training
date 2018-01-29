@@ -9,6 +9,6 @@ public class Test1n1 {
         double tons = g / 1000000;
 
         System.out.println( "in kilos " + kg);
-        System.out.println( "in tons " + kg);
+        System.out.println( "in tons " + tons);
     }
 }

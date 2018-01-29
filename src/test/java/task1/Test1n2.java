@@ -1,4 +1,4 @@
-package test.java;
+package task1;
 
 public class Test1n2 {
 

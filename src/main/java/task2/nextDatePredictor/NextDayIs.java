@@ -1,4 +1,4 @@
-package task2.NextDatePredictor;
+package task2.nextDatePredictor;
 
 
 public class NextDayIs {

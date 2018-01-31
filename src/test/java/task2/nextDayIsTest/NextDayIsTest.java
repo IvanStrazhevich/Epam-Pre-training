@@ -1,6 +1,6 @@
 package task2.nextDayIsTest;
 
-import task2.NextDatePredictor.NextDayIs;
+import task2.nextDatePredictor.NextDayIs;
 import task2.Viewer;
 
 import java.util.Scanner;

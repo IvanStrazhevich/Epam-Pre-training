@@ -7,7 +7,10 @@ import java.util.Scanner;
 public class IsVowelTest {
     public static void main(String[] args) {
         System.out.println("Enter any letter: ");
-        String age = new Scanner(System.in).next();
-        Viewer.print(IsVowel.checkLetter(age));
+        String letter = new Scanner(System.in).next();
+        Viewer.print(IsVowel.checkLetterCycle(letter));
+        Viewer.print(IsVowel.checkLetterSwitch(letter));
+        Viewer.print(IsVowel.checkLetterWithContains(letter));
+        Viewer.print(IsVowel.checkLetterWithRegexMatcher(letter));
     }
 }

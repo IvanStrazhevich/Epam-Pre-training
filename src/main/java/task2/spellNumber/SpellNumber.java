@@ -152,7 +152,7 @@ public class SpellNumber {
             int dozens = number % 100 / 10;
             int digits = number % 10;
 
-            result.append("Введено число: ");
+            result.append("Число в виде строки: ");
             if (number == 0) {
                 result.append("ноль");
             } else if (number < 10) {
@@ -174,7 +174,7 @@ public class SpellNumber {
             }
             return result;
         } else {
-            return result.append("введите число в диапазоне от 0 до 999 включительно");
+            return result.append("Введите число в диапазоне от 0 до 999 включительно");
         }
     }
 }

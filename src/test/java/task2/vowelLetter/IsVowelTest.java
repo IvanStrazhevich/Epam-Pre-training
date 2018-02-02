@@ -6,8 +6,9 @@ import java.util.Scanner;
 
 public class IsVowelTest {
     public static void main(String[] args) {
-        System.out.println("Enter any letter: ");
+        Viewer.print("Enter any letter: ");
         String letter = new Scanner(System.in).next();
+
         Viewer.print(IsVowel.checkLetterCycle(letter));
         Viewer.print(IsVowel.checkLetterSwitch(letter));
         Viewer.print(IsVowel.checkLetterWithContains(letter));

@@ -10,6 +10,7 @@ public class SpellNumberTest {
         Viewer.print("***Название числа в виде строки***");
         Viewer.print("Введите число от 0 до 999:");
         Integer number = new Scanner(System.in).nextInt();
+
         Viewer.print(SpellNumber.spellNumber(number));
     }
 }

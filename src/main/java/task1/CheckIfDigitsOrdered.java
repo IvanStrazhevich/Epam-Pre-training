@@ -1,6 +1,6 @@
 package task1;
 
-public class Task1n4 {
+public class CheckIfDigitsOrdered {
 
     public static boolean isOrderedByRange(int n) {
         int x4 = n / 1000;

@@ -1,6 +1,6 @@
 package task1;
 
-public class Task1n7 {
+public class FlipDigits {
 
     public static int flipDigits(int n) {
         int x7 = n / 1000000;

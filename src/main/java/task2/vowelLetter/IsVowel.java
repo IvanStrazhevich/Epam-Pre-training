@@ -4,7 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class IsVowel {
-    public static boolean checkIfLetter(String letter) {
+    private static boolean checkIfLetter(String letter) {
         Character cl = letter.charAt(0);
         return Character.isLetter(cl);
     }

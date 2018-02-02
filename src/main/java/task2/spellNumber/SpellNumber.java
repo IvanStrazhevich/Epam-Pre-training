@@ -1,7 +1,7 @@
 package task2.spellNumber;
 
 public class SpellNumber {
-    public static String parseLessThen10(Integer digits) {
+    private static String parseLessThen10(Integer digits) {
         String result = null;
         switch (digits) {
             case 1:
@@ -37,7 +37,7 @@ public class SpellNumber {
         return result;
     }
 
-    public static String parseLessThen20(Integer digits, Integer dozens) {
+    private static String parseLessThen20(Integer digits, Integer dozens) {
         String result = null;
 
         if (dozens == 1 && digits == 0) {
@@ -78,7 +78,7 @@ public class SpellNumber {
         return result;
     }
 
-    public static String parseLessThen100(Integer dozens) {
+    private static String parseLessThen100(Integer dozens) {
         String result = null;
         switch (dozens) {
             case 2:
@@ -111,7 +111,7 @@ public class SpellNumber {
         return result;
     }
 
-    public static String parseLessThen1000(Integer hundreds) {
+    private static String parseLessThen1000(Integer hundreds) {
         String result = null;
         switch (hundreds) {
             case 1:

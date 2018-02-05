@@ -9,27 +9,22 @@ public class IsVowel {
         return Character.isLetter(cl);
     }
 
-    public static String checkLetterCycle(String letter) {
-        String result = "not a letter";
+    public static boolean checkLetterCycle(String letter) {
+        boolean b = false;
         if (checkIfLetter(letter)) {
-            result = "cycle check: letter is consonant";
-            String[] vowels = {"a", "e", "i", "o", "u", "y", "а", "е", "ё", "и", "о", "у", "ы", "э", "ю", "я"};
+            String[] vowels = {"a", "e", "i", "o", "u", "y"};
             for (int i = 0; i < vowels.length; i++) {
-                if (!letter.equalsIgnoreCase(vowels[i])) {
-                    continue;
-                } else {
-                    result = "cycle check: letter is vowel";
+                if (letter.equalsIgnoreCase(vowels[i])) {
+                    b = true;
                     break;
                 }
             }
-            return result;
-        } else {
-            return result;
         }
+        return b;
     }
 
-    public static String checkLetterSwitch(String letter) {
-        String result = "not a letter";
+    public static boolean checkLetterSwitch(String letter) {
+        boolean b = false;
         if (checkIfLetter(letter)) {
             switch (letter.toLowerCase()) {
                 case "a":
@@ -38,51 +33,27 @@ public class IsVowel {
                 case "o":
                 case "u":
                 case "y":
-                case "э":
-                case "а":
-                case "е":
-                case "ё":
-                case "и":
-                case "о":
-                case "у":
-                case "ы":
-                case "ю":
-                case "я":
-                    result = "switch check: letter is vowel";
-                    break;
-                default:
-                    result = "switch check: letter is consonant";
-                    break;
+                    b = true;
             }
-            return result;
-        } else {
-            return result;
         }
+        return b;
     }
 
-    public static String checkLetterWithContains(String letter) {
+    public static boolean checkLetterWithContains(String letter) {
+        boolean b = false;
         if (checkIfLetter(letter)) {
-            String letters = "aeiouyаеёиоуыэюя";
-            if (letters.toLowerCase().contains(letter.toLowerCase())) {
-                return "contains method: letter is vowel";
-            } else {
-                return "contains method: letter is consonant";
-            }
-        } else {
-            return "not a letter";
+            String letters = "aeiouy";
+            b = letters.toLowerCase().contains(letter.toLowerCase());
         }
+        return b;
     }
 
-    public static String checkLetterWithRegexMatcher(String letter) {
+    public static boolean checkLetterWithRegexMatcher(String letter) {
+        boolean b = false;
         if (checkIfLetter(letter)) {
-            Matcher m = Pattern.compile("[aiueoаеёиоуыэюя]").matcher(letter.toLowerCase());
-            if (m.find()) {
-                return "matcher method: letter is vowel";
-            } else {
-                return "matcher method: letter is consonant";
-            }
-        } else {
-            return "not a letter";
+            Matcher m = Pattern.compile("[aiueoy]").matcher(letter.toLowerCase());
+            b = m.find();
         }
+        return b;
     }
 }

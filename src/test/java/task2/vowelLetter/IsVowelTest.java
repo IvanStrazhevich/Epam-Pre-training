@@ -6,12 +6,12 @@ import java.util.Scanner;
 
 public class IsVowelTest {
     public static void main(String[] args) {
-        Viewer.print("Enter any letter: ");
+        Viewer.print("Enter any latin letter: ");
         String letter = new Scanner(System.in).next();
 
-        Viewer.print(IsVowel.checkLetterCycle(letter));
-        Viewer.print(IsVowel.checkLetterSwitch(letter));
-        Viewer.print(IsVowel.checkLetterWithContains(letter));
-        Viewer.print(IsVowel.checkLetterWithRegexMatcher(letter));
+        Viewer.print("This letter is latin vowel " + IsVowel.checkLetterCycle(letter) + " (cycle used)");
+        Viewer.print("This letter is latin vowel " + IsVowel.checkLetterSwitch(letter) + " (switch used)");
+        Viewer.print("This letter is latin vowel " + IsVowel.checkLetterWithContains(letter)+" (contains used)");
+        Viewer.print("This letter is latin vowel " + IsVowel.checkLetterWithRegexMatcher(letter) + " (Matcher used)");
     }
 }

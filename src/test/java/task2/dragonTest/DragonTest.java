@@ -10,6 +10,7 @@ public class DragonTest {
         System.out.println("Enter age of the dragonTest: ");
         int age = new Scanner(System.in).nextInt();
 
-        Viewer.print(Dragon.countHeadsEyes(age) + "\n");
+        Viewer.print("Dragon has " + Dragon.countHeads(age) + " heads at age " + age);
+        Viewer.print("Dragon has " + Dragon.countEyes(age) + " eyes at age " + age);
     }
 }

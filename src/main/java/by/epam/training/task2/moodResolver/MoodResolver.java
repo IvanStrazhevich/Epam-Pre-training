@@ -3,7 +3,7 @@ package by.epam.training.task2.moodResolver;
 import java.util.Random;
 
 public class MoodResolver {
-    public static int QUANTITY_OF_MOOD_VARIETY =3;
+    public static final int QUANTITY_OF_MOOD_VARIETY =3;
     public static String guessMood() {
         String face = null;
         Random random = new Random();

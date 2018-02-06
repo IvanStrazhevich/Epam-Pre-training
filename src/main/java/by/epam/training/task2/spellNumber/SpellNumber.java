@@ -172,7 +172,6 @@ public class SpellNumber {
                             " " + parseLessThen20(digits, dozens));
                 }
             }
-
         }
         return result;
     }

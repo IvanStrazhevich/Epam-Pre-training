@@ -12,7 +12,7 @@ public class Dragon {
     private static final int EYES_PER_HEAD = 2;
 
     public static int countHeads(int age) {
-        int heads = 0;
+        int heads;
         if (age < FIRST_PERIOD_ENDS) {
             heads = HEADS_AT_BIRTH + age * HEADS_TO_GROW_AT_FIRST_PERIOD;
         } else if (age < SECOND_PERIOD_ENDS) {
@@ -23,8 +23,8 @@ public class Dragon {
         return heads;
     }
 
-    public static int countEyes(int age) {
-        return countHeads(age) * EYES_PER_HEAD;
+    public static int countEyes(int heads) {
+        return heads * EYES_PER_HEAD;
     }
 }
 

@@ -23,8 +23,8 @@ public class Dragon {
         return heads;
     }
 
-    public static int countEyes(int heads) {
-        return heads * EYES_PER_HEAD;
+    public static int countEyes(int age) {
+        return countHeads(age) * EYES_PER_HEAD;
     }
 }
 

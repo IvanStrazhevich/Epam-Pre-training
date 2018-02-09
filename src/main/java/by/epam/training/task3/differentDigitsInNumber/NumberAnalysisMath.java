@@ -110,7 +110,7 @@ public class NumberAnalysisMath {
                     hasZero = true;
                 }
             }
-            if (b == true) {
+            if (b) {
                 ++diff;
             }
             exist = ( exist * 10 + digit );

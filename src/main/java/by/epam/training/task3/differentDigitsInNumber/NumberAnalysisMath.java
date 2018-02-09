@@ -67,6 +67,23 @@ public class NumberAnalysisMath {
         return dividersSet;
     }
 
+    public static int getMaxCommonDivider(int firstNumber, int secondNumber) {
+
+        int maxDivider = 1;
+        for (int i = 1; i <= firstNumber || i <= secondNumber; i++) {
+            if (firstNumber % i == 0 && secondNumber % i == 0) {
+                maxDivider = i;
+            }
+        }
+        return maxDivider;
+    }
+
+    public static int getMinCommonMultiple(int firstNumber, int secondNumber) {
+
+        return firstNumber * secondNumber / getMaxCommonDivider(firstNumber, secondNumber);
+    }
+
+
     public static int countDifferentDigits(long number) {
         long digit;
         long cDigit;

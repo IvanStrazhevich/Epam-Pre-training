@@ -1,11 +1,11 @@
-package by.epam.training.task3.differentDigitsInNumberTest;
+package by.epam.training.task3.NumberAnalysisMathTest;
 
 import by.epam.training.task2.Viewer;
-import by.epam.training.task3.differentDigitsInNumber.NumberAnalysisMath;
+import by.epam.training.task3.NumberAnalysisMath.NumberAnalysisMath;
 
 import java.util.Scanner;
 
-public class GetMinCommonMultiple {
+public class FindMinCommonMultiple {
     public static void main(String[] args) {
         Viewer.print("Enter natural number: ");
         Scanner scanner = new Scanner(System.in);
@@ -13,6 +13,6 @@ public class GetMinCommonMultiple {
         int number2 = scanner.nextInt();
 
         Viewer.print("Min common multiple of " + number1 + " and " + number2
-                + "  is " + NumberAnalysisMath.getMinCommonMultiple(number1, number2));
+                + "  is " + NumberAnalysisMath.findMinCommonMultiple(number1, number2));
     }
 }

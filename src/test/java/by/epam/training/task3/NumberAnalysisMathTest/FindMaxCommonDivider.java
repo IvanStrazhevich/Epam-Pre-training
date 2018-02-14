@@ -1,11 +1,11 @@
-package by.epam.training.task3.differentDigitsInNumberTest;
+package by.epam.training.task3.NumberAnalysisMathTest;
 
 import by.epam.training.task2.Viewer;
-import by.epam.training.task3.differentDigitsInNumber.NumberAnalysisMath;
+import by.epam.training.task3.NumberAnalysisMath.NumberAnalysisMath;
 
 import java.util.Scanner;
 
-public class GetMaxCommonDivider {
+public class FindMaxCommonDivider {
     public static void main(String[] args) {
         Viewer.print("Enter natural number: ");
         Scanner scanner = new Scanner(System.in);
@@ -13,6 +13,6 @@ public class GetMaxCommonDivider {
         int number2 = scanner.nextInt();
 
         Viewer.print("Max common divider of " + number1 + " and " + number2
-                + "  is " + NumberAnalysisMath.getMaxCommonDivider(number1, number2));
+                + "  is " + NumberAnalysisMath.findMaxCommonDivider(number1, number2));
     }
 }

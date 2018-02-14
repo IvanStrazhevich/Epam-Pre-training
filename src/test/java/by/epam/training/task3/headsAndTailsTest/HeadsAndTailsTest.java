@@ -10,7 +10,7 @@ public class HeadsAndTailsTest {
         Viewer.print("Enter number of attempts: ");
         Scanner scanner = new Scanner(System.in);
         int attempts = scanner.nextInt();
-        int heads = HeadsAndTails.getHeadsNumber(attempts);
+        int heads = HeadsAndTails.countHeadsNumber(attempts);
         Viewer.print("There was " + heads + " heads after " + attempts
                 + " attempts and " + Math.abs(heads-attempts) + " tails");
     }

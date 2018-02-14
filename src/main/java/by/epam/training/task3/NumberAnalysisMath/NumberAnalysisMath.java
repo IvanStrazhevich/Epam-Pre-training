@@ -1,4 +1,4 @@
-package by.epam.training.task3.differentDigitsInNumber;
+package by.epam.training.task3.NumberAnalysisMath;
 
 import java.util.HashSet;
 
@@ -16,7 +16,7 @@ public class NumberAnalysisMath {
         return maxDigit;
     }
 
-    public static boolean isPalindrome(long number) {
+    public static boolean findIfPalindrome(long number) {
         long baseNumber = number;
         long mirrorNumber = 0;
         while (number > 0) {
@@ -27,11 +27,12 @@ public class NumberAnalysisMath {
         return baseNumber == mirrorNumber;
     }
 
-    public static boolean isSimple(long number) {
+    public static boolean findIfSimple(long number) {
         boolean b;
         int dividers = 0;
         if (number > 2 && number % 2 != 0) {
-            for (int i = 1; i <= number; i += 2) {
+            long halfNumber = number / 2;
+            for (int i = 1; i <= halfNumber; i += 2) {
                 if (number % i == 0) {
                     dividers++;
                 }
@@ -43,11 +44,12 @@ public class NumberAnalysisMath {
         return b;
     }
 
-    public static String getSimpleDividersAsString(int number) {
+    public static String findSimpleDividersAsString(int number) {
         StringBuffer dividers = new StringBuffer();
-        for (int divider = 1; divider <= number; divider += 2) {
+        int halfNumber = number / 2;
+        for (int divider = 1; divider <= halfNumber; divider += 2) {
             if (number % divider == 0) {
-                if (isSimple(divider)) {
+                if (findIfSimple(divider)) {
                     dividers.append(divider + ",");
                 }
             }
@@ -55,11 +57,12 @@ public class NumberAnalysisMath {
         return dividers.toString();
     }
 
-    public static HashSet getSimpleDividersAsSet(int number) {
+    public static HashSet findSimpleDividersAsSet(int number) {
         HashSet dividersSet = new HashSet();
-        for (long divider = 1; divider <= number; divider += 2) {
+        int halfNumber = number / 2;
+        for (long divider = 1; divider <= halfNumber; divider += 2) {
             if (number % divider == 0) {
-                if (isSimple(divider)) {
+                if (findIfSimple(divider)) {
                     dividersSet.add(divider);
                 }
             }
@@ -67,7 +70,7 @@ public class NumberAnalysisMath {
         return dividersSet;
     }
 
-    public static int getMaxCommonDivider(int firstNumber, int secondNumber) {
+    public static int findMaxCommonDivider(int firstNumber, int secondNumber) {
 
         int maxDivider = 1;
         for (int i = 1; i <= firstNumber || i <= secondNumber; i++) {
@@ -78,9 +81,9 @@ public class NumberAnalysisMath {
         return maxDivider;
     }
 
-    public static int getMinCommonMultiple(int firstNumber, int secondNumber) {
+    public static int findMinCommonMultiple(int firstNumber, int secondNumber) {
 
-        return firstNumber * secondNumber / getMaxCommonDivider(firstNumber, secondNumber);
+        return firstNumber * secondNumber / findMaxCommonDivider(firstNumber, secondNumber);
     }
 
 

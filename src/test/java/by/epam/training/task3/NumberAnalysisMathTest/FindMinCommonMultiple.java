@@ -1,7 +1,7 @@
 package by.epam.training.task3.NumberAnalysisMathTest;
 
 import by.epam.training.task2.Viewer;
-import by.epam.training.task3.NumberAnalysisMath.NumberAnalysisMath;
+import by.epam.training.task3.numberAnalysisMath.NumberAnalysisMath;
 
 import java.util.Scanner;
 

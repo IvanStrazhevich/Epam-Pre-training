@@ -1,4 +1,4 @@
-package by.epam.training.task3.NumberAnalysisMath;
+package by.epam.training.task3.numberAnalysisMath;
 
 import java.util.HashSet;
 

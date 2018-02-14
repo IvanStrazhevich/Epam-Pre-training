@@ -37,7 +37,7 @@ public class NumberAnalysisMath {
                     dividers++;
                 }
             }
-            b = dividers == 2;
+            b = dividers == 1;
         } else {
             b = number == 2 || number == 1;
         }

@@ -1,4 +1,4 @@
-package by.epam.training.logic.task4.checkDigitSumEqualsNumber;
+package by.epam.training.logic.task4.digitSumEqualsNumber;
 
 import by.epam.training.view.Viewer;
 

@@ -1,6 +1,8 @@
 package by.epam.training.logic.task2.nextDatePredictor;
 
 
+import by.epam.training.WrongEntriesException;
+
 public class NextDayIs {
     public static boolean isLeapYear(Integer year) {
         if (( year % 4 ) != 0) {
@@ -33,10 +35,10 @@ public class NextDayIs {
                                 day++;
                             }
                         } else {
-                            throw new Exception("Wrong day entered, this year is not leap");
+                            throw new WrongEntriesException("Wrong day entered, this year is not leap");
                         }
                     } else {
-                        throw new Exception("Wrong day entered, in february are 29 days in leap year and 28 in other years");
+                        throw new WrongEntriesException("Wrong day entered, in february are 29 days in leap year and 28 in other years");
                     }
                 } else if (month == 12) {
                     if (day == 31) {
@@ -62,14 +64,14 @@ public class NextDayIs {
                             day++;
                         }
                     } else {
-                        throw new Exception("Wrong day entered, there is no more then 30 days in this month");
+                        throw new WrongEntriesException("Wrong day entered, there is no more then 30 days in this month");
                     }
                 }
                 result = "Next day is " + day + " of month " + month + " of the year " + year;
             } else {
                 result = "Wrong date entered";
             }
-        } catch (Exception e) {
+        } catch (WrongEntriesException e) {
             result = e.toString();
         }
         return result;

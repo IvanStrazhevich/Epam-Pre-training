@@ -34,5 +34,4 @@ public class Power {
             return result;
         }
     }
-
 }

@@ -8,7 +8,7 @@ public class AbstractRepository<T> implements ITransportRepository<T> {
 
     private Transport[] vehicleRepository;
 
-    public AbstractRepository(Taxi[] vehicleRepository) {
+    public AbstractRepository(Transport[] vehicleRepository) {
         this.vehicleRepository = vehicleRepository;
     }
 

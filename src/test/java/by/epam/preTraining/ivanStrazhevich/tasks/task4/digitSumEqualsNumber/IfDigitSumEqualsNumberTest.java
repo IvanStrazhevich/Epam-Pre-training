@@ -13,8 +13,10 @@ public class IfDigitSumEqualsNumberTest {
         long sum = scanner.nextLong();
         long digitSum = 0;
 
-        Viewer.print(" Is " + IfDigitSumEqualsNumber.countDigitsSumRecursion(number, sum, digitSum)
-                + " that sum of digits in number " + number + " equals " + sum);
+        Viewer.print(" It is " + IfDigitSumEqualsNumber.countDigitsSumRecursion(number, sum, digitSum)
+                + " that sum of digits in number " + number + " equals " + sum + " with recursion");
+        Viewer.print(" It is " + IfDigitSumEqualsNumber.countDigitsSumCycle(number, sum)
+                + " that sum of digits in number " + number + " equals " + sum + " with cycle");
     }
 
 }

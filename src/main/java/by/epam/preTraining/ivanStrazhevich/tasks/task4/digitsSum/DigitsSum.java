@@ -13,11 +13,9 @@ public class DigitsSum {
     public static long countDigitsSumCycle(long number) {
         int sum = 0;
         number = Math.abs(number);
-        if (number > 0) {
-            while (number > 0) {
-                sum += number % 10;
-                number /= 10;
-            }
+        while (number > 0) {
+            sum += number % 10;
+            number /= 10;
         }
         return sum;
     }

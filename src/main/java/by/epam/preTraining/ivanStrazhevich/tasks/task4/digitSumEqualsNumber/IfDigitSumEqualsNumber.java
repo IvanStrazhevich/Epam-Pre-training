@@ -1,26 +1,12 @@
 package by.epam.preTraining.ivanStrazhevich.tasks.task4.digitSumEqualsNumber;
 
-import by.epam.preTraining.ivanStrazhevich.tasks.WrongEntriesException;
-
 public class IfDigitSumEqualsNumber {
-    private static long countDigitsSumRecursion(long number) {
+    public static boolean countDigitsSumRecursion(long number, long sum, long digitSum) {
         if (number > 0) {
-            return number % 10 + countDigitsSumRecursion(number / 10);
+            digitSum += number % 10;
+            return ( countDigitsSumRecursion(number / 10, sum, digitSum) );
         } else {
-            return number;
-        }
-    }
-
-    public static boolean checkNumberDigitSumEqualsSum(long number, long sum) {
-        if (!( number < 0 || sum < 0 )) {
-            return countDigitsSumRecursion(number) == sum;
-        } else {
-            try {
-                throw new WrongEntriesException("Enter numbers more or equals then 0");
-            } catch (WrongEntriesException e) {
-                e.printStackTrace();
-            }
-            return false;
+            return digitSum == sum;
         }
     }
 }

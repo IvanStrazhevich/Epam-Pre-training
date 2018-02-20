@@ -11,8 +11,9 @@ public class IfDigitSumEqualsNumberTest {
         long number = scanner.nextLong();
         Viewer.print("Enter natural sum: ");
         long sum = scanner.nextLong();
+        long digitSum = 0;
 
-        Viewer.print(" Is " + IfDigitSumEqualsNumber.checkNumberDigitSumEqualsSum(number, sum)
+        Viewer.print(" Is " + IfDigitSumEqualsNumber.countDigitsSumRecursion(number, sum, digitSum)
                 + " that sum of digits in number " + number + " equals " + sum);
     }
 

@@ -1,7 +1,5 @@
 package by.epam.preTraining.ivanStrazhevich.tasks.task5.entities;
 
-import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.CargoFare;
-import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.DiselTankType;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.IFareType;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.IMovingWays;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.ITankType;

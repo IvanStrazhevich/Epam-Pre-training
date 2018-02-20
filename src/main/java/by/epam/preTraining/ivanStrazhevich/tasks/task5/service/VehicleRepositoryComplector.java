@@ -4,13 +4,10 @@ import by.epam.preTraining.ivanStrazhevich.tasks.task5.entities.CargoTaxi;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.entities.PassengerTaxi;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.entities.Taxi;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.*;
-import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.IFareType;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.ITransportRepository;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.IVehicleRepositoryComplector;
-import by.epam.preTraining.ivanStrazhevich.tasks.task5.repository.ITaxiRepository;
-import by.epam.preTraining.ivanStrazhevich.tasks.task5.view.Viewer;
+import by.epam.preTraining.ivanStrazhevich.tasks.task5.repository.AbstractRepository;
 
-import java.util.Arrays;
 import java.util.Random;
 
 public class VehicleRepositoryComplector implements IVehicleRepositoryComplector {
@@ -18,7 +15,7 @@ public class VehicleRepositoryComplector implements IVehicleRepositoryComplector
 
     public ITransportRepository<Taxi> fillVehicleRepository(int vehicleQuantity) {
 
-        ITransportRepository iTaxiRepository = new ITaxiRepository<Taxi>();
+        ITransportRepository iTaxiRepository = new AbstractRepository<Taxi>();
         Random random = new Random();
         while (vehicleQuantity > 0) {
             switch (random.nextInt(TAXI_SPECIALIZATION.length)) {

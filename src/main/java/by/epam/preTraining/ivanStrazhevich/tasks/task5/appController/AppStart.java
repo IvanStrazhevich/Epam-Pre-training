@@ -5,7 +5,7 @@ import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.CargoFare
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.ElectricTankType;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.PassengerFare;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.ITransportRepository;
-import by.epam.preTraining.ivanStrazhevich.tasks.task5.repository.ITaxiRepository;
+import by.epam.preTraining.ivanStrazhevich.tasks.task5.repository.AbstractRepository;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.service.VehicleRepositoryComplector;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.view.Viewer;
 
@@ -15,8 +15,8 @@ import java.util.Arrays;
 public class AppStart {
     public static void main(String[] args) {
         Viewer.print("Creating repository: ");
-        ITransportRepository<Taxi> taxiRepository = new ITaxiRepository<Taxi>();
-        ITransportRepository<Taxi> taxiRepository2 = new ITaxiRepository<Taxi>();
+        ITransportRepository<Taxi> taxiRepository = new AbstractRepository<Taxi>();
+        ITransportRepository<Taxi> taxiRepository2 = new AbstractRepository<Taxi>();
         Viewer.print("Check is it empty: " + taxiRepository.isEmpty());
         Viewer.print("Filling with vehicles ");
         VehicleRepositoryComplector vehicleRepositoryComplector = new VehicleRepositoryComplector();

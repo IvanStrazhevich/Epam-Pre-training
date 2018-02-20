@@ -1,27 +1,28 @@
 package by.epam.preTraining.ivanStrazhevich.tasks.task5.repository;
 
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.entities.Taxi;
+import by.epam.preTraining.ivanStrazhevich.tasks.task5.entities.Transport;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.ITransportRepository;
 
-public class ITaxiRepository<T> implements ITransportRepository<Taxi> {
+public class AbstractRepository<T> implements ITransportRepository<T> {
 
-    private Taxi[] vehicleRepository;
+    private Transport[] vehicleRepository;
 
-    public ITaxiRepository(Taxi[] vehicleRepository) {
+    public AbstractRepository(Taxi[] vehicleRepository) {
         this.vehicleRepository = vehicleRepository;
     }
 
-    public ITaxiRepository() {
+    public AbstractRepository() {
         if (getVehicleRepository() == null) {
-            vehicleRepository = new Taxi[10];
+            vehicleRepository = new Transport[10];
         }
     }
 
-    private Taxi[] extendArray(Taxi[] extendingArray, int oldLength) {
+    private Transport[] extendArray(Transport[] extendingArray, int oldLength) {
         int size = ( oldLength ) * 2;
         int j = 0;
-        Taxi[] arrayExtended = new Taxi[size];
-        for (Taxi oldArrayElement : extendingArray
+        Transport[] arrayExtended = new Transport[size];
+        for (Transport oldArrayElement : extendingArray
                 ) {
             arrayExtended[j++] = oldArrayElement;
         }
@@ -31,7 +32,7 @@ public class ITaxiRepository<T> implements ITransportRepository<Taxi> {
     @Override
     public int vehiclesAtRepository() {
         int i = 0;
-        for (Taxi type : vehicleRepository
+        for (Transport type : vehicleRepository
                 ) {
             if (type != null) {
                 i++;
@@ -43,7 +44,7 @@ public class ITaxiRepository<T> implements ITransportRepository<Taxi> {
     @Override
     public boolean isEmpty() {
         int i = 0;
-        for (Taxi type : vehicleRepository
+        for (Transport type : vehicleRepository
                 ) {
             if (type != null)
                 i++;
@@ -55,14 +56,14 @@ public class ITaxiRepository<T> implements ITransportRepository<Taxi> {
     @Override
     public boolean add(Object element) {
         int i = 0;
-        for (Taxi t : vehicleRepository
+        for (Transport t : vehicleRepository
                 ) {
             if (t != null) {
                 i++;
             } else if (vehicleRepository.length == i) {
                 vehicleRepository = extendArray(vehicleRepository, i);
             } else {
-                vehicleRepository[i++] = (Taxi) element;
+                vehicleRepository[i++] = (Transport) element;
                 return true;
             }
         }
@@ -74,7 +75,7 @@ public class ITaxiRepository<T> implements ITransportRepository<Taxi> {
         int i = 0;
         int j = 0;
 
-        for (Taxi t : vehicleRepository
+        for (Transport t : vehicleRepository
                 ) {
             if (t != null) {
                 i++;
@@ -82,7 +83,7 @@ public class ITaxiRepository<T> implements ITransportRepository<Taxi> {
                 vehicleRepository = extendArray(vehicleRepository, vehicleRepository.length);
                 for (Object cElement : c
                         ) {
-                    vehicleRepository[i++] = (Taxi) cElement;
+                    vehicleRepository[i++] = (Transport) cElement;
                     j++;
                 }
                 break;
@@ -90,7 +91,7 @@ public class ITaxiRepository<T> implements ITransportRepository<Taxi> {
                 for (Object cElement : c
                         ) {
                     if (cElement != null) {
-                        vehicleRepository[i++] = (Taxi) cElement;
+                        vehicleRepository[i++] = (Transport) cElement;
                         j++;
                     }
                 }
@@ -155,7 +156,7 @@ public class ITaxiRepository<T> implements ITransportRepository<Taxi> {
         return i == c.length;
     }
 
-    public Taxi[] getVehicleRepository() {
+    public Transport[] getVehicleRepository() {
         return vehicleRepository;
     }
 

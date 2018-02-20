@@ -12,8 +12,9 @@ public class HanoiTest {
         char from = 'A';
         char to = 'B';
         char buff = 'C';
+        StringBuffer stringBuffer = new StringBuffer();
         Viewer.print("Here is what to do ");
-        Viewer.print(Hanoi.playHanoi(number, from, to, buff));
+        Viewer.print(Hanoi.playHanoi(number, from, to, buff, stringBuffer));
 
     }
 }

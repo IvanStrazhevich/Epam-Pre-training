@@ -13,7 +13,7 @@ public class HanoiTest {
         char to = 'B';
         char buff = 'C';
         Viewer.print("Here is what to do ");
-        Hanoi.playHanoi(number, from, to, buff);
+        Viewer.print(Hanoi.playHanoi(number, from, to, buff));
 
     }
 }

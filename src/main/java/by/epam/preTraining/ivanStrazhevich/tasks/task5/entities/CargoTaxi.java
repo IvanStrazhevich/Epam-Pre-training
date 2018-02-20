@@ -1,5 +1,7 @@
 package by.epam.preTraining.ivanStrazhevich.tasks.task5.entities;
 
+import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.CargoFare;
+import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.DiselTankType;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.IFareType;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.IMovingWays;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.ITankType;
@@ -7,10 +9,6 @@ import by.epam.preTraining.ivanStrazhevich.tasks.task5.view.Viewer;
 
 
 public class CargoTaxi extends Taxi {
-    private IFareType iFareType;
-    private ITankType iTankType;
-    private IMovingWays iMovingWays;
-    private int id;
 
     public CargoTaxi(IFareType iFareType, ITankType iTankType, IMovingWays iMovingWays,
                      int id, String vehicleBrand, String model, int passengers, int cargoWeight) {

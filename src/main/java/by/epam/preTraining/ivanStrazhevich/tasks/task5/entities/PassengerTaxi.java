@@ -1,15 +1,13 @@
 package by.epam.preTraining.ivanStrazhevich.tasks.task5.entities;
 
+import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.ElectricTankType;
+import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.PassengerFare;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.IFareType;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.IMovingWays;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.ITankType;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.view.Viewer;
 
 public class PassengerTaxi extends Taxi {
-    private IFareType iFareType;
-    private ITankType iTankType;
-    private IMovingWays iMovingWays;
-    private int id;
 
     public PassengerTaxi(IFareType iFareType, ITankType iTankType, IMovingWays iMovingWays,
                          int id, String vehicleBrand, String model, int passengers, int cargoWeight) {
@@ -31,8 +29,7 @@ public class PassengerTaxi extends Taxi {
     public int fillTank(int type) {
         if (iTankType != null) {
             type = iTankType.fillTank(type);
-        }
-        return type;
+        } return type;
     }
 
     @Override

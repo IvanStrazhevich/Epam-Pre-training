@@ -1,6 +1,5 @@
 package by.epam.preTraining.ivanStrazhevich.tasks.task4.power;
 
-import by.epam.preTraining.ivanStrazhevich.tasks.task4.power.Power;
 import by.epam.preTraining.ivanStrazhevich.tasks.view.Viewer;
 
 import java.util.Scanner;

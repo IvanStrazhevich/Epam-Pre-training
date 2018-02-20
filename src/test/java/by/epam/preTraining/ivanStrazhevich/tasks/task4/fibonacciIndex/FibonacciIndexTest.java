@@ -1,6 +1,5 @@
 package by.epam.preTraining.ivanStrazhevich.tasks.task4.fibonacciIndex;
 
-import by.epam.preTraining.ivanStrazhevich.tasks.task4.fibonacciIndex.FibonacciIndex;
 import by.epam.preTraining.ivanStrazhevich.tasks.view.Viewer;
 
 import java.util.Scanner;

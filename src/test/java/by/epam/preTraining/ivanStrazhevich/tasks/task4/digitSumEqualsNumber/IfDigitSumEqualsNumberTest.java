@@ -1,6 +1,5 @@
 package by.epam.preTraining.ivanStrazhevich.tasks.task4.digitSumEqualsNumber;
 
-import by.epam.preTraining.ivanStrazhevich.tasks.task4.digitSumEqualsNumber.IfDigitSumEqualsNumber;
 import by.epam.preTraining.ivanStrazhevich.tasks.view.Viewer;
 
 import java.util.Scanner;

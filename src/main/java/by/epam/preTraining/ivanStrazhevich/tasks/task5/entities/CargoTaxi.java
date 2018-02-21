@@ -146,4 +146,18 @@ public class CargoTaxi extends Taxi {
         result = 31 * result + cargoWeight;
         return result;
     }
+
+    @Override
+    public String toString() {
+        return "CargoTaxi{" +
+                "iFareType=" + iFareType +
+                ", iTankType=" + iTankType +
+                ", iMovingWays=" + iMovingWays +
+                ", id=" + id +
+                ", vehicleBrand='" + vehicleBrand + '\'' +
+                ", model='" + model + '\'' +
+                ", passengers=" + passengers +
+                ", cargoWeight=" + cargoWeight +
+                '}';
+    }
 }

@@ -9,10 +9,12 @@ public class FibonacciIndexTest {
         Viewer.print("Enter natural number: ");
         Scanner scanner = new Scanner(System.in);
         long number = scanner.nextLong();
-        long result = 0;
 
         Viewer.print("Number Fibonacci for index " + number + " is "
-                + FibonacciIndex.findFibonacciByIndex(number, result)
+                + FibonacciIndex.findFibonacciByIndexRecursion(number)
                 + " Recursion used");
+        Viewer.print("Number Fibonacci for index " + number + " is "
+                + FibonacciIndex.findFibonacciByIndexCycle(number)
+                + " Cycle used");
     }
 }

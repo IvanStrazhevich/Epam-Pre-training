@@ -30,7 +30,8 @@ public class AppStart {
         Viewer.print("Getting out an element ");
         Taxi taxi0 = (Taxi) taxiRepository.get(0);
         taxi0.takeFare(2, 200);
-
+        taxiRepository2.add(taxi0);
+        Viewer.print("Number of vehicles after adding one " + taxiRepository2.vehiclesAtRepository());
         Taxi taxi1 = (Taxi) taxiRepository.get(1);
         Viewer.print(taxi1.fillTank(20));
         taxi1.setITankType(new GasTankType());
@@ -46,6 +47,8 @@ public class AppStart {
         Viewer.print("Second repository before merging:   "
                 + Arrays.toString(taxiRepository2.getVehicleRepository()));
         taxiRepository2.addAll(taxiRepository.getVehicleRepository());
+        Viewer.print("First repository after merging:   "
+                + (taxiRepository.vehiclesAtRepository()));
         Viewer.print("Second repository after merging:   "
                 + Arrays.toString(taxiRepository2.getVehicleRepository()));
         Viewer.print("Number of vehicles after merging " + taxiRepository2.vehiclesAtRepository());

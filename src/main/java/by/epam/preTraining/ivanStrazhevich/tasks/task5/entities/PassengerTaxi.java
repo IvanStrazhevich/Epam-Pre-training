@@ -126,37 +126,6 @@ public class PassengerTaxi extends Taxi {
         this.cargoWeight = cargoWeight;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!( o instanceof PassengerTaxi )) return false;
-        if (!super.equals(o)) return false;
-
-        PassengerTaxi that = (PassengerTaxi) o;
-
-        if (id != that.id) return false;
-        if (passengers != that.passengers) return false;
-        if (cargoWeight != that.cargoWeight) return false;
-        if (iFareType != null ? !iFareType.equals(that.iFareType) : that.iFareType != null) return false;
-        if (iTankType != null ? !iTankType.equals(that.iTankType) : that.iTankType != null) return false;
-        if (iMovingWays != null ? !iMovingWays.equals(that.iMovingWays) : that.iMovingWays != null) return false;
-        if (vehicleBrand != null ? !vehicleBrand.equals(that.vehicleBrand) : that.vehicleBrand != null) return false;
-        return model != null ? model.equals(that.model) : that.model == null;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = super.hashCode();
-        result = 31 * result + ( iFareType != null ? iFareType.hashCode() : 0 );
-        result = 31 * result + ( iTankType != null ? iTankType.hashCode() : 0 );
-        result = 31 * result + ( iMovingWays != null ? iMovingWays.hashCode() : 0 );
-        result = 31 * result + id;
-        result = 31 * result + ( vehicleBrand != null ? vehicleBrand.hashCode() : 0 );
-        result = 31 * result + ( model != null ? model.hashCode() : 0 );
-        result = 31 * result + passengers;
-        result = 31 * result + cargoWeight;
-        return result;
-    }
 
     @Override
     public String toString() {

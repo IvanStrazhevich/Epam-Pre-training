@@ -1,38 +1,39 @@
 package by.epam.preTraining.ivanStrazhevich.tasks.task5.repository;
 
-import by.epam.preTraining.ivanStrazhevich.tasks.task5.entities.Taxi;
-import by.epam.preTraining.ivanStrazhevich.tasks.task5.entities.Transport;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.ITransportRepository;
+
+import java.util.Collection;
 
 public class AbstractRepository<T> implements ITransportRepository<T> {
 
-    private Transport[] vehicleRepository;
+    private Object[] vehicleRepository;
 
-    public AbstractRepository(Transport[] vehicleRepository) {
+    public AbstractRepository(Object[] vehicleRepository) {
         this.vehicleRepository = vehicleRepository;
     }
 
     public AbstractRepository() {
         if (getVehicleRepository() == null) {
-            vehicleRepository = new Transport[10];
+            vehicleRepository = new Object[10];
         }
     }
 
-    private Transport[] extendArray(Transport[] extendingArray, int oldLength) {
+    private Object[] extendArray(Object[] extendingArray, int oldLength) {
         int size = ( oldLength ) * 2;
         int j = 0;
-        Transport[] arrayExtended = new Transport[size];
-        for (Transport oldArrayElement : extendingArray
+        Object[] arrayExtended = new Object[size];
+        for (Object oldArrayElement : extendingArray
                 ) {
             arrayExtended[j++] = oldArrayElement;
         }
         return arrayExtended;
     }
 
+
     @Override
     public int vehiclesAtRepository() {
         int i = 0;
-        for (Transport type : vehicleRepository
+        for (Object type : vehicleRepository
                 ) {
             if (type != null) {
                 i++;
@@ -44,7 +45,7 @@ public class AbstractRepository<T> implements ITransportRepository<T> {
     @Override
     public boolean isEmpty() {
         int i = 0;
-        for (Transport type : vehicleRepository
+        for (Object type : vehicleRepository
                 ) {
             if (type != null)
                 i++;
@@ -56,14 +57,14 @@ public class AbstractRepository<T> implements ITransportRepository<T> {
     @Override
     public boolean add(Object element) {
         int i = 0;
-        for (Transport t : vehicleRepository
+        for (Object t : vehicleRepository
                 ) {
             if (t != null) {
                 i++;
             } else if (vehicleRepository.length == i) {
                 vehicleRepository = extendArray(vehicleRepository, i);
             } else {
-                vehicleRepository[i++] = (Transport) element;
+                vehicleRepository[i++] = element;
                 return true;
             }
         }
@@ -71,33 +72,40 @@ public class AbstractRepository<T> implements ITransportRepository<T> {
     }
 
     @Override
-    public boolean addAll(Object[] c) {
+    public boolean addAll(Object[] arrayFrom) {
         int i = 0;
         int j = 0;
-
-        for (Transport t : vehicleRepository
+        for (Object to : vehicleRepository
                 ) {
-            if (t != null) {
+            if (to != null) {
                 i++;
-            } else if (vehicleRepository.length - i + c.length > vehicleRepository.length) {
+            } else if (vehicleRepository.length - i + arrayFrom.length > vehicleRepository.length) {
                 vehicleRepository = extendArray(vehicleRepository, vehicleRepository.length);
-                for (Object cElement : c
+                for (Object from : arrayFrom
                         ) {
-                    vehicleRepository[i++] = (Transport) cElement;
-                    j++;
+                    if (from != null) {
+                        vehicleRepository[i++] = from;
+                        j++;
+                    }
                 }
                 break;
             } else {
-                for (Object cElement : c
+                for (Object from : arrayFrom
                         ) {
-                    if (cElement != null) {
-                        vehicleRepository[i++] = (Transport) cElement;
+                    if (from != null) {
+                        vehicleRepository[i++] = from;
                         j++;
                     }
                 }
             }
         }
-        return ( j == c.length );
+        return j == arrayFrom.length;
+    }
+
+    @Override
+    public boolean addAll(Collection c) {
+        Object[] cCopy = c.toArray();
+        return addAll(cCopy);
     }
 
     @Override
@@ -137,15 +145,16 @@ public class AbstractRepository<T> implements ITransportRepository<T> {
     }
 
     @Override
-    public boolean containsAll(Object[] c) {
+    public boolean containsAll(Object[] arrayFrom) {
         int i = 0;
-        for (Object element : vehicleRepository
+        int j = 0;
+        for (Object elementChecking : arrayFrom
                 ) {
-            if (element != null) {
-                for (Object o : c
+            if (elementChecking != null) {
+                for (Object elementFrom : vehicleRepository
                         ) {
-                    if (o != null) {
-                        if (element.equals(o)) {
+                    if (elementFrom != null) {
+                        if (elementChecking.equals(elementFrom)) {
                             i++;
                             break;
                         }
@@ -153,10 +162,16 @@ public class AbstractRepository<T> implements ITransportRepository<T> {
                 }
             }
         }
-        return i == c.length;
+        return i == arrayFrom.length;
     }
 
-    public Transport[] getVehicleRepository() {
+    @Override
+    public boolean containsAll(Collection c) {
+        Object[] cCopy = c.toArray();
+        return containsAll(cCopy);
+    }
+
+    public Object[] getVehicleRepository() {
         return vehicleRepository;
     }
 

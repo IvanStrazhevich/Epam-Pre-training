@@ -136,6 +136,6 @@ public abstract class Transport implements IFareType, ITankType {
                 ", model='" + model + '\'' +
                 ", passengers=" + passengers +
                 ", cargoWeight=" + cargoWeight +
-                '}';
+                '}'+'\n';
     }
 }

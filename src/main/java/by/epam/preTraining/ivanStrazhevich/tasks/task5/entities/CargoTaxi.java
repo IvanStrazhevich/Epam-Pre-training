@@ -63,86 +63,6 @@ public class CargoTaxi extends Taxi {
     }
 
     @Override
-    public IFareType getIFareType() {
-        return iFareType;
-    }
-
-    @Override
-    public void setIFareType(IFareType iFareType) {
-        this.iFareType = iFareType;
-    }
-
-    @Override
-    public ITankType getITankType() {
-        return iTankType;
-    }
-
-    @Override
-    public void setITankType(ITankType iTankType) {
-        this.iTankType = iTankType;
-    }
-
-    @Override
-    public IMovingWays getIMovingWays() {
-        return iMovingWays;
-    }
-
-    @Override
-    public void setIMovingWays(IMovingWays iMovingWays) {
-        this.iMovingWays = iMovingWays;
-    }
-
-    @Override
-    public int getId() {
-        return id;
-    }
-
-    @Override
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    @Override
-    public String getVehicleBrand() {
-        return vehicleBrand;
-    }
-
-    @Override
-    public void setVehicleBrand(String vehicleBrand) {
-        this.vehicleBrand = vehicleBrand;
-    }
-
-    @Override
-    public String getModel() {
-        return model;
-    }
-
-    @Override
-    public void setModel(String model) {
-        this.model = model;
-    }
-
-    @Override
-    public int getPassengers() {
-        return passengers;
-    }
-
-    @Override
-    public void setPassengers(int passengers) {
-        this.passengers = passengers;
-    }
-
-    @Override
-    public int getCargoWeight() {
-        return cargoWeight;
-    }
-
-    @Override
-    public void setCargoWeight(int cargoWeight) {
-        this.cargoWeight = cargoWeight;
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!( o instanceof CargoTaxi )) return false;
@@ -172,6 +92,6 @@ public class CargoTaxi extends Taxi {
                 ", model='" + model + '\'' +
                 ", passengers=" + passengers +
                 ", cargoWeight=" + cargoWeight +
-                '}';
+                '}'+'\n';
     }
 }

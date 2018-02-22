@@ -1,8 +1,10 @@
 package by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces;
 
+import by.epam.preTraining.ivanStrazhevich.tasks.task5.entities.Transport;
+
 import java.util.Collection;
 
-public interface ITransportRepository<T> {
+public interface ITransportRepository<T>  {
 
 
     boolean add(Object element);
@@ -27,6 +29,6 @@ public interface ITransportRepository<T> {
 
     boolean containsAll(Collection c);
 
-    Object[] getRepository();
+    Object [] getRepository();
 
 }

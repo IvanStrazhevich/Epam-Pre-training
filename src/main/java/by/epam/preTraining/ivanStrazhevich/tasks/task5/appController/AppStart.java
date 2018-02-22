@@ -1,11 +1,15 @@
 package by.epam.preTraining.ivanStrazhevich.tasks.task5.appController;
 
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.entities.Taxi;
+import by.epam.preTraining.ivanStrazhevich.tasks.task5.entities.Transport;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.CargoFare;
+import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.ElectricTankType;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.GasTankType;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.PassengerFare;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.ITransportRepository;
+import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.ITransportService;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.repository.AbstractRepository;
+import by.epam.preTraining.ivanStrazhevich.tasks.task5.service.TransportService;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.service.VehicleRepositoryComplector;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.view.Viewer;
 
@@ -15,14 +19,14 @@ import java.util.Arrays;
 public class AppStart {
     public static void main(String[] args) {
         Viewer.print("Creating repository: ");
-        ITransportRepository<Taxi> taxiRepository = new AbstractRepository<Taxi>();
-        ITransportRepository<Taxi> taxiRepository2 = new AbstractRepository<Taxi>();
+        ITransportRepository<Transport> taxiRepository = new AbstractRepository<Transport>(10);
+        ITransportRepository<Transport> taxiRepository2 = new AbstractRepository<Transport>(10);
+        ITransportService transportService = new TransportService();
         Viewer.print("Check is it empty: " + taxiRepository.isEmpty());
         Viewer.print("Filling with vehicles ");
         VehicleRepositoryComplector vehicleRepositoryComplector = new VehicleRepositoryComplector();
         taxiRepository = vehicleRepositoryComplector.fillVehicleRepository(10);
         Viewer.print("Created first repository " + Arrays.toString(taxiRepository.getRepository()));
-
         taxiRepository2 = vehicleRepositoryComplector.fillVehicleRepository(5);
         Viewer.print("Created second repository " + Arrays.toString(taxiRepository2.getRepository()));
         Viewer.print("Check is it empty: " + taxiRepository.isEmpty());
@@ -57,9 +61,10 @@ public class AppStart {
         Viewer.print("Removing one: ");
         taxiRepository2.remove(7);
         Viewer.print("Number of vehicles after removing one " + taxiRepository2.elementsAtRepository());
-
         Viewer.print("If there are all elements of the first repository contains in merged one : "
                 + taxiRepository2.containsAll(taxiRepository.getRepository()));
+        Viewer.print("Select all that have electric tank: "
+                + Arrays.toString(transportService.findByTankType(new ElectricTankType(), taxiRepository).getRepository()));
         Viewer.print("Removing all: ");
         taxiRepository2.removeAll();
         Viewer.print("After removal all " + taxiRepository2.elementsAtRepository());

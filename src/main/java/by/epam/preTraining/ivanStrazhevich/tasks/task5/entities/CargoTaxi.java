@@ -82,16 +82,16 @@ public class CargoTaxi extends Taxi {
 
     @Override
     public String toString() {
-        return "CargoTaxi{" +
-                "cargoVolumeMeters=" + cargoVolumeMeters +
-                ", iFareType=" + iFareType +
-                ", iTankType=" + iTankType +
-                ", iMovingWays=" + iMovingWays +
-                ", id=" + id +
-                ", vehicleBrand='" + vehicleBrand + '\'' +
-                ", model='" + model + '\'' +
-                ", passengers=" + passengers +
-                ", cargoWeight=" + cargoWeight +
-                '}'+'\n';
+        return "CargoTaxi{" + '\n' +
+                ", iFareType = " + iFareType +
+                ", iTankType = " + iTankType +
+                ", iMovingWays = " + iMovingWays +
+                ", id = " + id +
+                ", vehicleBrand = '" + vehicleBrand + '\'' +
+                ", model = '" + model + '\'' +
+                ", passengers = " + passengers +
+                ", cargoWeight = " + cargoWeight +
+                "cargoVolumeMeters = " + cargoVolumeMeters +
+                '}' + '\n';
     }
 }

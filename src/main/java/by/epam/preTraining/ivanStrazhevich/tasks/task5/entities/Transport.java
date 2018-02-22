@@ -128,14 +128,14 @@ public abstract class Transport implements IFareType, ITankType {
     @Override
     public String toString() {
         return "Transport{" +
-                "iFareType=" + iFareType +
-                ", iTankType=" + iTankType +
-                ", iMovingWays=" + iMovingWays +
-                ", id=" + id +
-                ", vehicleBrand='" + vehicleBrand + '\'' +
-                ", model='" + model + '\'' +
-                ", passengers=" + passengers +
-                ", cargoWeight=" + cargoWeight +
+                "iFareType = " + iFareType +
+                ", iTankType = " + iTankType +
+                ", iMovingWays = " + iMovingWays +
+                ", id = " + id +
+                ", vehicleBrand = '" + vehicleBrand + '\'' +
+                ", model = '" + model + '\'' +
+                ", passengers = " + passengers +
+                ", cargoWeight = " + cargoWeight +
                 '}'+'\n';
     }
 }

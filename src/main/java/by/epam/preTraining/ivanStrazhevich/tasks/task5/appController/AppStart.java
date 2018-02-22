@@ -52,7 +52,7 @@ public class AppStart {
                 + Arrays.toString(taxiRepository2.getRepository()));
         taxiRepository2.addAll(taxiRepository.getRepository());
         print("First repository after merging:   "
-                + (taxiRepository.elementsAtRepository()));
+                + Arrays.toString(taxiRepository.getRepository()));
         print("Second repository after merging:   "
                 + Arrays.toString(taxiRepository2.getRepository()));
         print("Number of vehicles after merging " + taxiRepository2.elementsAtRepository());
@@ -64,8 +64,10 @@ public class AppStart {
         print("Number of vehicles after removing one " + taxiRepository2.elementsAtRepository());
         print("If there are all elements of the first repository contains in merged one : "
                 + taxiRepository2.containsAll(taxiRepository.getRepository()));
+
         print("Select all that have electric tank: "
                 + Arrays.toString(transportService.findByTankType(new ElectricTankType(), taxiRepository).getRepository()));
+
         print("Removing all: ");
         taxiRepository2.removeAll();
         print("After removal all " + taxiRepository2.elementsAtRepository());

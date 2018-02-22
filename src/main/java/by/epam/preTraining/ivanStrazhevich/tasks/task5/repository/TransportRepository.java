@@ -149,7 +149,6 @@ public class TransportRepository<T> implements ITransportRepository<Transport> {
     @Override
     public boolean containsAll(Object[] arrayFrom) {
         int i = 0;
-        int j = 0;
         for (Object elementChecking : arrayFrom
                 ) {
             if (elementChecking != null) {

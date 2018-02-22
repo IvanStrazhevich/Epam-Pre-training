@@ -17,9 +17,9 @@ public class PassengerTaxi extends Taxi {
 
     @Override
     public String takeFare(int passengersQuantity, int cargoWeightKg) {
-        if (iFareType != null) {
-            if (!( cargoWeightKg > cargoWeight || passengersQuantity > passengers )) {
-                return iFareType.takeFare(passengersQuantity, cargoWeightKg);
+        if (super.getIFareType() != null) {
+            if (!( cargoWeightKg > super.getCargoWeight() || passengersQuantity > super.getPassengers() )) {
+                return super.getIFareType().takeFare(passengersQuantity, cargoWeightKg);
             } else {
                 return "There is no space at passenger taxi";
             }
@@ -36,8 +36,8 @@ public class PassengerTaxi extends Taxi {
 
     @Override
     public String fillTank(int type) {
-        if (iTankType != null) {
-            return iTankType.fillTank(type);
+        if (super.getITankType() != null) {
+            return super.getITankType().fillTank(type);
         } else {
             try {
                 throw new WrongEntriesException("Tank type for passenger taxi not chosen");
@@ -52,14 +52,14 @@ public class PassengerTaxi extends Taxi {
     @Override
     public String toString() {
         return "PassengerTaxi{" + '\n' +
-                "iFareType = " + iFareType +
-                ", iTankType = " + iTankType +
-                ", iMovingWays =" + iMovingWays +
-                ", id = " + id +
-                ", vehicleBrand ='" + vehicleBrand + '\'' +
-                ", model = '" + model + '\'' +
-                ", passengers = " + passengers +
-                ", cargoWeight = " + cargoWeight +
+                "iFareType = " + super.getIFareType() +
+                ", iTankType = " + super.getITankType() +
+                ", iMovingWays =" + super.getIMovingWays() +
+                ", id = " + super.getId() +
+                ", vehicleBrand ='" + super.getVehicleBrand() + '\'' +
+                ", model = '" + super.getModel() + '\'' +
+                ", passengers = " + super.getPassengers() +
+                ", cargoWeight = " + super.getCargoWeight() +
                 '}' + '\n';
     }
 }

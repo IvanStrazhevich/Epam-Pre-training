@@ -5,14 +5,14 @@ import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.IMovingWays;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.ITankType;
 
 public abstract class Transport implements IFareType, ITankType {
-    IFareType iFareType;
-    ITankType iTankType;
-    IMovingWays iMovingWays;
-    int id;
-    String vehicleBrand;
-    String model;
-    int passengers;
-    int cargoWeight;
+    private IFareType iFareType;
+    private ITankType iTankType;
+    private IMovingWays iMovingWays;
+    private int id;
+    private String vehicleBrand;
+    private String model;
+    private int passengers;
+    private int cargoWeight;
 
     public Transport(IFareType iFareType, ITankType iTankType, IMovingWays iMovingWays,
                      int id, String vehicleBrand, String model, int passengers, int cargoWeight) {

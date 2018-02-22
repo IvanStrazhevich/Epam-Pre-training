@@ -1,10 +1,11 @@
 package by.epam.preTraining.ivanStrazhevich.tasks.task5.entities;
 
+import by.epam.preTraining.ivanStrazhevich.tasks.WrongEntriesException;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.IFareType;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.IMovingWays;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.ITankType;
 
-public abstract class Transport implements IFareType, ITankType {
+public abstract class Transport {
     private IFareType iFareType;
     private ITankType iTankType;
     private IMovingWays iMovingWays;
@@ -13,6 +14,36 @@ public abstract class Transport implements IFareType, ITankType {
     private String model;
     private int passengers;
     private int cargoWeight;
+
+    public String fillTank(int type) {
+        if (iTankType != null) {
+            return iTankType.fillTank(type);
+        } else {
+            try {
+                throw new WrongEntriesException("Tank type for taxi not chosen");
+            } catch (WrongEntriesException e) {
+                e.printStackTrace();
+                return "Not filled";
+            }
+        }
+
+    } public String takeFare(int passengersQuantity, int cargoWeightKg) {
+        if (iFareType != null) {
+            if (!( cargoWeightKg > cargoWeight || passengersQuantity > passengers )) {
+                return iFareType.takeFare(passengersQuantity, cargoWeightKg);
+            } else {
+                return "There is no space at taxi";
+            }
+        } else {
+            try {
+                throw new WrongEntriesException("Fare type not chosen");
+            } catch (WrongEntriesException e) {
+                e.printStackTrace();
+                return "Fare type not chosen";
+            }
+        }
+
+    }
 
     public Transport(IFareType iFareType, ITankType iTankType, IMovingWays iMovingWays,
                      int id, String vehicleBrand, String model, int passengers, int cargoWeight) {

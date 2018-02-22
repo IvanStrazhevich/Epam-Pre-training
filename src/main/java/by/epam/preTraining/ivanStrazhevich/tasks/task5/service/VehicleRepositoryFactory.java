@@ -6,7 +6,7 @@ import by.epam.preTraining.ivanStrazhevich.tasks.task5.entities.Transport;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.iFareType.CargoFare;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.iFareType.PassengerFare;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.iMovingWays.MoveOnRoads;
-import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.iTankType.DiselTankType;
+import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.iTankType.DieselTankType;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.iTankType.ElectricTankType;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.ITransportRepository;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.IVehicleRepositoryFactory;
@@ -28,7 +28,7 @@ public class VehicleRepositoryFactory implements IVehicleRepositoryFactory {
                             4, 300));
                     break;
                 case 1:
-                    iTaxiRepository.add(new CargoTaxi(new CargoFare(), new DiselTankType(),
+                    iTaxiRepository.add(new CargoTaxi(new CargoFare(), new DieselTankType(),
                             new MoveOnRoads(), vehicleQuantity--, "VW", "Transporter",
                             2, 1400, 20));
                     break;

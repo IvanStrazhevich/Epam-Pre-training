@@ -15,9 +15,9 @@ public abstract class Transport {
     private int passengers;
     private int cargoWeight;
 
-    public String fillTank(int type) {
+    public String fillTank(int volume) {
         if (iTankType != null) {
-            return iTankType.fillTank(type);
+            return iTankType.fillTank(volume);
         } else {
             try {
                 throw new WrongEntriesException("Tank type for taxi not chosen");

@@ -6,7 +6,7 @@ import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.ITankType;
 
 
 public class CargoTaxi extends Taxi {
-    int cargoVolumeMeters;
+    private int cargoVolumeMeters;
 
     public CargoTaxi(IFareType iFareType, ITankType iTankType, IMovingWays iMovingWays, int id,
                      String vehicleBrand, String model, int passengers, int cargoWeight,

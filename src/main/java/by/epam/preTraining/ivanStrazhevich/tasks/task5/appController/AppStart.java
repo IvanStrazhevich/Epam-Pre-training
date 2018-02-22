@@ -3,6 +3,7 @@ package by.epam.preTraining.ivanStrazhevich.tasks.task5.appController;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.entities.Taxi;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.CargoFare;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.ElectricTankType;
+import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.GasTankType;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.PassengerFare;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.ITransportRepository;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.repository.AbstractRepository;
@@ -31,13 +32,13 @@ public class AppStart {
         taxi0.takeFare(2, 200);
 
         Taxi taxi1 = (Taxi) taxiRepository.get(1);
-        taxi1.fillTank(20);
-        taxi1.setITankType(new ElectricTankType());
-        taxi1.fillTank(20);
+        Viewer.print(taxi1.fillTank(20));
+        taxi1.setITankType(new GasTankType());
+        Viewer.print(taxi1.fillTank(40));
         taxi1.setIFareType(new PassengerFare());
-        taxi1.takeFare(4, 300);
+        Viewer.print(taxi1.takeFare(4, 300));
         taxi1.setIFareType(new CargoFare());
-        taxi1.takeFare(2, 500);
+        Viewer.print(taxi1.takeFare(4, 500));
         Viewer.print(taxi1);
 
         Viewer.print("Finding out if there is an element " + taxiRepository.contains(taxi1));

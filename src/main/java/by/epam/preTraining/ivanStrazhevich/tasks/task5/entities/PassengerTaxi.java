@@ -1,9 +1,9 @@
 package by.epam.preTraining.ivanStrazhevich.tasks.task5.entities;
 
+import by.epam.preTraining.ivanStrazhevich.tasks.WrongEntriesException;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.IFareType;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.IMovingWays;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.ITankType;
-import by.epam.preTraining.ivanStrazhevich.tasks.task5.view.Viewer;
 
 public class PassengerTaxi extends Taxi {
 
@@ -13,21 +13,37 @@ public class PassengerTaxi extends Taxi {
     }
 
     @Override
-    public void takeFare(int passengersQuantity, int cargoWeightKg) {
+    public String takeFare(int passengersQuantity, int cargoWeightKg) {
         if (iFareType != null) {
-            if (!( cargoWeightKg > cargoWeight && passengersQuantity > passengers )) {
-                iFareType.takeFare(passengersQuantity, cargoWeightKg);
+            if (!( cargoWeightKg > cargoWeight || passengersQuantity > passengers )) {
+                return iFareType.takeFare(passengersQuantity, cargoWeightKg);
             } else {
-                Viewer.print("There is no space");
+                return "There is no space at passenger taxi";
+            }
+        } else {
+            try {
+                throw new WrongEntriesException();
+            } catch (WrongEntriesException e) {
+                e.printStackTrace();
+                return "Fare type not chosen";
             }
         }
+
     }
 
     @Override
-    public int fillTank(int type) {
+    public String fillTank(int type) {
         if (iTankType != null) {
-            type = iTankType.fillTank(type);
-        } return type;
+            return iTankType.fillTank(type);
+        } else {
+            try {
+                throw new WrongEntriesException("Tank type for passenger taxi not chosen");
+            } catch (WrongEntriesException e) {
+                e.printStackTrace();
+                return "Not filled";
+            }
+        }
+
     }
 
     @Override

@@ -4,13 +4,13 @@ import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.ITankType;
 
 public class ElectricTankType implements ITankType {
     @Override
-    public int fillTank(int kWt) {
-        System.out.println("Filled with " + kWt + " kWt of electricity");
-        return kWt;
+    public String fillTank(int kWt) {
+        return "Filled with " + kWt + " kWt of electricity";
+
     }
 
     @Override
     public String toString() {
-        return "with ElectricTankType";
+        return " with ElectricTankType";
     }
 }

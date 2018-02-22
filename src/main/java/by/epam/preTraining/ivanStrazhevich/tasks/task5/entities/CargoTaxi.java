@@ -1,12 +1,13 @@
 package by.epam.preTraining.ivanStrazhevich.tasks.task5.entities;
 
+import by.epam.preTraining.ivanStrazhevich.tasks.WrongEntriesException;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.IFareType;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.IMovingWays;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.ITankType;
-import by.epam.preTraining.ivanStrazhevich.tasks.task5.view.Viewer;
 
 
 public class CargoTaxi extends Taxi {
+    int cargoVolumeMeters;
 
     public CargoTaxi(IFareType iFareType, ITankType iTankType, IMovingWays iMovingWays,
                      int id, String vehicleBrand, String model, int passengers, int cargoWeight) {
@@ -14,22 +15,45 @@ public class CargoTaxi extends Taxi {
     }
 
     @Override
-    public void takeFare(int passengersQuantity, int cargoWeightKg) {
+    public String takeFare(int passengersQuantity, int cargoWeightKg) {
         if (iFareType != null) {
-            if (!( cargoWeightKg > cargoWeight && passengersQuantity > passengers )) {
-                iFareType.takeFare(passengersQuantity, cargoWeightKg);
+            if (!( cargoWeightKg > cargoWeight || passengersQuantity > passengers )) {
+                return iFareType.takeFare(passengersQuantity, cargoWeightKg);
             } else {
-                Viewer.print("There is no space");
+                return "There is no space at cargo taxi";
+            }
+        } else {
+            try {
+                throw new WrongEntriesException("Fare type not chosen");
+            } catch (WrongEntriesException e) {
+                e.printStackTrace();
+                return "Fare type not chosen";
             }
         }
+
     }
 
     @Override
-    public int fillTank(int type) {
+    public String fillTank(int type) {
         if (iTankType != null) {
-            type = iTankType.fillTank(type);
+            return iTankType.fillTank(type);
+        } else {
+            try {
+                throw new WrongEntriesException("Tank type for cargo taxi  not chosen");
+            } catch (WrongEntriesException e) {
+                e.printStackTrace();
+                return "Not filled";
+            }
         }
-        return type;
+
+    }
+
+    public int getCargoVolumeMeters() {
+        return cargoVolumeMeters;
+    }
+
+    public void setCargoVolumeMeters(int cargoVolumeMeters) {
+        this.cargoVolumeMeters = cargoVolumeMeters;
     }
 
     @Override
@@ -120,37 +144,21 @@ public class CargoTaxi extends Taxi {
 
         CargoTaxi cargoTaxi = (CargoTaxi) o;
 
-        if (id != cargoTaxi.id) return false;
-        if (passengers != cargoTaxi.passengers) return false;
-        if (cargoWeight != cargoTaxi.cargoWeight) return false;
-        if (iFareType != null ? !iFareType.equals(cargoTaxi.iFareType) : cargoTaxi.iFareType != null) return false;
-        if (iTankType != null ? !iTankType.equals(cargoTaxi.iTankType) : cargoTaxi.iTankType != null)
-            return false;
-        if (iMovingWays != null ? !iMovingWays.equals(cargoTaxi.iMovingWays) : cargoTaxi.iMovingWays != null)
-            return false;
-        if (vehicleBrand != null ? !vehicleBrand.equals(cargoTaxi.vehicleBrand) : cargoTaxi.vehicleBrand != null)
-            return false;
-        return model != null ? model.equals(cargoTaxi.model) : cargoTaxi.model == null;
+        return cargoVolumeMeters == cargoTaxi.cargoVolumeMeters;
     }
 
     @Override
     public int hashCode() {
         int result = super.hashCode();
-        result = 31 * result + ( iFareType != null ? iFareType.hashCode() : 0 );
-        result = 31 * result + ( iTankType != null ? iTankType.hashCode() : 0 );
-        result = 31 * result + ( iMovingWays != null ? iMovingWays.hashCode() : 0 );
-        result = 31 * result + id;
-        result = 31 * result + ( vehicleBrand != null ? vehicleBrand.hashCode() : 0 );
-        result = 31 * result + ( model != null ? model.hashCode() : 0 );
-        result = 31 * result + passengers;
-        result = 31 * result + cargoWeight;
+        result = 31 * result + cargoVolumeMeters;
         return result;
     }
 
     @Override
     public String toString() {
         return "CargoTaxi{" +
-                "iFareType=" + iFareType +
+                "cargoVolumeMeters=" + cargoVolumeMeters +
+                ", iFareType=" + iFareType +
                 ", iTankType=" + iTankType +
                 ", iMovingWays=" + iMovingWays +
                 ", id=" + id +

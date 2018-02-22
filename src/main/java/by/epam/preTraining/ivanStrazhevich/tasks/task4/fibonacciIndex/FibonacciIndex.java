@@ -21,7 +21,7 @@ public class FibonacciIndex {
             }
             return sum;
         } else {
-            return index <= 0 ? - 1 : index - 1;
+            return index <= 0 ? -1 : index - 1;
         }
     }
 }

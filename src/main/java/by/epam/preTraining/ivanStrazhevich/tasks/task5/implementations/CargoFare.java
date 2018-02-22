@@ -4,8 +4,8 @@ import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.IFareType;
 
 public class CargoFare implements IFareType {
     @Override
-    public void takeFare(int passengersQuantity, int cargoWeightKg) {
-        System.out.println("Cargo of " + cargoWeightKg + " is loaded, and "
+    public String takeFare(int passengersQuantity, int cargoWeightKg) {
+        return ("Cargo of " + cargoWeightKg + " is loaded, and "
                 + passengersQuantity + " are ridden"
         );
     }

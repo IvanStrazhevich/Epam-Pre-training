@@ -1,5 +1,7 @@
 package by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces;
 
+import by.epam.preTraining.ivanStrazhevich.tasks.WrongEntriesException;
+
 public interface ITankType {
-    int fillTank(int quantity);
+    String fillTank(int quantity);
 }

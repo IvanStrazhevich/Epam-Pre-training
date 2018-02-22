@@ -4,12 +4,12 @@ import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.IMovingWays;
 
 public class MoveByAir implements IMovingWays {
     @Override
-    public void makeFare() {
-        System.out.println("Fly");
+    public String makeFare() {
+        return "Fly";
     }
 
     @Override
     public String toString() {
-        return "MoveByAir";
+        return " MoveByAir";
     }
 }

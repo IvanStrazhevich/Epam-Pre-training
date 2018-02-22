@@ -104,8 +104,7 @@ public abstract class Transport implements IFareType, ITankType {
         if (passengers != transport.passengers) return false;
         if (cargoWeight != transport.cargoWeight) return false;
         if (iFareType != null ? !iFareType.equals(transport.iFareType) : transport.iFareType != null) return false;
-        if (iTankType != null ? !iTankType.equals(transport.iTankType) : transport.iTankType != null)
-            return false;
+        if (iTankType != null ? !iTankType.equals(transport.iTankType) : transport.iTankType != null) return false;
         if (iMovingWays != null ? !iMovingWays.equals(transport.iMovingWays) : transport.iMovingWays != null)
             return false;
         if (vehicleBrand != null ? !vehicleBrand.equals(transport.vehicleBrand) : transport.vehicleBrand != null)

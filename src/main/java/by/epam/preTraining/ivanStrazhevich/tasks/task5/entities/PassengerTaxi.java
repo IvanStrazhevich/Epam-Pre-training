@@ -12,6 +12,9 @@ public class PassengerTaxi extends Taxi {
         super(iFareType, iTankType, iMovingWays, id, vehicleBrand, model, passengers, cargoWeight);
     }
 
+    public PassengerTaxi() {
+    }
+
     @Override
     public String takeFare(int passengersQuantity, int cargoWeightKg) {
         if (iFareType != null) {

@@ -13,7 +13,7 @@ public class AbstractRepository<T> implements ITransportRepository<T> {
     }
 
     public AbstractRepository() {
-        if (getVehicleRepository() == null) {
+        if (getRepository() == null) {
             vehicleRepository = new Object[10];
         }
     }
@@ -31,7 +31,7 @@ public class AbstractRepository<T> implements ITransportRepository<T> {
 
 
     @Override
-    public int vehiclesAtRepository() {
+    public int elementsAtRepository() {
         int i = 0;
         for (Object type : vehicleRepository
                 ) {
@@ -171,7 +171,7 @@ public class AbstractRepository<T> implements ITransportRepository<T> {
         return containsAll(cCopy);
     }
 
-    public Object[] getVehicleRepository() {
+    public Object[] getRepository() {
         return vehicleRepository;
     }
 

@@ -9,9 +9,15 @@ import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.ITankType;
 public class CargoTaxi extends Taxi {
     int cargoVolumeMeters;
 
-    public CargoTaxi(IFareType iFareType, ITankType iTankType, IMovingWays iMovingWays,
-                     int id, String vehicleBrand, String model, int passengers, int cargoWeight) {
+    public CargoTaxi(IFareType iFareType, ITankType iTankType, IMovingWays iMovingWays, int id,
+                     String vehicleBrand, String model, int passengers, int cargoWeight,
+                     int cargoVolumeMeters) {
         super(iFareType, iTankType, iMovingWays, id, vehicleBrand, model, passengers, cargoWeight);
+        this.cargoVolumeMeters = cargoVolumeMeters;
+    }
+
+    public CargoTaxi(int cargoVolumeMeters) {
+        this.cargoVolumeMeters = cargoVolumeMeters;
     }
 
     @Override

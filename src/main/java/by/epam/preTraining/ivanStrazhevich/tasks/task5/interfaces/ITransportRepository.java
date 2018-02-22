@@ -1,6 +1,5 @@
 package by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces;
 
-
 import java.util.Collection;
 
 public interface ITransportRepository<T> {
@@ -12,7 +11,7 @@ public interface ITransportRepository<T> {
 
     boolean addAll(Collection c);
 
-    int vehiclesAtRepository();
+    int elementsAtRepository();
 
     boolean isEmpty();
 
@@ -28,6 +27,6 @@ public interface ITransportRepository<T> {
 
     boolean containsAll(Collection c);
 
-    Object[] getVehicleRepository();
+    Object[] getRepository();
 
 }

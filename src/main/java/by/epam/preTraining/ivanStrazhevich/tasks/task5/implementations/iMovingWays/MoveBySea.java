@@ -1,4 +1,4 @@
-package by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations;
+package by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.iMovingWays;
 
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.IMovingWays;
 

@@ -1,20 +1,19 @@
 package by.epam.preTraining.ivanStrazhevich.tasks.task5.repository;
 
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.entities.Transport;
-import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.ITankType;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.ITransportRepository;
 
 import java.util.Collection;
 
-public class AbstractRepository<T> implements ITransportRepository<Transport> {
+public class TransportRepository<T> implements ITransportRepository<Transport> {
 
     private Object[] vehicleRepository;
 
-    public AbstractRepository(Object[] vehicleRepository) {
+    public TransportRepository(Object[] vehicleRepository) {
         this.vehicleRepository = vehicleRepository;
     }
 
-    public AbstractRepository(int size) {
+    public TransportRepository(int size) {
                if (size < 0)
                         throw new IllegalArgumentException("Illegal Capacity: "+
                                                                size);

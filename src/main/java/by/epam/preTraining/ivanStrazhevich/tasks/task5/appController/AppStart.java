@@ -2,15 +2,15 @@ package by.epam.preTraining.ivanStrazhevich.tasks.task5.appController;
 
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.entities.Taxi;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.entities.Transport;
-import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.CargoFare;
-import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.ElectricTankType;
-import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.GasTankType;
-import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.PassengerFare;
+import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.iFareType.CargoFare;
+import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.iTankType.ElectricTankType;
+import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.iTankType.GasTankType;
+import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.iFareType.PassengerFare;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.ITransportRepository;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.ITransportService;
-import by.epam.preTraining.ivanStrazhevich.tasks.task5.repository.AbstractRepository;
+import by.epam.preTraining.ivanStrazhevich.tasks.task5.repository.TransportRepository;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.service.TransportService;
-import by.epam.preTraining.ivanStrazhevich.tasks.task5.service.VehicleRepositoryComplector;
+import by.epam.preTraining.ivanStrazhevich.tasks.task5.service.VehicleRepositoryFactory;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.view.Viewer;
 
 import java.util.Arrays;
@@ -19,15 +19,15 @@ import java.util.Arrays;
 public class AppStart {
     public static void main(String[] args) {
         Viewer.print("Creating repository: ");
-        ITransportRepository<Transport> taxiRepository = new AbstractRepository<Transport>(10);
-        ITransportRepository<Transport> taxiRepository2 = new AbstractRepository<Transport>(10);
+        ITransportRepository<Transport> taxiRepository = new TransportRepository<Transport>(10);
+        ITransportRepository<Transport> taxiRepository2 = new TransportRepository<Transport>(10);
         ITransportService transportService = new TransportService();
         Viewer.print("Check is it empty: " + taxiRepository.isEmpty());
         Viewer.print("Filling with vehicles ");
-        VehicleRepositoryComplector vehicleRepositoryComplector = new VehicleRepositoryComplector();
-        taxiRepository = vehicleRepositoryComplector.fillVehicleRepository(10);
+        VehicleRepositoryFactory vehicleRepositoryFactory = new VehicleRepositoryFactory();
+        taxiRepository = vehicleRepositoryFactory.fillVehicleRepository(10);
         Viewer.print("Created first repository " + Arrays.toString(taxiRepository.getRepository()));
-        taxiRepository2 = vehicleRepositoryComplector.fillVehicleRepository(5);
+        taxiRepository2 = vehicleRepositoryFactory.fillVehicleRepository(5);
         Viewer.print("Created second repository " + Arrays.toString(taxiRepository2.getRepository()));
         Viewer.print("Check is it empty: " + taxiRepository.isEmpty());
         Viewer.print("Getting out an element ");

@@ -1,4 +1,4 @@
-package by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations;
+package by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.iFareType;
 
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.IFareType;
 

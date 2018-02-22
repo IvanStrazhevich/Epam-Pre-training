@@ -1,7 +1,5 @@
 package by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces;
 
-import by.epam.preTraining.ivanStrazhevich.tasks.task5.entities.Transport;
-
 import java.util.Collection;
 
 public interface ITransportRepository<T>  {

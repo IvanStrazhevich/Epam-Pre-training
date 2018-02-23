@@ -13,9 +13,9 @@ public class Palindrome {
             charStack.push(parsedString[i]);
         }
         for (int i = 0; i < stringLength; i++) {
-            if (charStack.pop().equals(parsedString[i])) {
-                b = true;
-            } else {
+            if (charStack.pop().equals(parsedString[i])) {      // as long as pop() uses for() cycle inside,
+                b = true;                                       // complexity of algorithm is O(N^2)
+            } else {                                            // in case we don't know what inside pop() it will be O(N)
                 b = false;
                 break;
             }

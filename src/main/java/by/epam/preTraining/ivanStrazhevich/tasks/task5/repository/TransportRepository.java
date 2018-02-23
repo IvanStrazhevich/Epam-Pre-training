@@ -7,16 +7,16 @@ import java.util.Collection;
 
 public class TransportRepository<T> implements ITransportRepository<Transport> {
 
-    private Object[] vehicleRepository;
+    protected Object[] vehicleRepository;
 
     public TransportRepository(Object[] vehicleRepository) {
         this.vehicleRepository = vehicleRepository;
     }
 
     public TransportRepository(int size) {
-               if (size < 0)
-                        throw new IllegalArgumentException("Illegal Capacity: "+
-                                                               size);
+        if (size < 0)
+            throw new IllegalArgumentException("Illegal Capacity: " +
+                    size);
         this.vehicleRepository = new Object[size];
     }
 
@@ -35,9 +35,9 @@ public class TransportRepository<T> implements ITransportRepository<Transport> {
     @Override
     public int elementsAtRepository() {
         int i = 0;
-        for (Object type : vehicleRepository
+        for (Object element : vehicleRepository
                 ) {
-            if (type != null) {
+            if (element != null) {
                 i++;
             }
         }
@@ -47,9 +47,9 @@ public class TransportRepository<T> implements ITransportRepository<Transport> {
     @Override
     public boolean isEmpty() {
         int i = 0;
-        for (Object type : vehicleRepository
+        for (Object element : vehicleRepository
                 ) {
-            if (type != null)
+            if (element != null)
                 i++;
         }
         return i == 0;
@@ -59,12 +59,13 @@ public class TransportRepository<T> implements ITransportRepository<Transport> {
     @Override
     public boolean add(Object element) {
         int i = 0;
-        for (Object t : vehicleRepository
+        for (Object existElement : vehicleRepository
                 ) {
-            if (t != null) {
+            if (existElement != null) {
                 i++;
             } else if (vehicleRepository.length == i) {
                 vehicleRepository = extendArray(vehicleRepository, i);
+                return true;
             } else {
                 vehicleRepository[i++] = element;
                 return true;
@@ -173,7 +174,7 @@ public class TransportRepository<T> implements ITransportRepository<Transport> {
     }
 
     public Object[] getRepository() {
-        return  vehicleRepository;
+        return vehicleRepository;
     }
 
 }

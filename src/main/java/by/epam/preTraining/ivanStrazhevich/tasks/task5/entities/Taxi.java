@@ -10,6 +10,8 @@ public abstract class Taxi extends Transport {
         super(iFareType, iTankType, iMovingWays, id, vehicleBrand, model, passengers, cargoWeight);
     }
 
+
+
     public Taxi() {
     }
 }

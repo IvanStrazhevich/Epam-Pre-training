@@ -27,7 +27,9 @@ public abstract class Transport {
             }
         }
 
-    } public String takeFare(int passengersQuantity, int cargoWeightKg) {
+    }
+
+    public String takeFare(int passengersQuantity, int cargoWeightKg) {
         if (iFareType != null) {
             if (!( cargoWeightKg > cargoWeight || passengersQuantity > passengers )) {
                 return iFareType.takeFare(passengersQuantity, cargoWeightKg);

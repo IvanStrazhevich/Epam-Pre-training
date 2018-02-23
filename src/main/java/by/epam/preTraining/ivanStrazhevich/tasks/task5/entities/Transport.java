@@ -42,6 +42,16 @@ public abstract class Transport {
         this.passengers = passengers;
         this.cargoWeight = cargoWeight;
     }
+    public Transport(Transport transport){
+        this.iFareType = transport.getIFareType();
+        this.iTankType = transport.getITankType();
+        this.iMovingWays = transport.getIMovingWays();
+        this.id = transport.getId();
+        this.vehicleBrand = transport.getVehicleBrand();
+        this.model = transport.getModel();
+        this.passengers = transport.getPassengers();
+        this.cargoWeight = transport.getCargoWeight();
+    }
 
     public Transport() {
     }
@@ -114,9 +124,7 @@ public abstract class Transport {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!( o instanceof Transport )) return false;
-
         Transport transport = (Transport) o;
-
         if (id != transport.id) return false;
         if (passengers != transport.passengers) return false;
         if (cargoWeight != transport.cargoWeight) return false;
@@ -145,7 +153,7 @@ public abstract class Transport {
     @Override
     public String toString() {
         return "Transport{" +
-                "iFareType = " + iFareType +
+                " iFareType = " + iFareType +
                 ", iTankType = " + iTankType +
                 ", iMovingWays = " + iMovingWays +
                 ", id = " + id +

@@ -36,6 +36,11 @@ public class AppStart {
         taxi0.takeFare(2, 200);
         taxiRepository2.add(taxi0);
         print("Number of vehicles after adding one " + taxiRepository2.elementsAtRepository());
+        Transport taxi3 = new Taxi(taxi0);
+        print("Copy constructor test: ");
+        print(taxi0);
+        print(taxi3);
+
         Taxi taxi1 = (Taxi) taxiRepository.get(1);
         print(taxi1);
         print(taxi1.fillTank(20));

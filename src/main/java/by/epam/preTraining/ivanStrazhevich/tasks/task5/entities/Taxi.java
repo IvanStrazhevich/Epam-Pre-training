@@ -14,8 +14,12 @@ public class Taxi extends Transport {
         this.hasTaxiLicence = hasTaxiLicence;
     }
 
-    public Taxi(boolean hasTaxiLicence) {
-        this.hasTaxiLicence = hasTaxiLicence;
+    public Taxi(Taxi taxi) {
+        super(taxi);
+        this.hasTaxiLicence = taxi.isHasTaxiLicence();
+    }
+
+    public Taxi() {
     }
 
     @Override
@@ -34,6 +38,24 @@ public class Taxi extends Transport {
                 return "Fare type not chosen";
             }
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!( o instanceof Taxi )) return false;
+        if (!super.equals(o)) return false;
+
+        Taxi taxi = (Taxi) o;
+
+        return hasTaxiLicence == taxi.hasTaxiLicence;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = super.hashCode();
+        result = 31 * result + ( hasTaxiLicence ? 1 : 0 );
+        return result;
     }
 
     @Override

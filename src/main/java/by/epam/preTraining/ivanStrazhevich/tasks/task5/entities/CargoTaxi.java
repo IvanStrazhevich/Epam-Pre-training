@@ -15,10 +15,12 @@ public class CargoTaxi extends Taxi {
         super(iFareType, iTankType, iMovingWays, id, vehicleBrand, model, passengers, cargoWeight, hasTaxiLicence);
         this.cargoVolumeMeters = cargoVolumeMeters;
     }
+    public CargoTaxi(CargoTaxi cargoTaxi) {
+        super(cargoTaxi);
+        this.cargoVolumeMeters = cargoTaxi.getCargoVolumeMeters();
+    }
 
-    public CargoTaxi(boolean hasTaxiLicence, int cargoVolumeMeters) {
-        super(hasTaxiLicence);
-        this.cargoVolumeMeters = cargoVolumeMeters;
+    public CargoTaxi() {
     }
 
     @Override

@@ -1,5 +1,6 @@
 package by.epam.preTraining.ivanStrazhevich.tasks.task5.entities;
 
+import by.epam.preTraining.ivanStrazhevich.tasks.WrongEntriesException;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.IFareType;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.IMovingWays;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.ITankType;
@@ -9,14 +10,34 @@ public class CargoTaxi extends Taxi {
     private int cargoVolumeMeters;
 
     public CargoTaxi(IFareType iFareType, ITankType iTankType, IMovingWays iMovingWays, int id,
-                     String vehicleBrand, String model, int passengers, int cargoWeight,
+                     String vehicleBrand, String model, int passengers, int cargoWeight, boolean hasTaxiLicence,
                      int cargoVolumeMeters) {
-        super(iFareType, iTankType, iMovingWays, id, vehicleBrand, model, passengers, cargoWeight);
+        super(iFareType, iTankType, iMovingWays, id, vehicleBrand, model, passengers, cargoWeight, hasTaxiLicence);
         this.cargoVolumeMeters = cargoVolumeMeters;
     }
 
-    public CargoTaxi(int cargoVolumeMeters) {
+    public CargoTaxi(boolean hasTaxiLicence, int cargoVolumeMeters) {
+        super(hasTaxiLicence);
         this.cargoVolumeMeters = cargoVolumeMeters;
+    }
+
+    @Override
+    public String takeFare(int passengersQuantity, int cargoWeightKg) {
+        if (super.getIFareType() != null) {
+            if (!( cargoWeightKg > super.getCargoWeight() || passengersQuantity > super.getPassengers() )) {
+                return super.getIFareType().takeFare(passengersQuantity, cargoWeightKg);
+            } else {
+                return "There is no space at Cargo taxi";
+            }
+        } else {
+            try {
+                throw new WrongEntriesException("Fare type not chosen");
+            } catch (WrongEntriesException e) {
+                e.printStackTrace();
+                return "Fare type not chosen";
+            }
+        }
+
     }
 
     public int getCargoVolumeMeters() {
@@ -56,7 +77,8 @@ public class CargoTaxi extends Taxi {
                 ", model = '" + super.getModel() + '\'' +
                 ", passengers = " + super.getPassengers() +
                 ", cargoWeight = " + super.getCargoWeight() +
-                "cargoVolumeMeters = " + cargoVolumeMeters +
+                ", hasTaxiLicence = " + super.isHasTaxiLicence()+
+                ", cargoVolumeMeters = " + cargoVolumeMeters +
                 '}' + '\n';
     }
 }

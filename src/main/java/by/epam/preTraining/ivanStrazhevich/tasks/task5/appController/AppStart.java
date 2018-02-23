@@ -25,7 +25,7 @@ public class AppStart {
         ITransportService transportService = new TransportService();
         print("Check is it empty: " + taxiRepository.isEmpty());
         print("Filling with vehicles ");
-        VehicleRepositoryFactory vehicleRepositoryFactory = new VehicleRepositoryFactory();
+        VehicleRepositoryFactory vehicleRepositoryFactory = VehicleRepositoryFactory.getVehicleRepositoryFactory();
         taxiRepository = vehicleRepositoryFactory.fillVehicleRepository(10);
         print("Created first repository " );
         taxiRepository2 = vehicleRepositoryFactory.fillVehicleRepository(5);

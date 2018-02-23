@@ -29,23 +29,7 @@ public abstract class Transport {
 
     }
 
-    public String takeFare(int passengersQuantity, int cargoWeightKg) {
-        if (iFareType != null) {
-            if (!( cargoWeightKg > cargoWeight || passengersQuantity > passengers )) {
-                return iFareType.takeFare(passengersQuantity, cargoWeightKg);
-            } else {
-                return "There is no space at taxi";
-            }
-        } else {
-            try {
-                throw new WrongEntriesException("Fare type not chosen");
-            } catch (WrongEntriesException e) {
-                e.printStackTrace();
-                return "Fare type not chosen";
-            }
-        }
-
-    }
+    public abstract String takeFare(int passengersQuantity, int cargoWeightKg);
 
     public Transport(IFareType iFareType, ITankType iTankType, IMovingWays iMovingWays,
                      int id, String vehicleBrand, String model, int passengers, int cargoWeight) {

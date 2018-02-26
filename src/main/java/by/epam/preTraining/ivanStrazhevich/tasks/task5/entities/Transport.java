@@ -5,7 +5,7 @@ import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.IFareType;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.IMovingWays;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.ITankType;
 
-public abstract class Transport {
+public class Transport {
     private IFareType iFareType;
     private ITankType iTankType;
     private IMovingWays iMovingWays;
@@ -29,7 +29,22 @@ public abstract class Transport {
 
     }
 
-    public abstract String takeFare(int passengersQuantity, int cargoWeightKg);
+    public String takeFare(int passengersQuantity, int cargoWeightKg) {
+        if (iFareType != null) {
+            if (!( cargoWeightKg > cargoWeight || passengersQuantity > passengers )) {
+                return iFareType.takeFare(passengersQuantity, cargoWeightKg);
+            } else {
+                return "There is no space at Transport ";
+            }
+        } else {
+            try {
+                throw new WrongEntriesException("Fare type not chosen");
+            } catch (WrongEntriesException e) {
+                e.printStackTrace();
+                return "Fare type not chosen";
+            }
+        }
+    }
 
     public Transport(IFareType iFareType, ITankType iTankType, IMovingWays iMovingWays,
                      int id, String vehicleBrand, String model, int passengers, int cargoWeight) {
@@ -42,7 +57,8 @@ public abstract class Transport {
         this.passengers = passengers;
         this.cargoWeight = cargoWeight;
     }
-    public Transport(Transport transport){
+
+    public Transport(Transport transport) {
         this.iFareType = transport.getIFareType();
         this.iTankType = transport.getITankType();
         this.iMovingWays = transport.getIMovingWays();
@@ -161,6 +177,6 @@ public abstract class Transport {
                 ", model = '" + model + '\'' +
                 ", passengers = " + passengers +
                 ", cargoWeight = " + cargoWeight +
-                '}'+'\n';
+                '}' + '\n';
     }
 }

@@ -15,6 +15,7 @@ public class CargoTaxi extends Taxi {
         super(iFareType, iTankType, iMovingWays, id, vehicleBrand, model, passengers, cargoWeight, hasTaxiLicence);
         this.cargoVolumeMeters = cargoVolumeMeters;
     }
+
     public CargoTaxi(CargoTaxi cargoTaxi) {
         super(cargoTaxi);
         this.cargoVolumeMeters = cargoTaxi.getCargoVolumeMeters();
@@ -79,7 +80,7 @@ public class CargoTaxi extends Taxi {
                 ", model = '" + super.getModel() + '\'' +
                 ", passengers = " + super.getPassengers() +
                 ", cargoWeight = " + super.getCargoWeight() +
-                ", hasTaxiLicence = " + super.isHasTaxiLicence()+
+                ", hasTaxiLicence = " + super.isHasTaxiLicence() +
                 ", cargoVolumeMeters = " + cargoVolumeMeters +
                 '}' + '\n';
     }

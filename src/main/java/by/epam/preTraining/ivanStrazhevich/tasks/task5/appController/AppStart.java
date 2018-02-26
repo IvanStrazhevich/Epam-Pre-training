@@ -27,20 +27,20 @@ public class AppStart {
         print("Filling with vehicles ");
         VehicleRepositoryFactory vehicleRepositoryFactory = VehicleRepositoryFactory.getVehicleRepositoryFactory();
         taxiRepository = vehicleRepositoryFactory.fillVehicleRepository(10);
-        print("Created first repository " );
+        print("Created first repository ");
         taxiRepository2 = vehicleRepositoryFactory.fillVehicleRepository(5);
-        print("Created second repository " );
+        print("Created second repository ");
         print("Check is it empty: " + taxiRepository.isEmpty());
         print("Getting out an element ");
-        Taxi taxi0 = (Taxi) taxiRepository.get(0);
+        Transport taxi0 = (Transport) taxiRepository.get(0);
         taxi0.takeFare(2, 200);
         taxiRepository2.add(taxi0);
         print("Number of vehicles after adding one " + taxiRepository2.elementsAtRepository());
-        Transport taxi3 = new Taxi(taxi0);
         print("Copy constructor test: ");
+        Transport transport = new Transport(taxi0);
         print(taxi0);
-        print(taxi3);
-
+        print(transport);
+        print(transport.takeFare(2, 1400));
         Taxi taxi1 = (Taxi) taxiRepository.get(1);
         print(taxi1);
         print(taxi1.fillTank(20));

@@ -61,14 +61,7 @@ public class Taxi extends Transport {
     @Override
     public String toString() {
         return "Taxi{" + '\n' +
-                "iFareType = " + super.getIFareType() +
-                ", iTankType = " + super.getITankType() +
-                ", iMovingWays =" + super.getIMovingWays() +
-                ", id = " + super.getId() +
-                ", vehicleBrand ='" + super.getVehicleBrand() + '\'' +
-                ", model = '" + super.getModel() + '\'' +
-                ", passengers = " + super.getPassengers() +
-                ", cargoWeight = " + super.getCargoWeight() +
+                super.toString() +
                 ", hasTaxiLicence = " + hasTaxiLicence +
                 '}' + '\n';
     }

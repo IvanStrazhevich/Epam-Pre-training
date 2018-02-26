@@ -72,15 +72,7 @@ public class CargoTaxi extends Taxi {
     @Override
     public String toString() {
         return "CargoTaxi{" + '\n' +
-                ", iFareType = " + super.getIFareType() +
-                ", iTankType = " + super.getITankType() +
-                ", iMovingWays = " + super.getIMovingWays() +
-                ", id = " + super.getId() +
-                ", vehicleBrand = '" + super.getVehicleBrand() + '\'' +
-                ", model = '" + super.getModel() + '\'' +
-                ", passengers = " + super.getPassengers() +
-                ", cargoWeight = " + super.getCargoWeight() +
-                ", hasTaxiLicence = " + super.isHasTaxiLicence() +
+                super.toString() +
                 ", cargoVolumeMeters = " + cargoVolumeMeters +
                 '}' + '\n';
     }

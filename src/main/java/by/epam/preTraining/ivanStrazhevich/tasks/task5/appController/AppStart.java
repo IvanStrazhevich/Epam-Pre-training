@@ -28,14 +28,14 @@ public class AppStart {
         print("Check is it empty: " + taxiRepository.isEmpty());
         print("Filling with vehicles ");
         VehicleRepositoryFactory vehicleRepositoryFactory = VehicleRepositoryFactory.getVehicleRepositoryFactory();
-        taxiRepository = vehicleRepositoryFactory.fillVehicleRepository(10);
+        taxiRepository = vehicleRepositoryFactory.fillVehicleRepository(11);
         print("Created first repository ");
         taxiRepository2 = vehicleRepositoryFactory.fillVehicleRepository(5);
         print("Created second repository ");
         print("Check is it empty: " + taxiRepository.isEmpty());
-        print("Getting out an element ");
+        print("Getting out an element and fare it: ");
         Transport taxi0 = (Transport) taxiRepository.get(0);
-        taxi0.takeFare(2, 200);
+        print(taxi0.takeFare(2, 200));
         taxiRepository2.add(taxi0);
         print("Number of vehicles after adding one " + taxiRepository2.elementsAtRepository());
         taxiRepository2.add(taxi0);

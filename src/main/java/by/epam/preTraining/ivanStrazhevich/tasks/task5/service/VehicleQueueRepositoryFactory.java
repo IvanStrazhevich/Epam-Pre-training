@@ -8,45 +8,45 @@ import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.iFareType
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.iMovingWays.MoveOnRoads;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.iTankType.DieselTankType;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.iTankType.ElectricTankType;
-import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.ITransportRepository;
-import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.IVehicleRepositoryFactory;
-import by.epam.preTraining.ivanStrazhevich.tasks.task5.repository.TransportRepository;
+import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.IVehicleQueueRepositoryFactory;
+import by.epam.preTraining.ivanStrazhevich.tasks.task6.interfaces.IQueue;
+import by.epam.preTraining.ivanStrazhevich.tasks.task6.repository.ArrayBasedQueue;
+
 
 import java.util.Random;
 
-public class VehicleRepositoryFactory implements IVehicleRepositoryFactory {
-
-
-    private VehicleRepositoryFactory() {
+public class VehicleQueueRepositoryFactory<T> implements IVehicleQueueRepositoryFactory {
+    private VehicleQueueRepositoryFactory() {
     }
 
-    private static VehicleRepositoryFactory vehicleRepositoryFactory;
+    private static VehicleQueueRepositoryFactory vehicleQueueRepositoryFactory;
 
-    public static VehicleRepositoryFactory getVehicleRepositoryFactory() {
-        if (null == vehicleRepositoryFactory) {
-            vehicleRepositoryFactory = new VehicleRepositoryFactory();
+    public static VehicleQueueRepositoryFactory getVehicleQueueRepositoryFactory() {
+        if (null == vehicleQueueRepositoryFactory) {
+            vehicleQueueRepositoryFactory = new VehicleQueueRepositoryFactory();
         }
-        return vehicleRepositoryFactory;
+        return vehicleQueueRepositoryFactory;
     }
 
-    public ITransportRepository<Transport> fillVehicleRepository(int vehicleQuantity) {
+    public IQueue<Transport> fillVehicleQueueRepository(int vehicleQuantity) {
 
-        ITransportRepository iTaxiRepository = new TransportRepository<Transport>(vehicleQuantity);
+        IQueue<Transport> iTaxiRepository = new ArrayBasedQueue<>(vehicleQuantity, true);
         Random random = new Random();
         while (vehicleQuantity > 0) {
             switch (random.nextInt(TaxiSpecialisations.values().length)) {
                 case 0:
-                    iTaxiRepository.add(new Taxi(new PassengerFare(), new ElectricTankType(),
+                    iTaxiRepository.enqueue(new Taxi(new PassengerFare(), new ElectricTankType(),
                             new MoveOnRoads(), vehicleQuantity--, "Tesla", "Model 3",
-                            4, 300,true));
+                            4, 300, true));
                     break;
                 case 1:
-                    iTaxiRepository.add(new CargoTaxi(new CargoFare(), new DieselTankType(),
+                    iTaxiRepository.enqueue(new CargoTaxi(new CargoFare(), new DieselTankType(),
                             new MoveOnRoads(), vehicleQuantity--, "VW", "Transporter",
-                            2, 1400, true,20));
+                            2, 1400, true, 20));
                     break;
             }
         }
         return iTaxiRepository;
     }
 }
+

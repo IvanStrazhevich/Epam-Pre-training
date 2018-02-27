@@ -40,7 +40,7 @@ public class ArrayBasedStack<T> implements IStack<T> {
                 ) {
             if (existElement != null) {
                 i++;
-            } else if (stackOfElements.length - 1  == i && resizable) {
+            } else if (stackOfElements.length - 1 == i && resizable) {
                 stackOfElements = extendArray(stackOfElements, stackOfElements.length);
                 stackOfElements[i] = element;
                 return true;
@@ -53,14 +53,9 @@ public class ArrayBasedStack<T> implements IStack<T> {
     }
 
     @Override
-    public Object pop() {
+    public Object pop() throws ExtendedEmptyStackException {
         if (isEmpty()) {
-            try {
-                throw new ExtendedEmptyStackException(" Stack is empty, return null");
-            } catch (ExtendedEmptyStackException e) {
-                e.printStackTrace();
-                return null;
-            }
+            throw new ExtendedEmptyStackException(" Stack is empty, return null");
         } else {
             int lastIndex = stackSize() - 1;
             Object topElement = peek();
@@ -72,13 +67,9 @@ public class ArrayBasedStack<T> implements IStack<T> {
     }
 
     @Override
-    public Object peek() {
+    public Object peek() throws ExtendedEmptyStackException {
         if (isEmpty()) {
-            try {
-                throw new ExtendedEmptyStackException("Stack is empty, return null");
-            } catch (ExtendedEmptyStackException e) {
-                return null;
-            }
+            throw new ExtendedEmptyStackException("Stack is empty, return null");
         } else {
             return stackOfElements[stackSize() - 1];
         }
@@ -105,7 +96,7 @@ public class ArrayBasedStack<T> implements IStack<T> {
 
     @Override
     public boolean isFull() {
-        return stackSize() == stackSize;
+        return stackSize() == stackOfElements.length;
     }
 
     public Object[] getStackOfElements() {

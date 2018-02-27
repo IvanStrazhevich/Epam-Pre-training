@@ -1,5 +1,7 @@
 package by.epam.preTraining.ivanStrazhevich.tasks.task6;
 
+import by.epam.preTraining.ivanStrazhevich.tasks.task5.entities.CargoTaxi;
+import by.epam.preTraining.ivanStrazhevich.tasks.task5.entities.Taxi;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.entities.Transport;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.service.VehicleQueueRepositoryFactory;
 import by.epam.preTraining.ivanStrazhevich.tasks.task6.exceptions.ExtendedEmptyQueueException;
@@ -16,7 +18,12 @@ public class ArrayBasedQueueTest {
 
 
         print("Creating QUEUE repository: ");
-        IQueue<Transport> taxiRepository2 = new ArrayBasedQueue<>(2, true);
+        IQueue<Transport> taxiRepository2 = new ArrayBasedQueue<>(3, false);
+        print("Checking not resizable option ");
+        taxiRepository2.enqueue(new Transport());
+        taxiRepository2.enqueue(new Taxi());
+        taxiRepository2.enqueue(new CargoTaxi());
+        print(Arrays.toString(taxiRepository2.getQueueOfElements()));
 
         print("Filling with vehicles ");
         VehicleQueueRepositoryFactory vehicleRepositoryFactory = VehicleQueueRepositoryFactory.getVehicleQueueRepositoryFactory();

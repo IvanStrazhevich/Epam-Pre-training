@@ -21,6 +21,17 @@ public class ArrayBasedQueue<T> implements IQueue<T> {
         this.resizable = resizable;
     }
 
+    public ArrayBasedQueue(int size) {
+        if (size < 0) {
+            throw new IllegalArgumentException("Illegal Capacity: " +
+                    size);
+        }
+        this.queueOfElements = new Object[size];
+        this.queueSize = size;
+        this.incrementSize = 2;
+        this.resizable = true;
+    }
+
 
     private Object[] extendArray(Object[] extendingArray, int oldLength) {
         int size = ( oldLength ) * incrementSize;
@@ -44,11 +55,13 @@ public class ArrayBasedQueue<T> implements IQueue<T> {
                 queueOfElements = extendArray(queueOfElements, queueOfElements.length);
                 queueOfElements[i] = element;
                 return true;
-            } else if (!resizable) {
+            } else if (i == queueOfElements.length - 1 && resizable == false) {
                 try {
+                    queueOfElements[i] = element;
                     throw new MaxSizeExceededException("Stack is full and not resizable");
-                } catch (MaxSizeExceededException e) {
-                    e.printStackTrace();
+                } catch (MaxSizeExceededException ex) {
+                    ex.printStackTrace();
+                    return true;
                 }
             } else {
                 queueOfElements[i] = element;
@@ -69,7 +82,7 @@ public class ArrayBasedQueue<T> implements IQueue<T> {
             }
         } else {
             Object result = queueOfElements[0];
-            for (int i = 0; i < queueOfElements.length-1; i++) {
+            for (int i = 0; i < queueOfElements.length - 1; i++) {
                 queueOfElements[i] = queueOfElements[i + 1];
             }
             return result;

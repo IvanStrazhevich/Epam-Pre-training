@@ -1,5 +1,7 @@
 package by.epam.preTraining.ivanStrazhevich.tasks.task6;
 
+import by.epam.preTraining.ivanStrazhevich.tasks.task5.entities.CargoTaxi;
+import by.epam.preTraining.ivanStrazhevich.tasks.task5.entities.Taxi;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.entities.Transport;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.service.VehicleRepositoryForStackFactory;
 import by.epam.preTraining.ivanStrazhevich.tasks.task6.exceptions.ExtendedEmptyStackException;
@@ -16,7 +18,12 @@ public class ArrayBasedStackTest {
     public static void main(String[] args) throws ExtendedEmptyStackException, MaxSizeExceededException {
 
         print("Creating STACK repository: ");
-        IStack<Transport> taxiRepository2 = new ArrayBasedStack<>(2, true);
+        print("Checking not resizable option ");
+        IStack<Transport> taxiRepository2 = new ArrayBasedStack<>(3, false);
+        taxiRepository2.push(new Transport());
+        taxiRepository2.push(new Taxi());
+        taxiRepository2.push(new CargoTaxi());
+        print(Arrays.toString(taxiRepository2.getStackOfElements()));
 
         print("Filling with vehicles ");
         VehicleRepositoryForStackFactory vehicleRepositoryFactory = VehicleRepositoryForStackFactory.getVehicleRepositoryForStackFactory();

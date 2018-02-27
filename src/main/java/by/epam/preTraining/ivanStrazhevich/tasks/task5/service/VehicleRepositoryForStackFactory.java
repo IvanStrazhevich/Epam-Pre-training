@@ -31,7 +31,7 @@ public class VehicleRepositoryForStackFactory<T> implements IVehicleStackReposit
 
     public IStack<Transport> fillVehicleStackRepository(int vehicleQuantity) {
 
-        IStack<Transport> iTaxiRepository = new ArrayBasedStack<>(vehicleQuantity, true);
+        IStack<Transport> iTaxiRepository = new ArrayBasedStack<>(vehicleQuantity);
         Random random = new Random();
         while (vehicleQuantity > 0) {
             switch (random.nextInt(TaxiSpecialisations.values().length)) {

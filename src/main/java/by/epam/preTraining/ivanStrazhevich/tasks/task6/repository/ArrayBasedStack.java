@@ -23,6 +23,17 @@ public class ArrayBasedStack<T> implements IStack<T> {
         this.incrementSize = 2;
     }
 
+    public ArrayBasedStack(int size) {
+        if (size < 0) {
+            throw new IllegalArgumentException("Illegal Capacity: " +
+                    size);
+        }
+        this.stackOfElements = new Object[size];
+        this.stackSize = size;
+        this.resizable = true;
+        this.incrementSize = 2;
+    }
+
     private Object[] extendArray(Object[] extendingArray, int oldLength) {
         int size = ( oldLength ) * incrementSize;
         int j = 0;
@@ -41,15 +52,17 @@ public class ArrayBasedStack<T> implements IStack<T> {
                 ) {
             if (existElement != null) {
                 i++;
-            } else if (stackOfElements.length - 1 == i && resizable) {
+            } else if (i == stackOfElements.length - 1 && resizable) {
                 stackOfElements = extendArray(stackOfElements, stackOfElements.length);
                 stackOfElements[i] = element;
                 return true;
-            } else if (!resizable) {
+            } else if (i == stackOfElements.length - 1 && !resizable) {
                 try {
+                    stackOfElements[i] = element;
                     throw new MaxSizeExceededException("Stack is full and not resizable");
                 } catch (MaxSizeExceededException e) {
                     e.printStackTrace();
+                    return true;
                 }
             } else {
                 stackOfElements[i] = element;

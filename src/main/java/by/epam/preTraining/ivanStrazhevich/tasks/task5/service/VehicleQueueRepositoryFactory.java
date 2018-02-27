@@ -30,7 +30,7 @@ public class VehicleQueueRepositoryFactory<T> implements IVehicleQueueRepository
 
     public IQueue<Transport> fillVehicleQueueRepository(int vehicleQuantity) {
 
-        IQueue<Transport> iTaxiRepository = new ArrayBasedQueue<>(vehicleQuantity, true);
+        IQueue<Transport> iTaxiRepository = new ArrayBasedQueue<>(vehicleQuantity);
         Random random = new Random();
         while (vehicleQuantity > 0) {
             switch (random.nextInt(TaxiSpecialisations.values().length)) {

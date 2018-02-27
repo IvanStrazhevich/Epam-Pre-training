@@ -1,6 +1,5 @@
 package by.epam.preTraining.ivanStrazhevich.tasks.task6.repository;
 
-import by.epam.preTraining.ivanStrazhevich.tasks.task6.exceptions.ExtendedEmptyQueueException;
 import by.epam.preTraining.ivanStrazhevich.tasks.task6.interfaces.IQueue;
 
 import java.util.LinkedList;
@@ -21,12 +20,12 @@ public class ListBasedQueue<T> implements IQueue<T> {
     }
 
     @Override
-    public Object dequeue() throws ExtendedEmptyQueueException {
+    public Object dequeue() {
         return queueList.getFirst();
     }
 
     @Override
-    public Object peek() throws ExtendedEmptyQueueException {
+    public Object peek() {
         return queueList.peekFirst();
     }
 

@@ -53,9 +53,14 @@ public class ArrayBasedStack<T> implements IStack<T> {
     }
 
     @Override
-    public Object pop() throws ExtendedEmptyStackException {
+    public Object pop() {
         if (isEmpty()) {
-            throw new ExtendedEmptyStackException(" Stack is empty, return null");
+            try {
+                throw new ExtendedEmptyStackException(" Stack is empty, return null");
+            } catch (ExtendedEmptyStackException e) {
+                e.printStackTrace();
+                return null;
+            }
         } else {
             int lastIndex = size() - 1;
             Object topElement = peek();
@@ -67,9 +72,14 @@ public class ArrayBasedStack<T> implements IStack<T> {
     }
 
     @Override
-    public Object peek() throws ExtendedEmptyStackException {
+    public Object peek() {
         if (isEmpty()) {
-            throw new ExtendedEmptyStackException("Stack is empty, return null");
+            try {
+                throw new ExtendedEmptyStackException("Stack is empty, return null");
+            } catch (ExtendedEmptyStackException e) {
+                e.printStackTrace();
+                return null;
+            }
         } else {
             return stackOfElements[size() - 1];
         }

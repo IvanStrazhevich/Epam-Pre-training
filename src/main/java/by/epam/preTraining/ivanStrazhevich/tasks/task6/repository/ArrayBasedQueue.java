@@ -52,9 +52,14 @@ public class ArrayBasedQueue<T> implements IQueue<T> {
     }
 
     @Override
-    public Object dequeue() throws ExtendedEmptyQueueException {
+    public Object dequeue() {
         if (isEmpty()) {
-            throw new ExtendedEmptyQueueException("Queue is empty, return null");
+            try {
+                throw new ExtendedEmptyQueueException("Queue is empty, return null");
+            } catch (ExtendedEmptyQueueException e) {
+                e.printStackTrace();
+                return null;
+            }
         } else {
             Object result = queueOfElements[0];
             for (int i = 0; i < queueOfElements.length-1; i++) {
@@ -66,9 +71,14 @@ public class ArrayBasedQueue<T> implements IQueue<T> {
 
 
     @Override
-    public Object peek() throws ExtendedEmptyQueueException {
+    public Object peek() {
         if (isEmpty()) {
-            throw new ExtendedEmptyQueueException("Queue is empty, return null");
+            try {
+                throw new ExtendedEmptyQueueException("Queue is empty, return null");
+            } catch (ExtendedEmptyQueueException e) {
+                e.printStackTrace();
+                return null;
+            }
         } else {
             return queueOfElements[0];
         }

@@ -1,6 +1,5 @@
 package by.epam.preTraining.ivanStrazhevich.tasks.task6;
 
-import by.epam.preTraining.ivanStrazhevich.tasks.task6.exceptions.ExtendedEmptyStackException;
 import by.epam.preTraining.ivanStrazhevich.tasks.task6.repository.ArrayBasedStack;
 
 public class Palindrome {
@@ -12,15 +11,11 @@ public class Palindrome {
             charStack.push(aParsedStringEl);
         }
         for (char aParsedString : parsedString) {
-            try {
-                if (charStack.pop().equals(aParsedString)) {      // as long as pop() uses for() cycle inside,
-                    b = true;                                       // complexity of algorithm is O(N*N)
-                } else {                                            // in case we don't know what inside pop() it will be O(N)
-                    b = false;
-                    break;
-                }
-            } catch (ExtendedEmptyStackException e) {
-                e.printStackTrace();
+            if (charStack.pop().equals(aParsedString)) {      // as long as pop() uses for() cycle inside,
+                b = true;                                       // complexity of algorithm is O(N*N)
+            } else {                                            // in case we don't know what inside pop() it will be O(N)
+                b = false;
+                break;
             }
         }
         return b;

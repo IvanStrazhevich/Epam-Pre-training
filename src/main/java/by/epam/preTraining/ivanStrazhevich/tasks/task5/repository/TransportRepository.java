@@ -63,11 +63,12 @@ public class TransportRepository<T> implements ITransportRepository<Transport> {
                 ) {
             if (existElement != null) {
                 i++;
-            } else if (vehicleRepository.length == i) {
-                vehicleRepository = extendArray(vehicleRepository, i);
+            } else if (vehicleRepository.length - 1 == i) {
+                vehicleRepository = extendArray(vehicleRepository, vehicleRepository.length);
+                vehicleRepository[i] = element;
                 return true;
             } else {
-                vehicleRepository[i++] = element;
+                vehicleRepository[i] = element;
                 return true;
             }
         }
@@ -82,7 +83,7 @@ public class TransportRepository<T> implements ITransportRepository<Transport> {
                 ) {
             if (to != null) {
                 i++;
-            } else if (vehicleRepository.length - i + arrayFrom.length > vehicleRepository.length) {
+            } else if (vehicleRepository.length - 1 - i + arrayFrom.length > vehicleRepository.length) {
                 vehicleRepository = extendArray(vehicleRepository, vehicleRepository.length);
                 for (Object from : arrayFrom
                         ) {

@@ -1,20 +1,18 @@
 package by.epam.preTraining.ivanStrazhevich.tasks.task6;
 
-import by.epam.preTraining.ivanStrazhevich.tasks.task5.repository.TransportStack;
+import by.epam.preTraining.ivanStrazhevich.tasks.task6.repository.ArrayBasedStack;
 
 public class Palindrome {
     public static boolean checkPalindrome(String string) {
-
         char[] parsedString = string.toCharArray();
-        int stringLength = parsedString.length;
         boolean b = false;
-        TransportStack charStack = new TransportStack(stringLength);
-        for (int i = 0; i < stringLength; i++) {
-            charStack.push(parsedString[i]);
+        ArrayBasedStack charStack = new ArrayBasedStack(parsedString.length, true);
+        for (char aParsedStringEl : parsedString) {
+            charStack.push(aParsedStringEl);
         }
-        for (int i = 0; i < stringLength; i++) {
-            if (charStack.pop().equals(parsedString[i])) {      // as long as pop() uses for() cycle inside,
-                b = true;                                       // complexity of algorithm is O(N^2)
+        for (char aParsedString : parsedString) {
+            if (charStack.pop().equals(aParsedString)) {      // as long as pop() uses for() cycle inside,
+                b = true;                                       // complexity of algorithm is O(N*N)
             } else {                                            // in case we don't know what inside pop() it will be O(N)
                 b = false;
                 break;

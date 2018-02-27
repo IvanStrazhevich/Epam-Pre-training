@@ -1,6 +1,7 @@
 package by.epam.preTraining.ivanStrazhevich.tasks.task6.repository;
 
 import by.epam.preTraining.ivanStrazhevich.tasks.task6.exceptions.ExtendedEmptyStackException;
+import by.epam.preTraining.ivanStrazhevich.tasks.task6.exceptions.MaxSizeExceededException;
 import by.epam.preTraining.ivanStrazhevich.tasks.task6.interfaces.IStack;
 
 public class ArrayBasedStack<T> implements IStack<T> {
@@ -44,6 +45,12 @@ public class ArrayBasedStack<T> implements IStack<T> {
                 stackOfElements = extendArray(stackOfElements, stackOfElements.length);
                 stackOfElements[i] = element;
                 return true;
+            } else if (!resizable) {
+                try {
+                    throw new MaxSizeExceededException("Stack is full and not resizable");
+                } catch (MaxSizeExceededException e) {
+                    e.printStackTrace();
+                }
             } else {
                 stackOfElements[i] = element;
                 return true;

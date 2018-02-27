@@ -1,6 +1,7 @@
 package by.epam.preTraining.ivanStrazhevich.tasks.task6.repository;
 
 import by.epam.preTraining.ivanStrazhevich.tasks.task6.exceptions.ExtendedEmptyQueueException;
+import by.epam.preTraining.ivanStrazhevich.tasks.task6.exceptions.MaxSizeExceededException;
 import by.epam.preTraining.ivanStrazhevich.tasks.task6.interfaces.IQueue;
 
 public class ArrayBasedQueue<T> implements IQueue<T> {
@@ -43,6 +44,12 @@ public class ArrayBasedQueue<T> implements IQueue<T> {
                 queueOfElements = extendArray(queueOfElements, queueOfElements.length);
                 queueOfElements[i] = element;
                 return true;
+            } else if (!resizable) {
+                try {
+                    throw new MaxSizeExceededException("Stack is full and not resizable");
+                } catch (MaxSizeExceededException e) {
+                    e.printStackTrace();
+                }
             } else {
                 queueOfElements[i] = element;
                 return true;

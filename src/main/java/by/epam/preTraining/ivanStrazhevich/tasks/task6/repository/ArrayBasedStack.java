@@ -57,7 +57,7 @@ public class ArrayBasedStack<T> implements IStack<T> {
         if (isEmpty()) {
             throw new ExtendedEmptyStackException(" Stack is empty, return null");
         } else {
-            int lastIndex = stackSize() - 1;
+            int lastIndex = size() - 1;
             Object topElement = peek();
             Object[] copy = new Object[1];
             copy[0] = topElement;
@@ -71,12 +71,12 @@ public class ArrayBasedStack<T> implements IStack<T> {
         if (isEmpty()) {
             throw new ExtendedEmptyStackException("Stack is empty, return null");
         } else {
-            return stackOfElements[stackSize() - 1];
+            return stackOfElements[size() - 1];
         }
     }
 
     @Override
-    public int stackSize() {
+    public int size() {
         int i = 0;
         for (Object element : stackOfElements
                 ) {
@@ -91,12 +91,12 @@ public class ArrayBasedStack<T> implements IStack<T> {
 
     @Override
     public boolean isEmpty() {
-        return stackSize() == 0;
+        return size() == 0;
     }
 
     @Override
     public boolean isFull() {
-        return stackSize() == stackOfElements.length;
+        return size() == stackOfElements.length;
     }
 
     public Object[] getStackOfElements() {

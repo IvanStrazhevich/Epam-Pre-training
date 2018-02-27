@@ -75,7 +75,7 @@ public class ArrayBasedQueue<T> implements IQueue<T> {
     }
 
     @Override
-    public int queueSize() {
+    public int size() {
         int i = 0;
         for (Object element : queueOfElements
                 ) {
@@ -91,12 +91,12 @@ public class ArrayBasedQueue<T> implements IQueue<T> {
 
     @Override
     public boolean isEmpty() {
-        return queueSize() == 0;
+        return size() == 0;
     }
 
     @Override
     public boolean isFull() {
-        return queueSize() == queueOfElements.length;
+        return size() == queueOfElements.length;
     }
 
     public Object[] getQueueOfElements() {

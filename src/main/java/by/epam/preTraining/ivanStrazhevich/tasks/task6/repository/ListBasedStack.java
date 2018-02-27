@@ -3,31 +3,41 @@ package by.epam.preTraining.ivanStrazhevich.tasks.task6.repository;
 import by.epam.preTraining.ivanStrazhevich.tasks.task6.exceptions.ExtendedEmptyStackException;
 import by.epam.preTraining.ivanStrazhevich.tasks.task6.interfaces.IStack;
 
+import java.util.LinkedList;
+
 public class ListBasedStack<T> implements IStack<T> {
+    LinkedList<T> stackList;
+    int size;
+
+    public ListBasedStack(int size) {
+        this.stackList = new LinkedList<T>();
+        this.size = size;
+    }
 
     @Override
     public boolean push(Object o) {
-        return false;
+        stackList.addLast((T) o);
+        return true;
     }
 
     @Override
     public Object pop() throws ExtendedEmptyStackException {
-        return null;
+        return stackList.getLast();
     }
 
     @Override
     public Object peek() throws ExtendedEmptyStackException {
-        return null;
+        return stackList.peekLast();
     }
 
     @Override
-    public int stackSize() {
-        return 0;
+    public int size() {
+        return stackList.size();
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return stackList.size() == 0;
     }
 
     @Override
@@ -37,6 +47,6 @@ public class ListBasedStack<T> implements IStack<T> {
 
     @Override
     public Object[] getStackOfElements() {
-        return new Object[0];
+        return stackList.toArray();
     }
 }

@@ -5,18 +5,18 @@ import by.epam.preTraining.ivanStrazhevich.tasks.task5.service.VehicleQueueRepos
 import by.epam.preTraining.ivanStrazhevich.tasks.task6.exceptions.ExtendedEmptyQueueException;
 import by.epam.preTraining.ivanStrazhevich.tasks.task6.exceptions.MaxSizeExceededException;
 import by.epam.preTraining.ivanStrazhevich.tasks.task6.interfaces.IQueue;
-import by.epam.preTraining.ivanStrazhevich.tasks.task6.repository.ArrayBasedQueue;
+import by.epam.preTraining.ivanStrazhevich.tasks.task6.repository.ListBasedQueue;
 
 import java.util.Arrays;
 
 import static by.epam.preTraining.ivanStrazhevich.tasks.task5.view.Viewer.print;
 
-public class ArrayBasedQueueTest {
+public class ListBasedQueueTest {
     public static void main(String[] args) throws ExtendedEmptyQueueException, MaxSizeExceededException {
 
 
         print("Creating QUEUE repository: ");
-        IQueue<Transport> taxiRepository2 = new ArrayBasedQueue<>(2, true);
+        IQueue<Transport> taxiRepository2 = new ListBasedQueue<>(2);
 
         print("Filling with vehicles ");
         VehicleQueueRepositoryFactory vehicleRepositoryFactory = VehicleQueueRepositoryFactory.getVehicleQueueRepositoryFactory();
@@ -73,5 +73,4 @@ public class ArrayBasedQueueTest {
         print("Check is it empty: " + taxiRepository2.isEmpty());
 
     }
-
 }

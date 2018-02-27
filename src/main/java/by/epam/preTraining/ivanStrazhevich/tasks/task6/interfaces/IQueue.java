@@ -6,7 +6,7 @@ public interface IQueue<T> {
     boolean enqueue(Object element);
     Object dequeue() throws ExtendedEmptyQueueException;
     Object peek() throws ExtendedEmptyQueueException;
-    int queueSize();
+    int size();
     boolean isEmpty();
     boolean isFull();
     Object[] getQueueOfElements();

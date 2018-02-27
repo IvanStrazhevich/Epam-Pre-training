@@ -6,7 +6,7 @@ public interface IStack<T> {
     boolean push(Object o);
     Object pop() throws ExtendedEmptyStackException;
     Object peek() throws ExtendedEmptyStackException;
-    int stackSize();
+    int size();
     boolean isEmpty();
     boolean isFull();
     Object[] getStackOfElements();

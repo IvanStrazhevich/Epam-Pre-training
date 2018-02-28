@@ -4,7 +4,7 @@ import by.epam.preTraining.ivanStrazhevich.tasks.task6.exceptions.ExtendedEmptyQ
 import by.epam.preTraining.ivanStrazhevich.tasks.task6.exceptions.MaxSizeExceededException;
 import by.epam.preTraining.ivanStrazhevich.tasks.task6.interfaces.IQueue;
 
-public class ArrayBasedQueue<T> implements IQueue<T> {
+public class ArrayBasedQueue<T> extends AbstractRepository implements IQueue<T> {
     protected Object[] queueOfElements;
     protected int queueSize;
     protected int incrementSize;
@@ -33,17 +33,6 @@ public class ArrayBasedQueue<T> implements IQueue<T> {
     }
 
 
-    private Object[] extendArray(Object[] extendingArray, int oldLength) {
-        int size = ( oldLength ) * incrementSize;
-        int j = 0;
-        Object[] arrayExtended = new Object[size];
-        for (Object oldArrayElement : extendingArray
-                ) {
-            arrayExtended[j++] = oldArrayElement;
-        }
-        return arrayExtended;
-    }
-
     @Override
     public boolean enqueue(Object element) {
         int i = 0;
@@ -55,7 +44,7 @@ public class ArrayBasedQueue<T> implements IQueue<T> {
                 queueOfElements = extendArray(queueOfElements, queueOfElements.length);
                 queueOfElements[i] = element;
                 return true;
-            } else if (i == queueOfElements.length - 1 && resizable == false) {
+            } else if (i == queueOfElements.length - 1 && resizable==false) {
                 try {
                     queueOfElements[i] = element;
                     throw new MaxSizeExceededException("Stack is full and not resizable");

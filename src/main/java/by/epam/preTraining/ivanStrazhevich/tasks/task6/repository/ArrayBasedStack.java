@@ -4,7 +4,7 @@ import by.epam.preTraining.ivanStrazhevich.tasks.task6.exceptions.ExtendedEmptyS
 import by.epam.preTraining.ivanStrazhevich.tasks.task6.exceptions.MaxSizeExceededException;
 import by.epam.preTraining.ivanStrazhevich.tasks.task6.interfaces.IStack;
 
-public class ArrayBasedStack<T> implements IStack<T> {
+public class ArrayBasedStack<T> extends AbstractRepository<T> implements IStack<T> {
 
 
     protected Object[] stackOfElements;
@@ -32,17 +32,6 @@ public class ArrayBasedStack<T> implements IStack<T> {
         this.stackSize = size;
         this.resizable = true;
         this.incrementSize = 2;
-    }
-
-    private Object[] extendArray(Object[] extendingArray, int oldLength) {
-        int size = ( oldLength ) * incrementSize;
-        int j = 0;
-        Object[] arrayExtended = new Object[size];
-        for (Object oldArrayElement : extendingArray
-                ) {
-            arrayExtended[j++] = oldArrayElement;
-        }
-        return arrayExtended;
     }
 
     @Override

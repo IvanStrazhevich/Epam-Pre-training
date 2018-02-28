@@ -2,10 +2,11 @@ package by.epam.preTraining.ivanStrazhevich.tasks.task5.repository;
 
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.entities.Transport;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.ITransportRepository;
+import by.epam.preTraining.ivanStrazhevich.tasks.task6.repository.AbstractRepository;
 
 import java.util.Collection;
 
-public class TransportRepository<T> implements ITransportRepository<Transport> {
+public class TransportRepository<T> extends AbstractRepository implements ITransportRepository<Transport> {
 
     protected Object[] vehicleRepository;
 
@@ -18,17 +19,6 @@ public class TransportRepository<T> implements ITransportRepository<Transport> {
             throw new IllegalArgumentException("Illegal Capacity: " +
                     size);
         this.vehicleRepository = new Object[size];
-    }
-
-    private Object[] extendArray(Object[] extendingArray, int oldLength) {
-        int size = ( oldLength ) * 2;
-        int j = 0;
-        Object[] arrayExtended = new Object[size];
-        for (Object oldArrayElement : extendingArray
-                ) {
-            arrayExtended[j++] = oldArrayElement;
-        }
-        return arrayExtended;
     }
 
 
@@ -64,8 +54,8 @@ public class TransportRepository<T> implements ITransportRepository<Transport> {
             if (existElement != null) {
                 i++;
             } else if (vehicleRepository.length - 1 == i) {
-                vehicleRepository = extendArray(vehicleRepository, vehicleRepository.length);
                 vehicleRepository[i] = element;
+                vehicleRepository = extendArray(vehicleRepository, vehicleRepository.length);
                 return true;
             } else {
                 vehicleRepository[i] = element;

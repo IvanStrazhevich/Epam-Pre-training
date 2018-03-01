@@ -21,6 +21,8 @@ public class TransportRepository<T> extends AbstractRepository implements ITrans
         this.vehicleRepository = new Object[size];
     }
 
+    public TransportRepository() {
+    }
 
     @Override
     public int elementsAtRepository() {

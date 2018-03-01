@@ -5,7 +5,7 @@ import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.IFareType;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.IMovingWays;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.ITankType;
 
-public class Transport {
+public class Transport implements Comparable<Transport> {
     private IFareType iFareType;
     private ITankType iTankType;
     private IMovingWays iMovingWays;
@@ -178,5 +178,10 @@ public class Transport {
                 ", passengers = " + passengers +
                 ", cargoWeight = " + cargoWeight +
                 '}' + '\n';
+    }
+
+    @Override
+    public int compareTo(Transport o) {
+        return this.id - o.id;
     }
 }

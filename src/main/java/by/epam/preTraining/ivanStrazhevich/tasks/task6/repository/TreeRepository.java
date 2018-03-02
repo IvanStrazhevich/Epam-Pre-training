@@ -12,17 +12,17 @@ public class TreeRepository<T extends Comparable<T>> extends TransportRepository
     public TreeRepository() {
     }
 
-    private Object[] output(Node element) {
+    private Object[] showElements(Node element) {
         ArrayList<String> result = new ArrayList<>();
         if (element.left != null) {
-            Object[] temp = output(element.left);
+            Object[] temp = showElements(element.left);
             for (int i = 0; i < temp.length; i++) {
                 result.add(" " + temp[i]);
             }
         }
         result.add(element.value.toString());
         if (element.right != null) {
-            Object[] temp = output(element.right);
+            Object[] temp = showElements(element.right);
             for (int i = 0; i < temp.length; i++) {
                 result.add(" " + temp[i]);
             }
@@ -50,41 +50,31 @@ public class TreeRepository<T extends Comparable<T>> extends TransportRepository
         }
     }
 
-    private Node findForDeleteNodes(Node parent, T element) {
-        if (parent.value.compareTo(element) == 0) {
-            return parent;
-        } else if (parent.value.compareTo(element) < 0) {
-            if (parent.right != null) {
-                return findForDeleteNodes(parent.right, element);
-            }
-        } else if (parent.left != null) {
-            return findForDeleteNodes(parent.left, element);
+    private Node delete(Node node, T element) {
+        if (node == null) {
+            return delete(node.right, (T) node.value);
+        } else if (element.compareTo((T) node.value) > 0) {
+            node.right = delete(node.right, element);
+            return node;
+        } else if (element.compareTo((T) node.value) < 0) {
+            node.left = delete(node.left, element);
+            return node;
+        } else {
+            return null;
         }
-        return null;
     }
 
     @Override
     public boolean add(Object element) {
         if (root == null) {
-            root = new Node(null, (T) element);
+            root = new Node(root, (T) element);
             count++;
         } else {
-            root.linkNodes(root, (T) element);
-            count += root.nodesNumber;
+            root.addNode(root, (T) element);
+            count++;
         }
         return true;
     }
-
-    @Override
-    public Object[] showOrderedElementsArray() {
-        if (root != null) {
-            return output(root);
-        } else {
-            Object[] line = {"There is no elements"};
-            return line;
-        }
-    }
-
 
     @Override
     public boolean contains(Object element) {
@@ -97,15 +87,13 @@ public class TreeRepository<T extends Comparable<T>> extends TransportRepository
 
     @Override
     public boolean removeElement(Object element) {
-        Node current;
-        Node parent = root;
-        current = findForDeleteNodes(parent, (T) element);
-        if (current == null) {
+        if (delete(root, (T) element) != null) {
+            count--;
+            return true;
+        } else {
             return false;
         }
-        return true;
     }
-
 
     @Override
     public void clear() {
@@ -119,6 +107,16 @@ public class TreeRepository<T extends Comparable<T>> extends TransportRepository
         return count;
     }
 
+    @Override
+    public Object[] showOrderedElementsArray() {
+        if (root != null) {
+            return showElements(root);
+        } else {
+            Object[] line = {"There is no elements"};
+            return line;
+        }
+    }
+
     public static class Node<E extends Comparable<E>> {
         E value;
         private int nodesNumber;
@@ -126,25 +124,23 @@ public class TreeRepository<T extends Comparable<T>> extends TransportRepository
         private Node<E> right;
         private Node<E> parent;
 
-        public Node(Node parent, E value) {
-            this.parent = parent;
+        public Node(Node node, E value) {
+            this.parent = node;
             this.value = value;
         }
 
-        private void linkNodes(Node parent, E node) {
-            if (node.compareTo(value) >= 0) {
+        private void addNode(Node node, E element) {
+            if (element.compareTo(value) > 0) {
                 if (right == null) {
-                    right = new Node<>(parent, node);
-                    nodesNumber++;
+                    right = new Node<>(node, element);
                 } else {
-                    right.linkNodes(right, node);
+                    right.addNode(right, element);
                 }
             } else {
                 if (left == null) {
-                    left = new Node<>(parent, node);
-                    nodesNumber++;
+                    left = new Node<>(node, element);
                 } else {
-                    left.linkNodes(left, node);
+                    left.addNode(left, element);
                 }
             }
         }

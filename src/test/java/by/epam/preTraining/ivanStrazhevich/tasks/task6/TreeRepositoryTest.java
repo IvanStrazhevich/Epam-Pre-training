@@ -25,23 +25,33 @@ public class TreeRepositoryTest {
         treeRepository.add(transport2);
 
         TreeRepository<Transport> treeRepository3 = new TreeRepository<>();
-
-        treeRepository3.add(1);
         treeRepository3.add(3);
+        Viewer.print(treeRepository3.count());
+        treeRepository3.add(0);
+        Viewer.print(treeRepository3.count());
+        treeRepository3.add(1);
+        Viewer.print(treeRepository3.count());
         treeRepository3.add(5);
+        Viewer.print(treeRepository3.count());
         treeRepository3.add(2);
         treeRepository3.add(7);
         treeRepository3.add(6);
-        Viewer.print(treeRepository3.count());
         treeRepository3.add(9);
         Viewer.print(treeRepository3.count());
         Viewer.print(Arrays.toString(treeRepository.showOrderedElementsArray()));
         Viewer.print(Arrays.toString(treeRepository3.showOrderedElementsArray()));
         Viewer.print("has 9 " + treeRepository3.contains(9));
-        treeRepository3.removeElement(1);
+        treeRepository3.removeElement(2);
         Viewer.print(Arrays.toString(treeRepository3.showOrderedElementsArray()));
-        Viewer.print("has 4 " +treeRepository3.contains(4));
         Viewer.print("nodes in repository " + treeRepository3.count());
+        treeRepository3.removeElement(6);
+        Viewer.print(Arrays.toString(treeRepository3.showOrderedElementsArray()));
+        Viewer.print("nodes in repository " + treeRepository3.count());
+        treeRepository3.removeElement(0);
+        Viewer.print(Arrays.toString(treeRepository3.showOrderedElementsArray()));
+        Viewer.print("nodes in repository " + treeRepository3.count());
+        Viewer.print("has 4 " +treeRepository3.contains(4));
+
         treeRepository3.clear();
         Viewer.print("nodes in repository after clearance " + treeRepository3.count());
     }

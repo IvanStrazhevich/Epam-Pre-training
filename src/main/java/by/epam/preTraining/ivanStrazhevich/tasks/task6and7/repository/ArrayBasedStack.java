@@ -1,10 +1,9 @@
 package by.epam.preTraining.ivanStrazhevich.tasks.task6and7.repository;
 
 import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.exceptions.EmptyStackExtendedException;
-import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.exceptions.MaxSizeExceededException;
-import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.interfaces.IStack;
+import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.interfaces.Stackable;
 
-public class ArrayBasedStack<T> extends AbstractRepository<T> implements IStack<T> {
+public class ArrayBasedStack<T> extends AbstractRepository<T> implements Stackable<T> {
 
 
     protected Object[] stackOfElements;
@@ -34,31 +33,13 @@ public class ArrayBasedStack<T> extends AbstractRepository<T> implements IStack<
         this.incrementSize = 2;
     }
 
+    public ArrayBasedStack() {
+    }
+
     @Override
     public boolean push(Object element) {
-        int i = 0;
-        for (Object existElement : stackOfElements
-                ) {
-            if (existElement != null) {
-                i++;
-            } else if (i == stackOfElements.length - 1 && resizable) {
-                stackOfElements = extendArray(stackOfElements, stackOfElements.length);
-                stackOfElements[i] = element;
-                return true;
-            } else if (i == stackOfElements.length - 1 && !resizable) {
-                try {
-                    stackOfElements[i] = element;
-                    throw new MaxSizeExceededException("Stack is full and not resizable");
-                } catch (MaxSizeExceededException e) {
-                    e.printStackTrace();
-                    return true;
-                }
-            } else {
-                stackOfElements[i] = element;
-                return true;
-            }
-        }
-        return false;
+        stackOfElements = addToArray(element, stackOfElements, resizable);
+        return true;
     }
 
     @Override

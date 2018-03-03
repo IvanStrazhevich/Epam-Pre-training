@@ -1,6 +1,6 @@
 package by.epam.preTraining.ivanStrazhevich.tasks.task6and7;
 
-import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.interfaces.IStack;
+import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.interfaces.Stackable;
 import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.repository.ArrayBasedStack;
 import by.epam.preTraining.ivanStrazhevich.tasks.view.Viewer;
 
@@ -14,6 +14,6 @@ public class PalindromeTest {
 
         Viewer.print("String " + string + " is palindrome: " +
                 Palindrome.checkPalindrome(string));
-        IStack stack = new ArrayBasedStack(10, true);
+        Stackable stack = new ArrayBasedStack(10, true);
     }
 }

@@ -9,7 +9,7 @@ import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.iMovingWa
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.iTankType.DieselTankType;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.iTankType.ElectricTankType;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.IVehicleQueueRepositoryFactory;
-import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.interfaces.IQueue;
+import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.interfaces.Queueable;
 import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.repository.ArrayBasedQueue;
 
 
@@ -28,9 +28,9 @@ public class VehicleQueueRepositoryFactory<T> implements IVehicleQueueRepository
         return vehicleQueueRepositoryFactory;
     }
 
-    public IQueue<Transport> fillVehicleQueueRepository(int vehicleQuantity) {
+    public Queueable<Transport> fillVehicleQueueRepository(int vehicleQuantity) {
 
-        IQueue<Transport> iTaxiRepository = new ArrayBasedQueue<>(vehicleQuantity);
+        Queueable<Transport> iTaxiRepository = new ArrayBasedQueue<>(vehicleQuantity);
         Random random = new Random();
         while (vehicleQuantity > 0) {
             switch (random.nextInt(TaxiSpecialisations.values().length)) {

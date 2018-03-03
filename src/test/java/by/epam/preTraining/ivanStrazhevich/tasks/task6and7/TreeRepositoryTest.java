@@ -2,7 +2,7 @@ package by.epam.preTraining.ivanStrazhevich.tasks.task6and7;
 
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.entities.Transport;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.service.VehicleTreeRepositoryFactory;
-import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.interfaces.ITree;
+import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.interfaces.Sortable;
 import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.repository.TreeRepository;
 import by.epam.preTraining.ivanStrazhevich.tasks.view.Viewer;
 
@@ -11,7 +11,7 @@ import java.util.Arrays;
 
 public class TreeRepositoryTest {
     public static void main(String[] args) {
-        ITree<Transport> treeRepository;
+        Sortable<Transport> treeRepository;
         VehicleTreeRepositoryFactory vehicleTreeRepositoryFactory = VehicleTreeRepositoryFactory.getVehicleTreeRepositoryFactory();
         treeRepository = vehicleTreeRepositoryFactory.fillVehicleRepository(10);
         Transport transport = new Transport();
@@ -55,6 +55,7 @@ public class TreeRepositoryTest {
         Viewer.print("has 4 " +treeRepository3.contains(4));
 
         treeRepository3.clear();
+        Viewer.print(Arrays.toString(treeRepository3.showOrderedElementsArray()));
         Viewer.print("nodes in repository after clearance " + treeRepository3.count());
     }
 }

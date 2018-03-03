@@ -1,10 +1,9 @@
 package by.epam.preTraining.ivanStrazhevich.tasks.task6and7.repository;
 
 import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.exceptions.EmptyQueueExceptionExtended;
-import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.exceptions.MaxSizeExceededException;
-import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.interfaces.IQueue;
+import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.interfaces.Queueable;
 
-public class ArrayBasedQueue<T> extends AbstractRepository implements IQueue<T> {
+public class ArrayBasedQueue<T> extends AbstractRepository<T> implements Queueable<T> {
     protected Object[] queueOfElements;
     protected int queueSize;
     protected int incrementSize;
@@ -35,29 +34,8 @@ public class ArrayBasedQueue<T> extends AbstractRepository implements IQueue<T> 
 
     @Override
     public boolean enqueue(Object element) {
-        int i = 0;
-        for (Object existElement : queueOfElements
-                ) {
-            if (existElement != null) {
-                i++;
-            } else if (queueOfElements.length - 1 == i && resizable) {
-                queueOfElements = extendArray(queueOfElements, queueOfElements.length);
-                queueOfElements[i] = element;
-                return true;
-            } else if (i == queueOfElements.length - 1 && resizable==false) {
-                try {
-                    queueOfElements[i] = element;
-                    throw new MaxSizeExceededException("Stack is full and not resizable");
-                } catch (MaxSizeExceededException ex) {
-                    ex.printStackTrace();
-                    return true;
-                }
-            } else {
-                queueOfElements[i] = element;
-                return true;
-            }
-        }
-        return false;
+        queueOfElements = addToArray(element, queueOfElements, resizable);
+        return true;
     }
 
     @Override

@@ -1,6 +1,6 @@
 package by.epam.preTraining.ivanStrazhevich.tasks.task6and7.interfaces;
 
-public interface ITree<T> {
+public interface Sortable<T> {
     boolean add(Object element);
 
     Object[] showOrderedElementsArray();

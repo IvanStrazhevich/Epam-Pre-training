@@ -6,7 +6,7 @@ import by.epam.preTraining.ivanStrazhevich.tasks.task5.entities.Transport;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.service.VehicleQueueRepositoryFactory;
 import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.exceptions.EmptyQueueExceptionExtended;
 import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.exceptions.MaxSizeExceededException;
-import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.interfaces.IQueue;
+import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.interfaces.Queueable;
 import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.repository.ArrayBasedQueue;
 
 import java.util.Arrays;
@@ -18,7 +18,7 @@ public class ArrayBasedQueueTest {
 
 
         print("Creating QUEUE repository: ");
-        IQueue<Transport> taxiRepository2 = new ArrayBasedQueue<>(3, false);
+        Queueable<Transport> taxiRepository2 = new ArrayBasedQueue<>(3, false);
         print("Checking not resizable option ");
         taxiRepository2.enqueue(new Transport());
         taxiRepository2.enqueue(new Taxi());

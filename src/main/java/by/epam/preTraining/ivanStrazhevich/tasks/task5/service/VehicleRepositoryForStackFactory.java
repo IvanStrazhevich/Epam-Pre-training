@@ -9,7 +9,7 @@ import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.iMovingWa
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.iTankType.DieselTankType;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.iTankType.ElectricTankType;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.IVehicleStackRepositoryFactory;
-import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.interfaces.IStack;
+import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.interfaces.Stackable;
 import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.repository.ArrayBasedStack;
 
 import java.util.Random;
@@ -29,9 +29,9 @@ public class VehicleRepositoryForStackFactory<T> implements IVehicleStackReposit
         return vehicleRepositoryForStackFactory;
     }
 
-    public IStack<Transport> fillVehicleStackRepository(int vehicleQuantity) {
+    public Stackable<Transport> fillVehicleStackRepository(int vehicleQuantity) {
 
-        IStack<Transport> iTaxiRepository = new ArrayBasedStack<>(vehicleQuantity);
+        Stackable<Transport> iTaxiRepository = new ArrayBasedStack<>(vehicleQuantity);
         Random random = new Random();
         while (vehicleQuantity > 0) {
             switch (random.nextInt(TaxiSpecialisations.values().length)) {

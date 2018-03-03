@@ -9,7 +9,7 @@ import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.iMovingWa
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.iTankType.DieselTankType;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.iTankType.ElectricTankType;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.IVehicleTreeRepositoryFactory;
-import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.interfaces.ITree;
+import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.interfaces.Sortable;
 import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.repository.TreeRepository;
 
 import java.util.Random;
@@ -29,9 +29,9 @@ public class VehicleTreeRepositoryFactory implements IVehicleTreeRepositoryFacto
         return vehicleRepositoryFactory;
     }
 
-    public ITree<Transport> fillVehicleRepository(int vehicleQuantity) {
+    public Sortable<Transport> fillVehicleRepository(int vehicleQuantity) {
 
-        ITree<Transport> iTaxiRepository = new TreeRepository<Transport>();
+        Sortable<Transport> iTaxiRepository = new TreeRepository<Transport>();
         Random random = new Random();
         while (vehicleQuantity > 0) {
             switch (random.nextInt(TaxiSpecialisations.values().length)) {

@@ -6,7 +6,7 @@ import by.epam.preTraining.ivanStrazhevich.tasks.task5.entities.Transport;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.service.VehicleRepositoryForStackFactory;
 import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.exceptions.EmptyStackExtendedException;
 import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.exceptions.MaxSizeExceededException;
-import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.interfaces.IStack;
+import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.interfaces.Stackable;
 import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.repository.ArrayBasedStack;
 
 import java.util.Arrays;
@@ -19,7 +19,7 @@ public class ArrayBasedStackTest {
 
         print("Creating STACK repository: ");
         print("Checking not resizable option ");
-        IStack<Transport> taxiRepository2 = new ArrayBasedStack<>(3, false);
+        Stackable<Transport> taxiRepository2 = new ArrayBasedStack<>(3, false);
         taxiRepository2.push(new Transport());
         taxiRepository2.push(new Taxi());
         taxiRepository2.push(new CargoTaxi());

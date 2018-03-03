@@ -1,6 +1,6 @@
 package by.epam.preTraining.ivanStrazhevich.tasks.task6and7.interfaces;
 
-public interface IQueue<T> {
+public interface Queueable<T> {
     boolean enqueue(Object element);
 
     Object dequeue();

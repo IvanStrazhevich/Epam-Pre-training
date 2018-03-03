@@ -2,11 +2,11 @@ package by.epam.preTraining.ivanStrazhevich.tasks.task6and7.repository;
 
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.repository.TransportRepository;
 import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.exceptions.NoSuchNodeException;
-import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.interfaces.ITree;
+import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.interfaces.Sortable;
 
 import java.util.ArrayList;
 
-public class TreeRepository<T extends Comparable<T>> extends TransportRepository implements ITree<T> {
+public class TreeRepository<T extends Comparable<T>> extends TransportRepository implements Sortable<T> {
     private Node root;
     private int count;
 

@@ -4,7 +4,7 @@ import by.epam.preTraining.ivanStrazhevich.tasks.task5.entities.Transport;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.service.VehicleRepositoryForStackFactory;
 import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.exceptions.EmptyStackExtendedException;
 import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.exceptions.MaxSizeExceededException;
-import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.interfaces.IStack;
+import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.interfaces.Stackable;
 import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.repository.ListBasedStack;
 
 import java.util.Arrays;
@@ -15,7 +15,7 @@ public class ListBasedStackTest {
     public static void main(String[] args) throws EmptyStackExtendedException, MaxSizeExceededException {
 
         print("Creating STACK repository: ");
-        IStack<Transport> taxiRepository2 = new ListBasedStack<>(2);
+        Stackable<Transport> taxiRepository2 = new ListBasedStack<>(2);
 
         print("Filling with vehicles ");
         VehicleRepositoryForStackFactory vehicleRepositoryFactory = VehicleRepositoryForStackFactory.getVehicleRepositoryForStackFactory();

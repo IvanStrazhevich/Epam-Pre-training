@@ -12,4 +12,10 @@ public interface Sortable<T> {
     void clear();
 
     int count();
+
+    String showInOrder();
+
+    String showPostOrder();
+
+    String showPreOrder();
 }

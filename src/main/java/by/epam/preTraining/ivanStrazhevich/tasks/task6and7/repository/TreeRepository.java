@@ -13,6 +13,56 @@ public class TreeRepository<T extends Comparable<T>> extends TransportRepository
     public TreeRepository() {
     }
 
+    private String goInOrderTraversal(StringBuffer stringBuffer, Node node) {
+
+        if (node != null) {
+            goInOrderTraversal(stringBuffer, node.left);
+            stringBuffer.append(node.value.toString());
+            goInOrderTraversal(stringBuffer, node.right);
+
+        }
+        return stringBuffer.toString();
+
+    }
+
+    public String showInOrder() {
+        StringBuffer stringBuffer = new StringBuffer();
+        return goInOrderTraversal(stringBuffer, root).toString();
+    }
+
+    private String goPostOrderTraversal(StringBuffer stringBuffer, Node node) {
+
+        if (node != null) {
+            goPostOrderTraversal(stringBuffer, node.left);
+            goPostOrderTraversal(stringBuffer, node.right);
+            stringBuffer.append(node.value.toString());
+        }
+        return stringBuffer.toString();
+
+    }
+
+    public String showPostOrder() {
+        StringBuffer stringBuffer = new StringBuffer();
+        return goPostOrderTraversal(stringBuffer, root).toString();
+    }
+
+    private String goPreOrderTraversal(StringBuffer stringBuffer, Node node) {
+
+        if (node != null) {
+            stringBuffer.append(node.value.toString());
+            goPreOrderTraversal(stringBuffer, node.left);
+            goPreOrderTraversal(stringBuffer, node.right);
+        }
+        return stringBuffer.toString();
+
+    }
+
+    public String showPreOrder() {
+        StringBuffer stringBuffer = new StringBuffer();
+        return goPreOrderTraversal(stringBuffer, root).toString();
+    }
+
+    //inOrderTraversal
     private Object[] showElements(Node node) {
         ArrayList<String> result = new ArrayList<>();
         if (node.left != null) {
@@ -72,11 +122,20 @@ public class TreeRepository<T extends Comparable<T>> extends TransportRepository
         if (node == null) {
             return null;
         } else if (element.compareTo((T) node.value) == 0) {
-            node = delete(node.right, element);
-            return node;
+            if (node.left == null) {
+                node = delete(node.right, element);
+                return node;
+            } else if (node.right == null) {
+                node = delete(node.left, element);
+                return node;
+            } else if (node.right == null && node.left == null) {
+                return node;
+            } else {
+                return node;
+            }
         } else if (element.compareTo((T) node.value) > 0) {
             if (node.right == null) {
-                return null;
+                return node;
             } else {
                 node.right = delete(node.right, element);
                 return node;
@@ -88,8 +147,10 @@ public class TreeRepository<T extends Comparable<T>> extends TransportRepository
                 node.left = delete(node.left, element);
                 return node;
             }
-        } else {
+        } else if (node.left == null && node.right == null) {
             return node;
+        } else {
+            return node.left;
         }
     }
 

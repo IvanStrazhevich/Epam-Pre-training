@@ -18,14 +18,14 @@ public class TreeRepository<T extends Comparable<T>> extends TransportRepository
         if (node.left != null) {
             Object[] temp = showElements(node.left);
             for (int i = 0; i < temp.length; i++) {
-                result.add(" " + temp[i]);
+                result.add("" + temp[i]);
             }
         }
         result.add(node.value.toString());
         if (node.right != null) {
             Object[] temp = showElements(node.right);
             for (int i = 0; i < temp.length; i++) {
-                result.add(" " + temp[i]);
+                result.add("" + temp[i]);
             }
         }
         return result.toArray();
@@ -120,6 +120,7 @@ public class TreeRepository<T extends Comparable<T>> extends TransportRepository
             if (root.value.compareTo(element) == 0) {
                 if (root.left != null) {
                     root = deleteFromRoot(root, (T) root.left.value);
+                    count--;
                     return true;
                 } else {
                     return false;

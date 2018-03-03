@@ -49,6 +49,7 @@ public class TreeRepositoryTest {
         Viewer.print("nodes in repository " + treeRepository3.count());
         treeRepository3.removeElement(7);
         Viewer.print(Arrays.toString(treeRepository3.showOrderedElementsArray()));
+        Viewer.print("nodes in repository " + treeRepository3.count());
         treeRepository3.removeElement(6);
         Viewer.print(Arrays.toString(treeRepository3.showOrderedElementsArray()));
         Viewer.print("nodes in repository " + treeRepository3.count());

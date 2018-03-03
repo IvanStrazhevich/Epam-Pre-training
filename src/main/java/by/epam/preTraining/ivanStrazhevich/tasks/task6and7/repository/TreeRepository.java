@@ -123,15 +123,13 @@ public class TreeRepository<T extends Comparable<T>> extends TransportRepository
             return null;
         } else if (element.compareTo((T) node.value) == 0) {
             if (node.left == null) {
-                node = delete(node.right, element);
-                return node;
+                return node.right;
             } else if (node.right == null) {
-                node = delete(node.left, element);
-                return node;
+                return node.left;
             } else if (node.right == null && node.left == null) {
                 return node;
             } else {
-                return node;
+                return deleteFromRoot(node, (T) node.left.value);
             }
         } else if (element.compareTo((T) node.value) > 0) {
             if (node.right == null) {

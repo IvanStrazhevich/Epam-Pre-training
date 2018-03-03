@@ -1,6 +1,6 @@
-package by.epam.preTraining.ivanStrazhevich.tasks.task6.repository;
+package by.epam.preTraining.ivanStrazhevich.tasks.task6and7.repository;
 
-import by.epam.preTraining.ivanStrazhevich.tasks.task6.interfaces.IRepository;
+import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.interfaces.IRepository;
 
 public class AbstractRepository<T> implements IRepository<T> {
     @Override

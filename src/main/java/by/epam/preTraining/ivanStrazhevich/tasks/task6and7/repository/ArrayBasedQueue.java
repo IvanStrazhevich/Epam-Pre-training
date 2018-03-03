@@ -1,8 +1,8 @@
-package by.epam.preTraining.ivanStrazhevich.tasks.task6.repository;
+package by.epam.preTraining.ivanStrazhevich.tasks.task6and7.repository;
 
-import by.epam.preTraining.ivanStrazhevich.tasks.task6.exceptions.ExtendedEmptyQueueException;
-import by.epam.preTraining.ivanStrazhevich.tasks.task6.exceptions.MaxSizeExceededException;
-import by.epam.preTraining.ivanStrazhevich.tasks.task6.interfaces.IQueue;
+import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.exceptions.EmptyQueueExceptionExtended;
+import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.exceptions.MaxSizeExceededException;
+import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.interfaces.IQueue;
 
 public class ArrayBasedQueue<T> extends AbstractRepository implements IQueue<T> {
     protected Object[] queueOfElements;
@@ -64,8 +64,8 @@ public class ArrayBasedQueue<T> extends AbstractRepository implements IQueue<T> 
     public Object dequeue() {
         if (isEmpty()) {
             try {
-                throw new ExtendedEmptyQueueException("Queue is empty, return null");
-            } catch (ExtendedEmptyQueueException e) {
+                throw new EmptyQueueExceptionExtended("Queue is empty, return null");
+            } catch (EmptyQueueExceptionExtended e) {
                 e.printStackTrace();
                 return null;
             }
@@ -83,8 +83,8 @@ public class ArrayBasedQueue<T> extends AbstractRepository implements IQueue<T> 
     public Object peek() {
         if (isEmpty()) {
             try {
-                throw new ExtendedEmptyQueueException("Queue is empty, return null");
-            } catch (ExtendedEmptyQueueException e) {
+                throw new EmptyQueueExceptionExtended("Queue is empty, return null");
+            } catch (EmptyQueueExceptionExtended e) {
                 e.printStackTrace();
                 return null;
             }

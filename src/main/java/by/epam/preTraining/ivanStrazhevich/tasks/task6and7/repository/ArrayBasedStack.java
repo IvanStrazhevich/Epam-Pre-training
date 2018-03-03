@@ -1,8 +1,8 @@
-package by.epam.preTraining.ivanStrazhevich.tasks.task6.repository;
+package by.epam.preTraining.ivanStrazhevich.tasks.task6and7.repository;
 
-import by.epam.preTraining.ivanStrazhevich.tasks.task6.exceptions.ExtendedEmptyStackException;
-import by.epam.preTraining.ivanStrazhevich.tasks.task6.exceptions.MaxSizeExceededException;
-import by.epam.preTraining.ivanStrazhevich.tasks.task6.interfaces.IStack;
+import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.exceptions.EmptyStackExtendedException;
+import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.exceptions.MaxSizeExceededException;
+import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.interfaces.IStack;
 
 public class ArrayBasedStack<T> extends AbstractRepository<T> implements IStack<T> {
 
@@ -65,8 +65,8 @@ public class ArrayBasedStack<T> extends AbstractRepository<T> implements IStack<
     public Object pop() {
         if (isEmpty()) {
             try {
-                throw new ExtendedEmptyStackException(" Stack is empty, return null");
-            } catch (ExtendedEmptyStackException e) {
+                throw new EmptyStackExtendedException(" Stack is empty, return null");
+            } catch (EmptyStackExtendedException e) {
                 e.printStackTrace();
                 return null;
             }
@@ -84,8 +84,8 @@ public class ArrayBasedStack<T> extends AbstractRepository<T> implements IStack<
     public Object peek() {
         if (isEmpty()) {
             try {
-                throw new ExtendedEmptyStackException("Stack is empty, return null");
-            } catch (ExtendedEmptyStackException e) {
+                throw new EmptyStackExtendedException("Stack is empty, return null");
+            } catch (EmptyStackExtendedException e) {
                 e.printStackTrace();
                 return null;
             }

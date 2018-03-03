@@ -9,8 +9,8 @@ import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.iMovingWa
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.iTankType.DieselTankType;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.iTankType.ElectricTankType;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.IVehicleStackRepositoryFactory;
-import by.epam.preTraining.ivanStrazhevich.tasks.task6.interfaces.IStack;
-import by.epam.preTraining.ivanStrazhevich.tasks.task6.repository.ArrayBasedStack;
+import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.interfaces.IStack;
+import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.repository.ArrayBasedStack;
 
 import java.util.Random;
 

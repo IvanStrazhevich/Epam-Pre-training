@@ -1,21 +1,29 @@
-package by.epam.preTraining.ivanStrazhevich.tasks.task6;
+package by.epam.preTraining.ivanStrazhevich.tasks.task6and7;
 
+import by.epam.preTraining.ivanStrazhevich.tasks.task5.entities.CargoTaxi;
+import by.epam.preTraining.ivanStrazhevich.tasks.task5.entities.Taxi;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.entities.Transport;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.service.VehicleRepositoryForStackFactory;
-import by.epam.preTraining.ivanStrazhevich.tasks.task6.exceptions.ExtendedEmptyStackException;
-import by.epam.preTraining.ivanStrazhevich.tasks.task6.exceptions.MaxSizeExceededException;
-import by.epam.preTraining.ivanStrazhevich.tasks.task6.interfaces.IStack;
-import by.epam.preTraining.ivanStrazhevich.tasks.task6.repository.ListBasedStack;
+import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.exceptions.EmptyStackExtendedException;
+import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.exceptions.MaxSizeExceededException;
+import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.interfaces.IStack;
+import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.repository.ArrayBasedStack;
 
 import java.util.Arrays;
 
 import static by.epam.preTraining.ivanStrazhevich.tasks.task5.view.Viewer.print;
 
-public class ListBasedStackTest {
-    public static void main(String[] args) throws ExtendedEmptyStackException, MaxSizeExceededException {
+
+public class ArrayBasedStackTest {
+    public static void main(String[] args) throws EmptyStackExtendedException, MaxSizeExceededException {
 
         print("Creating STACK repository: ");
-        IStack<Transport> taxiRepository2 = new ListBasedStack<>(2);
+        print("Checking not resizable option ");
+        IStack<Transport> taxiRepository2 = new ArrayBasedStack<>(3, false);
+        taxiRepository2.push(new Transport());
+        taxiRepository2.push(new Taxi());
+        taxiRepository2.push(new CargoTaxi());
+        print(Arrays.toString(taxiRepository2.getStackOfElements()));
 
         print("Filling with vehicles ");
         VehicleRepositoryForStackFactory vehicleRepositoryFactory = VehicleRepositoryForStackFactory.getVehicleRepositoryForStackFactory();

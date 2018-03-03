@@ -1,4 +1,4 @@
-package by.epam.preTraining.ivanStrazhevich.tasks.task6.interfaces;
+package by.epam.preTraining.ivanStrazhevich.tasks.task6and7.interfaces;
 
 public interface IStack<T> {
     boolean push(Object o);

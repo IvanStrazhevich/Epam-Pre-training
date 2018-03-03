@@ -2,7 +2,7 @@ package by.epam.preTraining.ivanStrazhevich.tasks.task5.repository;
 
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.entities.Transport;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.ITransportRepository;
-import by.epam.preTraining.ivanStrazhevich.tasks.task6.repository.AbstractRepository;
+import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.repository.AbstractRepository;
 
 import java.util.Collection;
 

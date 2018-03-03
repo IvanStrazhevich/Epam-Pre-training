@@ -1,18 +1,18 @@
-package by.epam.preTraining.ivanStrazhevich.tasks.task6;
+package by.epam.preTraining.ivanStrazhevich.tasks.task6and7;
 
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.entities.Transport;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.service.VehicleQueueRepositoryFactory;
-import by.epam.preTraining.ivanStrazhevich.tasks.task6.exceptions.ExtendedEmptyQueueException;
-import by.epam.preTraining.ivanStrazhevich.tasks.task6.exceptions.MaxSizeExceededException;
-import by.epam.preTraining.ivanStrazhevich.tasks.task6.interfaces.IQueue;
-import by.epam.preTraining.ivanStrazhevich.tasks.task6.repository.ListBasedQueue;
+import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.exceptions.EmptyQueueExceptionExtended;
+import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.exceptions.MaxSizeExceededException;
+import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.interfaces.IQueue;
+import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.repository.ListBasedQueue;
 
 import java.util.Arrays;
 
 import static by.epam.preTraining.ivanStrazhevich.tasks.task5.view.Viewer.print;
 
 public class ListBasedQueueTest {
-    public static void main(String[] args) throws ExtendedEmptyQueueException, MaxSizeExceededException {
+    public static void main(String[] args) throws EmptyQueueExceptionExtended, MaxSizeExceededException {
 
 
         print("Creating QUEUE repository: ");

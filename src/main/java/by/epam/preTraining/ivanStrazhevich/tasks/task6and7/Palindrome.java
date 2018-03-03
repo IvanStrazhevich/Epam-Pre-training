@@ -1,6 +1,6 @@
-package by.epam.preTraining.ivanStrazhevich.tasks.task6;
+package by.epam.preTraining.ivanStrazhevich.tasks.task6and7;
 
-import by.epam.preTraining.ivanStrazhevich.tasks.task6.repository.ArrayBasedStack;
+import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.repository.ArrayBasedStack;
 
 public class Palindrome {
     public static boolean checkPalindrome(String string) {

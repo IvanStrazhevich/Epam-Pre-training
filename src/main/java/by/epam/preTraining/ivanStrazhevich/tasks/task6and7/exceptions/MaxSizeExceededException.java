@@ -1,4 +1,4 @@
-package by.epam.preTraining.ivanStrazhevich.tasks.task6.exceptions;
+package by.epam.preTraining.ivanStrazhevich.tasks.task6and7.exceptions;
 
 public class MaxSizeExceededException extends Exception {
 

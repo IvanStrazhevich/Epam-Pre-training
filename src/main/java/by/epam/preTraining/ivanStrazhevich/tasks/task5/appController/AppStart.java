@@ -11,8 +11,6 @@ import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.ITransportServ
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.repository.TransportRepository;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.service.TransportService;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.service.VehicleRepositoryFactory;
-import by.epam.preTraining.ivanStrazhevich.tasks.task6.interfaces.IStack;
-import by.epam.preTraining.ivanStrazhevich.tasks.task6.repository.ArrayBasedStack;
 
 import java.util.Arrays;
 

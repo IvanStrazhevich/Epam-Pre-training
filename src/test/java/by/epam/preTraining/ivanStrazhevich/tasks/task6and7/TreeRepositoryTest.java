@@ -1,9 +1,9 @@
-package by.epam.preTraining.ivanStrazhevich.tasks.task6;
+package by.epam.preTraining.ivanStrazhevich.tasks.task6and7;
 
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.entities.Transport;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.service.VehicleTreeRepositoryFactory;
-import by.epam.preTraining.ivanStrazhevich.tasks.task6.interfaces.ITree;
-import by.epam.preTraining.ivanStrazhevich.tasks.task6.repository.TreeRepository;
+import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.interfaces.ITree;
+import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.repository.TreeRepository;
 import by.epam.preTraining.ivanStrazhevich.tasks.view.Viewer;
 
 import java.util.Arrays;
@@ -25,7 +25,7 @@ public class TreeRepositoryTest {
         treeRepository.add(transport2);
 
         TreeRepository<Transport> treeRepository3 = new TreeRepository<>();
-        treeRepository3.add(3);
+        treeRepository3.add(6);
         Viewer.print(treeRepository3.count());
         treeRepository3.add(0);
         Viewer.print(treeRepository3.count());
@@ -35,19 +35,21 @@ public class TreeRepositoryTest {
         Viewer.print(treeRepository3.count());
         treeRepository3.add(2);
         treeRepository3.add(7);
-        treeRepository3.add(6);
+        treeRepository3.add(4);
         treeRepository3.add(9);
         Viewer.print(treeRepository3.count());
         Viewer.print(Arrays.toString(treeRepository.showOrderedElementsArray()));
         Viewer.print(Arrays.toString(treeRepository3.showOrderedElementsArray()));
         Viewer.print("has 9 " + treeRepository3.contains(9));
-        treeRepository3.removeElement(2);
+        treeRepository3.removeElement(3);
         Viewer.print(Arrays.toString(treeRepository3.showOrderedElementsArray()));
         Viewer.print("nodes in repository " + treeRepository3.count());
+        treeRepository3.removeElement(1);
+        Viewer.print(Arrays.toString(treeRepository3.showOrderedElementsArray()));
+        Viewer.print("nodes in repository " + treeRepository3.count());
+        treeRepository3.removeElement(7);
+        Viewer.print(Arrays.toString(treeRepository3.showOrderedElementsArray()));
         treeRepository3.removeElement(6);
-        Viewer.print(Arrays.toString(treeRepository3.showOrderedElementsArray()));
-        Viewer.print("nodes in repository " + treeRepository3.count());
-        treeRepository3.removeElement(0);
         Viewer.print(Arrays.toString(treeRepository3.showOrderedElementsArray()));
         Viewer.print("nodes in repository " + treeRepository3.count());
         Viewer.print("has 4 " +treeRepository3.contains(4));

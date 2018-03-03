@@ -1,6 +1,6 @@
-package by.epam.preTraining.ivanStrazhevich.tasks.task6.repository;
+package by.epam.preTraining.ivanStrazhevich.tasks.task6and7.repository;
 
-import by.epam.preTraining.ivanStrazhevich.tasks.task6.interfaces.IQueue;
+import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.interfaces.IQueue;
 
 import java.util.LinkedList;
 

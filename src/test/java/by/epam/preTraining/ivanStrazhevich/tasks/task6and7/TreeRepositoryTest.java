@@ -1,7 +1,7 @@
 package by.epam.preTraining.ivanStrazhevich.tasks.task6and7;
 
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.entities.Transport;
-import by.epam.preTraining.ivanStrazhevich.tasks.task5.service.VehicleTreeRepositoryFactory;
+import by.epam.preTraining.ivanStrazhevich.tasks.task5.service.SortableRepositoryFactory;
 import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.interfaces.Sortable;
 import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.repository.TreeRepository;
 import by.epam.preTraining.ivanStrazhevich.tasks.view.Viewer;
@@ -12,8 +12,8 @@ import java.util.Arrays;
 public class TreeRepositoryTest {
     public static void main(String[] args) {
         Sortable<Transport> treeRepository;
-        VehicleTreeRepositoryFactory vehicleTreeRepositoryFactory = VehicleTreeRepositoryFactory.getVehicleTreeRepositoryFactory();
-        treeRepository = vehicleTreeRepositoryFactory.fillVehicleRepository(10);
+        SortableRepositoryFactory sortableRepositoryFactory = SortableRepositoryFactory.getVehicleTreeRepositoryFactory();
+        treeRepository = sortableRepositoryFactory.fillVehicleRepository(10);
         Transport transport = new Transport();
         transport.setId(0);
         Transport transport2 = new Transport();

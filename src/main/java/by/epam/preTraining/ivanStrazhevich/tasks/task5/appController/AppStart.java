@@ -6,11 +6,11 @@ import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.iFareType
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.iTankType.ElectricTankType;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.iTankType.GasTankType;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.iFareType.PassengerFare;
-import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.ITransportRepository;
-import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.ITransportService;
+import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.Garageable;
+import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.Serviceable;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.repository.TransportRepository;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.service.TransportService;
-import by.epam.preTraining.ivanStrazhevich.tasks.task5.service.VehicleRepositoryFactory;
+import by.epam.preTraining.ivanStrazhevich.tasks.task5.service.RepositoryTransportFactory;
 
 import java.util.Arrays;
 
@@ -20,15 +20,15 @@ import static by.epam.preTraining.ivanStrazhevich.tasks.task5.view.Viewer.*;
 public class AppStart {
     public static void main(String[] args) {
         print("Creating repository: ");
-        ITransportRepository<Transport> taxiRepository = new TransportRepository<Transport>(10);
-        ITransportRepository<Transport> taxiRepository2 = new TransportRepository<Transport>(10);
-        ITransportService transportService = new TransportService();
+        Garageable<Transport> taxiRepository = new TransportRepository<Transport>(10);
+        Garageable<Transport> taxiRepository2 = new TransportRepository<Transport>(10);
+        Serviceable transportService = new TransportService();
         print("Check is it empty: " + taxiRepository.isEmpty());
         print("Filling with vehicles ");
-        VehicleRepositoryFactory vehicleRepositoryFactory = VehicleRepositoryFactory.getVehicleRepositoryFactory();
-        taxiRepository = vehicleRepositoryFactory.fillVehicleRepository(11);
+        RepositoryTransportFactory repositoryTransportFactory = RepositoryTransportFactory.getRepositoryTransportFactory();
+        taxiRepository = repositoryTransportFactory.fillVehicleRepository(11);
         print("Created first repository ");
-        taxiRepository2 = vehicleRepositoryFactory.fillVehicleRepository(5);
+        taxiRepository2 = repositoryTransportFactory.fillVehicleRepository(5);
         print("Created second repository ");
         print("Check is it empty: " + taxiRepository.isEmpty());
         print("Getting out an element and fare it: ");

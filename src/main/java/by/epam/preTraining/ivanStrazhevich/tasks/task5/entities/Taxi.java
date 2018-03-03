@@ -1,16 +1,16 @@
 package by.epam.preTraining.ivanStrazhevich.tasks.task5.entities;
 
 import by.epam.preTraining.ivanStrazhevich.tasks.WrongEntriesException;
-import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.IFareType;
-import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.IMovingWays;
-import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.ITankType;
+import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.Fareable;
+import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.Movable;
+import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.Fillable;
 
 public class Taxi extends Transport {
     private boolean hasTaxiLicence;
 
-    public Taxi(IFareType iFareType, ITankType iTankType, IMovingWays iMovingWays, int id, String vehicleBrand,
+    public Taxi(Fareable fareType, Fillable tankType, Movable movingWays, int id, String vehicleBrand,
                 String model, int passengers, int cargoWeight, boolean hasTaxiLicence) {
-        super(iFareType, iTankType, iMovingWays, id, vehicleBrand, model, passengers, cargoWeight);
+        super(fareType, tankType, movingWays, id, vehicleBrand, model, passengers, cargoWeight);
         this.hasTaxiLicence = hasTaxiLicence;
     }
 

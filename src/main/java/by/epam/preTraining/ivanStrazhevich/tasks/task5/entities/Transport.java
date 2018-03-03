@@ -1,14 +1,14 @@
 package by.epam.preTraining.ivanStrazhevich.tasks.task5.entities;
 
 import by.epam.preTraining.ivanStrazhevich.tasks.WrongEntriesException;
-import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.IFareType;
-import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.IMovingWays;
-import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.ITankType;
+import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.Fareable;
+import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.Movable;
+import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.Fillable;
 
 public class Transport implements Comparable<Transport> {
-    private IFareType iFareType;
-    private ITankType iTankType;
-    private IMovingWays iMovingWays;
+    private Fareable fareType;
+    private Fillable tankType;
+    private Movable movingWays;
     private int id;
     private String vehicleBrand;
     private String model;
@@ -16,8 +16,8 @@ public class Transport implements Comparable<Transport> {
     private int cargoWeight;
 
     public String fillTank(int volume) {
-        if (iTankType != null) {
-            return iTankType.fillTank(volume);
+        if (tankType != null) {
+            return tankType.fillTank(volume);
         } else {
             try {
                 throw new WrongEntriesException("Tank type for taxi not chosen");
@@ -30,9 +30,9 @@ public class Transport implements Comparable<Transport> {
     }
 
     public String takeFare(int passengersQuantity, int cargoWeightKg) {
-        if (iFareType != null) {
+        if (fareType != null) {
             if (!( cargoWeightKg > cargoWeight || passengersQuantity > passengers )) {
-                return iFareType.takeFare(passengersQuantity, cargoWeightKg);
+                return fareType.takeFare(passengersQuantity, cargoWeightKg);
             } else {
                 return "There is no space at Transport ";
             }
@@ -46,11 +46,11 @@ public class Transport implements Comparable<Transport> {
         }
     }
 
-    public Transport(IFareType iFareType, ITankType iTankType, IMovingWays iMovingWays,
+    public Transport(Fareable fareType, Fillable tankType, Movable movingWays,
                      int id, String vehicleBrand, String model, int passengers, int cargoWeight) {
-        this.iFareType = iFareType;
-        this.iTankType = iTankType;
-        this.iMovingWays = iMovingWays;
+        this.fareType = fareType;
+        this.tankType = tankType;
+        this.movingWays = movingWays;
         this.id = id;
         this.vehicleBrand = vehicleBrand;
         this.model = model;
@@ -59,9 +59,9 @@ public class Transport implements Comparable<Transport> {
     }
 
     public Transport(Transport transport) {
-        this.iFareType = transport.getIFareType();
-        this.iTankType = transport.getITankType();
-        this.iMovingWays = transport.getIMovingWays();
+        this.fareType = transport.getIFareType();
+        this.tankType = transport.getITankType();
+        this.movingWays = transport.getIMovingWays();
         this.id = transport.getId();
         this.vehicleBrand = transport.getVehicleBrand();
         this.model = transport.getModel();
@@ -72,28 +72,28 @@ public class Transport implements Comparable<Transport> {
     public Transport() {
     }
 
-    public IFareType getIFareType() {
-        return iFareType;
+    public Fareable getIFareType() {
+        return fareType;
     }
 
-    public void setIFareType(IFareType iFareType) {
-        this.iFareType = iFareType;
+    public void setIFareType(Fareable fareType) {
+        this.fareType = fareType;
     }
 
-    public ITankType getITankType() {
-        return iTankType;
+    public Fillable getITankType() {
+        return tankType;
     }
 
-    public void setITankType(ITankType iTankType) {
-        this.iTankType = iTankType;
+    public void setITankType(Fillable tankType) {
+        this.tankType = tankType;
     }
 
-    public IMovingWays getIMovingWays() {
-        return iMovingWays;
+    public Movable getIMovingWays() {
+        return movingWays;
     }
 
-    public void setIMovingWays(IMovingWays iMovingWays) {
-        this.iMovingWays = iMovingWays;
+    public void setIMovingWays(Movable movingWays) {
+        this.movingWays = movingWays;
     }
 
     public int getId() {
@@ -144,9 +144,9 @@ public class Transport implements Comparable<Transport> {
         if (id != transport.id) return false;
         if (passengers != transport.passengers) return false;
         if (cargoWeight != transport.cargoWeight) return false;
-        if (iFareType != null ? !iFareType.equals(transport.iFareType) : transport.iFareType != null) return false;
-        if (iTankType != null ? !iTankType.equals(transport.iTankType) : transport.iTankType != null) return false;
-        if (iMovingWays != null ? !iMovingWays.equals(transport.iMovingWays) : transport.iMovingWays != null)
+        if (fareType != null ? !fareType.equals(transport.fareType) : transport.fareType != null) return false;
+        if (tankType != null ? !tankType.equals(transport.tankType) : transport.tankType != null) return false;
+        if (movingWays != null ? !movingWays.equals(transport.movingWays) : transport.movingWays != null)
             return false;
         if (vehicleBrand != null ? !vehicleBrand.equals(transport.vehicleBrand) : transport.vehicleBrand != null)
             return false;
@@ -155,9 +155,9 @@ public class Transport implements Comparable<Transport> {
 
     @Override
     public int hashCode() {
-        int result = iFareType != null ? iFareType.hashCode() : 0;
-        result = 31 * result + ( iTankType != null ? iTankType.hashCode() : 0 );
-        result = 31 * result + ( iMovingWays != null ? iMovingWays.hashCode() : 0 );
+        int result = fareType != null ? fareType.hashCode() : 0;
+        result = 31 * result + ( tankType != null ? tankType.hashCode() : 0 );
+        result = 31 * result + ( movingWays != null ? movingWays.hashCode() : 0 );
         result = 31 * result + id;
         result = 31 * result + ( vehicleBrand != null ? vehicleBrand.hashCode() : 0 );
         result = 31 * result + ( model != null ? model.hashCode() : 0 );
@@ -169,9 +169,9 @@ public class Transport implements Comparable<Transport> {
     @Override
     public String toString() {
         return "Transport{" +
-                " iFareType = " + iFareType +
-                ", iTankType = " + iTankType +
-                ", iMovingWays = " + iMovingWays +
+                " fareType = " + fareType +
+                ", tankType = " + tankType +
+                ", movingWays = " + movingWays +
                 ", id = " + id +
                 ", vehicleBrand = '" + vehicleBrand + '\'' +
                 ", model = '" + model + '\'' +

@@ -1,7 +1,7 @@
 package by.epam.preTraining.ivanStrazhevich.tasks.task6and7;
 
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.entities.Transport;
-import by.epam.preTraining.ivanStrazhevich.tasks.task5.service.VehicleQueueRepositoryFactory;
+import by.epam.preTraining.ivanStrazhevich.tasks.task5.service.QueueRepositoryTransportFactory;
 import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.exceptions.EmptyQueueExceptionExtended;
 import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.exceptions.MaxSizeExceededException;
 import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.interfaces.Queueable;
@@ -19,11 +19,11 @@ public class ListBasedQueueTest {
         Queueable<Transport> taxiRepository2 = new ListBasedQueue<>(2);
 
         print("Filling with vehicles ");
-        VehicleQueueRepositoryFactory vehicleRepositoryFactory = VehicleQueueRepositoryFactory.getVehicleQueueRepositoryFactory();
+        QueueRepositoryTransportFactory vehicleRepositoryFactory = QueueRepositoryTransportFactory.getQueueRepositoryTransportFactory();
         taxiRepository2 = vehicleRepositoryFactory.fillVehicleQueueRepository(2);
 
         print("Created repository ");
-        print(Arrays.toString(taxiRepository2.getQueueOfElements()));
+        print(Arrays.toString(taxiRepository2.getArrayOfElements()));
 
         print("Peeking out first  element ");
         Transport taxi0 = (Transport) taxiRepository2.peek();
@@ -37,7 +37,7 @@ public class ListBasedQueueTest {
         taxiRepository2.enqueue(transport);
         print("Is queue  2 full : " + taxiRepository2.isFull());
         print("Number of vehicles after adding one " + taxiRepository2.size());
-        print(Arrays.toString(taxiRepository2.getQueueOfElements()));
+        print(Arrays.toString(taxiRepository2.getArrayOfElements()));
 
 
         print("Check is it empty: " + taxiRepository2.isEmpty());

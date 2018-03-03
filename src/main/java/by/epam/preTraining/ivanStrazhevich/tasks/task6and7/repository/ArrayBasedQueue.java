@@ -96,7 +96,7 @@ public class ArrayBasedQueue<T> extends AbstractRepository<T> implements Queueab
         return size() == queueOfElements.length;
     }
 
-    public Object[] getQueueOfElements() {
+    public Object[] getArrayOfElements() {
         return queueOfElements;
     }
 }

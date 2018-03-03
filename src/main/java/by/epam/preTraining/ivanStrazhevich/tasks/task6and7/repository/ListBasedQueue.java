@@ -4,7 +4,7 @@ import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.interfaces.Queueable;
 
 import java.util.LinkedList;
 
-public class ListBasedQueue<T> implements Queueable<T> {
+public class ListBasedQueue<T> extends AbstractRepository<T> implements Queueable<T> {
     LinkedList<T> queueList;
     int size;
 
@@ -45,7 +45,7 @@ public class ListBasedQueue<T> implements Queueable<T> {
     }
 
     @Override
-    public Object[] getQueueOfElements() {
+    public Object[] getArrayOfElements() {
         return queueList.toArray();
     }
 }

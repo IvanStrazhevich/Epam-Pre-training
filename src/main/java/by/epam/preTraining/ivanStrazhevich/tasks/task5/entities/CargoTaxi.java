@@ -1,18 +1,18 @@
 package by.epam.preTraining.ivanStrazhevich.tasks.task5.entities;
 
 import by.epam.preTraining.ivanStrazhevich.tasks.WrongEntriesException;
-import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.IFareType;
-import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.IMovingWays;
-import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.ITankType;
+import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.Fareable;
+import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.Movable;
+import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.Fillable;
 
 
 public class CargoTaxi extends Taxi {
     private int cargoVolumeMeters;
 
-    public CargoTaxi(IFareType iFareType, ITankType iTankType, IMovingWays iMovingWays, int id,
+    public CargoTaxi(Fareable fareType, Fillable tankType, Movable movingWays, int id,
                      String vehicleBrand, String model, int passengers, int cargoWeight, boolean hasTaxiLicence,
                      int cargoVolumeMeters) {
-        super(iFareType, iTankType, iMovingWays, id, vehicleBrand, model, passengers, cargoWeight, hasTaxiLicence);
+        super(fareType, tankType, movingWays, id, vehicleBrand, model, passengers, cargoWeight, hasTaxiLicence);
         this.cargoVolumeMeters = cargoVolumeMeters;
     }
 

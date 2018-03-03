@@ -4,7 +4,7 @@ import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.interfaces.Stackable;
 
 import java.util.LinkedList;
 
-public class ListBasedStack<T> implements Stackable<T> {
+public class ListBasedStack<T> extends AbstractRepository<T> implements Stackable<T> {
     LinkedList<T> stackList;
     int size;
 
@@ -45,7 +45,7 @@ public class ListBasedStack<T> implements Stackable<T> {
     }
 
     @Override
-    public Object[] getStackOfElements() {
+    public Object[] getArrayOfElements() {
         return stackList.toArray();
     }
 }

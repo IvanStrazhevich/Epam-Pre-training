@@ -99,7 +99,7 @@ public class ArrayBasedStack<T> extends AbstractRepository<T> implements Stackab
         return size() == stackOfElements.length;
     }
 
-    public Object[] getStackOfElements() {
+    public Object[] getArrayOfElements() {
         return stackOfElements;
     }
 }

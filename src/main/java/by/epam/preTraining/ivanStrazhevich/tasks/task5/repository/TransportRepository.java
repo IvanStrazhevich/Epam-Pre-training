@@ -1,12 +1,11 @@
 package by.epam.preTraining.ivanStrazhevich.tasks.task5.repository;
 
-import by.epam.preTraining.ivanStrazhevich.tasks.task5.entities.Transport;
-import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.ITransportRepository;
-import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.repository.AbstractRepository;
+import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.Garageable;
+import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.repository.ArrayBasedStack;
 
 import java.util.Collection;
 
-public class TransportRepository<T> extends AbstractRepository implements ITransportRepository<Transport> {
+public class TransportRepository<T> extends ArrayBasedStack implements Garageable<T> {
 
     protected Object[] vehicleRepository;
 

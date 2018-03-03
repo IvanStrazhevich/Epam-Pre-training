@@ -8,45 +8,45 @@ import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.iFareType
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.iMovingWays.MoveOnRoads;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.iTankType.DieselTankType;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.iTankType.ElectricTankType;
-import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.IVehicleTreeRepositoryFactory;
-import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.interfaces.Sortable;
-import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.repository.TreeRepository;
+import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.QueueableRepositoryFactory;
+import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.interfaces.Queueable;
+import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.repository.ArrayBasedQueue;
+
 
 import java.util.Random;
 
-public class VehicleTreeRepositoryFactory implements IVehicleTreeRepositoryFactory {
-
-
-    private VehicleTreeRepositoryFactory() {
+public class QueueRepositoryTransportFactory<T> implements QueueableRepositoryFactory {
+    private QueueRepositoryTransportFactory() {
     }
 
-    private static VehicleTreeRepositoryFactory vehicleRepositoryFactory;
+    private static QueueRepositoryTransportFactory queueRepositoryTransportFactory;
 
-    public static VehicleTreeRepositoryFactory getVehicleTreeRepositoryFactory() {
-        if (null == vehicleRepositoryFactory) {
-            vehicleRepositoryFactory = new VehicleTreeRepositoryFactory();
+    public static QueueRepositoryTransportFactory getQueueRepositoryTransportFactory() {
+        if (null == queueRepositoryTransportFactory) {
+            queueRepositoryTransportFactory = new QueueRepositoryTransportFactory();
         }
-        return vehicleRepositoryFactory;
+        return queueRepositoryTransportFactory;
     }
 
-    public Sortable<Transport> fillVehicleRepository(int vehicleQuantity) {
+    public Queueable<Transport> fillVehicleQueueRepository(int vehicleQuantity) {
 
-        Sortable<Transport> iTaxiRepository = new TreeRepository<Transport>();
+        Queueable<Transport> iTaxiRepository = new ArrayBasedQueue<>(vehicleQuantity);
         Random random = new Random();
         while (vehicleQuantity > 0) {
             switch (random.nextInt(TaxiSpecialisations.values().length)) {
                 case 0:
-                    iTaxiRepository.add(new Taxi(new PassengerFare(), new ElectricTankType(),
+                    iTaxiRepository.enqueue(new Taxi(new PassengerFare(), new ElectricTankType(),
                             new MoveOnRoads(), vehicleQuantity--, "Tesla", "Model 3",
-                            4, 300,true));
+                            4, 300, true));
                     break;
                 case 1:
-                    iTaxiRepository.add(new CargoTaxi(new CargoFare(), new DieselTankType(),
+                    iTaxiRepository.enqueue(new CargoTaxi(new CargoFare(), new DieselTankType(),
                             new MoveOnRoads(), vehicleQuantity--, "VW", "Transporter",
-                            2, 1400, true,20));
+                            2, 1400, true, 20));
                     break;
             }
         }
         return iTaxiRepository;
     }
 }
+

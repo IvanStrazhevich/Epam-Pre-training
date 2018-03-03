@@ -1,8 +1,10 @@
 package by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces;
 
+import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.interfaces.Repositoryable;
+
 import java.util.Collection;
 
-public interface ITransportRepository<T>  {
+public interface Garageable<T> extends Repositoryable {
 
 
     boolean add(Object element);
@@ -12,8 +14,6 @@ public interface ITransportRepository<T>  {
     boolean addAll(Collection c);
 
     int elementsAtRepository();
-
-    boolean isEmpty();
 
     Object get(int index);
 

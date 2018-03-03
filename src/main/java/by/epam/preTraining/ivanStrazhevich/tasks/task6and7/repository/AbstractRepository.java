@@ -3,7 +3,7 @@ package by.epam.preTraining.ivanStrazhevich.tasks.task6and7.repository;
 import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.exceptions.MaxSizeExceededException;
 import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.interfaces.Repositoryable;
 
-public class AbstractRepository<T> implements Repositoryable<T> {
+public abstract class AbstractRepository<T> implements Repositoryable<T> {
     @Override
     public Object[] extendArray(Object[] extendingArray, int oldLength) {
         int size = ( oldLength ) * 2;

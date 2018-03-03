@@ -8,42 +8,41 @@ import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.iFareType
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.iMovingWays.MoveOnRoads;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.iTankType.DieselTankType;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.iTankType.ElectricTankType;
-import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.IVehicleStackRepositoryFactory;
-import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.interfaces.Stackable;
-import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.repository.ArrayBasedStack;
+import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.Garageable;
+import by.epam.preTraining.ivanStrazhevich.tasks.task5.repository.TransportRepository;
 
 import java.util.Random;
 
-public class VehicleRepositoryForStackFactory<T> implements IVehicleStackRepositoryFactory {
+public class RepositoryTransportFactory implements by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.RepositoryTransportFactory {
 
 
-    private VehicleRepositoryForStackFactory() {
+    private RepositoryTransportFactory() {
     }
 
-    private static VehicleRepositoryForStackFactory vehicleRepositoryForStackFactory;
+    private static RepositoryTransportFactory repositoryTransportFactory;
 
-    public static VehicleRepositoryForStackFactory getVehicleRepositoryForStackFactory() {
-        if (null == vehicleRepositoryForStackFactory) {
-            vehicleRepositoryForStackFactory = new VehicleRepositoryForStackFactory();
+    public static RepositoryTransportFactory getRepositoryTransportFactory() {
+        if (null == repositoryTransportFactory) {
+            repositoryTransportFactory = new RepositoryTransportFactory();
         }
-        return vehicleRepositoryForStackFactory;
+        return repositoryTransportFactory;
     }
 
-    public Stackable<Transport> fillVehicleStackRepository(int vehicleQuantity) {
+    public Garageable<Transport> fillVehicleRepository(int vehicleQuantity) {
 
-        Stackable<Transport> iTaxiRepository = new ArrayBasedStack<>(vehicleQuantity);
+        Garageable iTaxiRepository = new TransportRepository<Transport>(vehicleQuantity);
         Random random = new Random();
         while (vehicleQuantity > 0) {
             switch (random.nextInt(TaxiSpecialisations.values().length)) {
                 case 0:
-                    iTaxiRepository.push(new Taxi(new PassengerFare(), new ElectricTankType(),
+                    iTaxiRepository.add(new Taxi(new PassengerFare(), new ElectricTankType(),
                             new MoveOnRoads(), vehicleQuantity--, "Tesla", "Model 3",
-                            4, 300, true));
+                            4, 300,true));
                     break;
                 case 1:
-                    iTaxiRepository.push(new CargoTaxi(new CargoFare(), new DieselTankType(),
+                    iTaxiRepository.add(new CargoTaxi(new CargoFare(), new DieselTankType(),
                             new MoveOnRoads(), vehicleQuantity--, "VW", "Transporter",
-                            2, 1400, true, 20));
+                            2, 1400, true,20));
                     break;
             }
         }

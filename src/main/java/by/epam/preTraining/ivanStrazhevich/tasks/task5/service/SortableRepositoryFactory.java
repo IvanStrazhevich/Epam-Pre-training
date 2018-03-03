@@ -8,30 +8,30 @@ import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.iFareType
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.iMovingWays.MoveOnRoads;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.iTankType.DieselTankType;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.implementations.iTankType.ElectricTankType;
-import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.ITransportRepository;
-import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.IVehicleRepositoryFactory;
-import by.epam.preTraining.ivanStrazhevich.tasks.task5.repository.TransportRepository;
+import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.SortableTransportRepositoryFactory;
+import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.interfaces.Sortable;
+import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.repository.TreeRepository;
 
 import java.util.Random;
 
-public class VehicleRepositoryFactory implements IVehicleRepositoryFactory {
+public class SortableRepositoryFactory implements SortableTransportRepositoryFactory {
 
 
-    private VehicleRepositoryFactory() {
+    private SortableRepositoryFactory() {
     }
 
-    private static VehicleRepositoryFactory vehicleRepositoryFactory;
+    private static SortableRepositoryFactory vehicleRepositoryFactory;
 
-    public static VehicleRepositoryFactory getVehicleRepositoryFactory() {
+    public static SortableRepositoryFactory getVehicleTreeRepositoryFactory() {
         if (null == vehicleRepositoryFactory) {
-            vehicleRepositoryFactory = new VehicleRepositoryFactory();
+            vehicleRepositoryFactory = new SortableRepositoryFactory();
         }
         return vehicleRepositoryFactory;
     }
 
-    public ITransportRepository<Transport> fillVehicleRepository(int vehicleQuantity) {
+    public Sortable<Transport> fillVehicleRepository(int vehicleQuantity) {
 
-        ITransportRepository iTaxiRepository = new TransportRepository<Transport>(vehicleQuantity);
+        Sortable<Transport> iTaxiRepository = new TreeRepository<Transport>();
         Random random = new Random();
         while (vehicleQuantity > 0) {
             switch (random.nextInt(TaxiSpecialisations.values().length)) {

@@ -1,7 +1,7 @@
 package by.epam.preTraining.ivanStrazhevich.tasks.task6and7;
 
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.entities.Transport;
-import by.epam.preTraining.ivanStrazhevich.tasks.task5.service.VehicleRepositoryForStackFactory;
+import by.epam.preTraining.ivanStrazhevich.tasks.task5.service.StackableTransportRepositoryFactory;
 import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.exceptions.EmptyStackExtendedException;
 import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.exceptions.MaxSizeExceededException;
 import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.interfaces.Stackable;
@@ -18,11 +18,11 @@ public class ListBasedStackTest {
         Stackable<Transport> taxiRepository2 = new ListBasedStack<>(2);
 
         print("Filling with vehicles ");
-        VehicleRepositoryForStackFactory vehicleRepositoryFactory = VehicleRepositoryForStackFactory.getVehicleRepositoryForStackFactory();
+        StackableTransportRepositoryFactory vehicleRepositoryFactory = StackableTransportRepositoryFactory.getVehicleRepositoryForStackFactory();
         taxiRepository2 = vehicleRepositoryFactory.fillVehicleStackRepository(2);
 
         print("Created repository ");
-        print(Arrays.toString(taxiRepository2.getStackOfElements()));
+        print(Arrays.toString(taxiRepository2.getArrayOfElements()));
 
         print("Peeking out the last  element ");
         Transport taxi0 = (Transport) taxiRepository2.peek();
@@ -36,7 +36,7 @@ public class ListBasedStackTest {
         taxiRepository2.push(transport);
         print("Is queue  2 full : " + taxiRepository2.isFull());
         print("Number of vehicles after adding one " + taxiRepository2.size());
-        print(Arrays.toString(taxiRepository2.getStackOfElements()));
+        print(Arrays.toString(taxiRepository2.getArrayOfElements()));
 
 
         print("Check is it empty: " + taxiRepository2.isEmpty());

@@ -1,6 +1,6 @@
 package by.epam.preTraining.ivanStrazhevich.tasks.task6and7.repository;
 
-import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.exceptions.EmptyQueueExceptionExtended;
+import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.exceptions.EmptyQueueExtendedException;
 import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.interfaces.Queueable;
 
 public class ArrayBasedQueue<T> extends AbstractRepository<T> implements Queueable<T> {
@@ -42,8 +42,8 @@ public class ArrayBasedQueue<T> extends AbstractRepository<T> implements Queueab
     public Object dequeue() {
         if (isEmpty()) {
             try {
-                throw new EmptyQueueExceptionExtended("Queue is empty, return null");
-            } catch (EmptyQueueExceptionExtended e) {
+                throw new EmptyQueueExtendedException("Queue is empty, return null");
+            } catch (EmptyQueueExtendedException e) {
                 e.printStackTrace();
                 return null;
             }
@@ -56,13 +56,12 @@ public class ArrayBasedQueue<T> extends AbstractRepository<T> implements Queueab
         }
     }
 
-
     @Override
     public Object peek() {
         if (isEmpty()) {
             try {
-                throw new EmptyQueueExceptionExtended("Queue is empty, return null");
-            } catch (EmptyQueueExceptionExtended e) {
+                throw new EmptyQueueExtendedException("Queue is empty, return null");
+            } catch (EmptyQueueExtendedException e) {
                 e.printStackTrace();
                 return null;
             }
@@ -85,7 +84,6 @@ public class ArrayBasedQueue<T> extends AbstractRepository<T> implements Queueab
         return i;
     }
 
-
     @Override
     public boolean isEmpty() {
         return size() == 0;
@@ -96,6 +94,7 @@ public class ArrayBasedQueue<T> extends AbstractRepository<T> implements Queueab
         return size() == queueOfElements.length;
     }
 
+    @Override
     public Object[] getArrayOfElements() {
         return queueOfElements;
     }

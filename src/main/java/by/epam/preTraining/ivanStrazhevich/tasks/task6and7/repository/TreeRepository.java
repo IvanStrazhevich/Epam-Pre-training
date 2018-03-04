@@ -155,10 +155,10 @@ public class TreeRepository<T extends Comparable<T>> extends TransportRepository
     @Override
     public boolean add(Object element) {
         if (root == null) {
-            root = new Node(root, (T) element);
+            root = new Node((T) element);
             count++;
         } else {
-            root.addNode(root, (T) element);
+            root.addNode((T) element);
             count++;
         }
         return true;
@@ -217,39 +217,40 @@ public class TreeRepository<T extends Comparable<T>> extends TransportRepository
         if (root != null) {
             return showElements(root);
         } else {
-            Object[] line = {"There is no elements"};
-            return line;
+            try {
+                throw new NoSuchNodeException("There is no elements");
+            } catch (NoSuchNodeException e) {
+                e.printStackTrace();
+                return new Object[0];
+            }
         }
     }
 
     public static class Node<E extends Comparable<E>> {
         E value;
-        private int nodesNumber;
         private Node<E> left;
         private Node<E> right;
-        private Node<E> parent;
 
-        public Node(Node node, E value) {
-            this.parent = node;
+        public Node(E value) {
+
             this.value = value;
         }
 
-        private void addNode(Node node, E element) {
+        private void addNode(E element) {
             if (element.compareTo(value) > 0) {
                 if (right == null) {
-                    right = new Node<>(node, element);
+                    right = new Node<>(element);
                 } else {
-                    right.addNode(right, element);
+                    right.addNode(element);
                 }
             } else {
                 if (left == null) {
-                    left = new Node<>(node, element);
+                    left = new Node<>(element);
                 } else {
-                    left.addNode(left, element);
+                    left.addNode(element);
                 }
             }
         }
-
     }
 }
 

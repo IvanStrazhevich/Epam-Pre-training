@@ -4,7 +4,7 @@ import by.epam.preTraining.ivanStrazhevich.tasks.task5.entities.CargoTaxi;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.entities.Taxi;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.entities.Transport;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.service.QueueRepositoryTransportFactory;
-import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.exceptions.EmptyQueueExceptionExtended;
+import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.exceptions.EmptyQueueExtendedException;
 import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.exceptions.MaxSizeExceededException;
 import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.interfaces.Queueable;
 import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.repository.ArrayBasedQueue;
@@ -14,7 +14,7 @@ import java.util.Arrays;
 import static by.epam.preTraining.ivanStrazhevich.tasks.task5.view.Viewer.print;
 
 public class ArrayBasedQueueTest {
-    public static void main(String[] args) throws EmptyQueueExceptionExtended, MaxSizeExceededException {
+    public static void main(String[] args) throws EmptyQueueExtendedException, MaxSizeExceededException {
 
 
         print("Creating QUEUE repository: ");

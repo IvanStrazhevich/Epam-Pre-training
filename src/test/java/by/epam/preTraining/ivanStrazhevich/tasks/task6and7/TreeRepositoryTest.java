@@ -40,13 +40,13 @@ public class TreeRepositoryTest {
         Viewer.print(Arrays.toString(treeRepository.showOrderedElementsArray()));
 
         Viewer.print(Arrays.toString(treeRepository3.showOrderedElementsArray()));
-        Viewer.print("has 9 " + treeRepository3.contains(9));
+        Viewer.print("has 7 " + treeRepository3.contains(7));
 
         treeRepository3.removeElement(3);
         Viewer.print(Arrays.toString(treeRepository3.showOrderedElementsArray()));
         Viewer.print("nodes in repository " + treeRepository3.count());
 
-        treeRepository3.removeElement(4);
+        treeRepository3.removeElement(9);
         Viewer.print(Arrays.toString(treeRepository3.showOrderedElementsArray()));
         Viewer.print("nodes in repository " + treeRepository3.count());
 

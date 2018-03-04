@@ -4,6 +4,7 @@ import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.exceptions.MaxSizeExc
 import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.interfaces.Repositoryable;
 
 public abstract class AbstractRepository<T> implements Repositoryable<T> {
+
     @Override
     public Object[] extendArray(Object[] extendingArray, int oldLength) {
         int size = ( oldLength ) * 2;

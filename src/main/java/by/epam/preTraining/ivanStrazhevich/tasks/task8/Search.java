@@ -2,8 +2,8 @@ package by.epam.preTraining.ivanStrazhevich.tasks.task8;
 
 import java.util.Arrays;
 
-public class Search {
-    public static boolean linerSearch(Object element, Object[] array) {
+public class Search<T> {
+    public boolean linerSearch(T element, Object[] array) {
         boolean b = false;
         for (Object o : array
                 ) {
@@ -17,10 +17,11 @@ public class Search {
         return b;
     }
 
-    public static boolean binarySearch(Object element, Object[] array) {
+    public boolean binarySearch(T element, Object[] array) {
         boolean b = false;
         if (array.length == 1) {
-            if (array[0].equals(element)) {
+            if (array[0] != null &&
+                    array[0].equals(element)) {
                 b = true;
                 return b;
             } else {

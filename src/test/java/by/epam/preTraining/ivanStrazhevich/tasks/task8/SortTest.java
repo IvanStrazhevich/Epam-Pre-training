@@ -52,20 +52,6 @@ public class SortTest {
         finish = System.nanoTime();
         long merge = finish - start;
 
-        print("Liner search:");
-        garage = transportFactory.fillVehicleRepository(25);
-        start = System.nanoTime();
-        print(search.linerSearch(transport, garage.getRepository()));
-        finish = System.nanoTime();
-        long liner = finish - start;
-
-        print("Binary search:");
-        garage = transportFactory.fillVehicleRepository(25);
-        start = System.nanoTime();
-        print(search.binarySearch(transport, garage.getRepository()));
-        finish = System.nanoTime();
-        long binary = finish - start;
-
         print("Quick sort:");
         garage = transportFactory.fillVehicleRepository(25);
         print(Arrays.toString(garage.getRepository()));
@@ -73,6 +59,24 @@ public class SortTest {
         print(Arrays.toString(sort.sortQuick(garage.getRepository())));
         finish = System.nanoTime();
         long quick = finish - start;
+
+        print("Liner search:");
+        garage = transportFactory.fillVehicleRepository(25);
+        transport = (Transport) garage.get(5);
+        start = System.nanoTime();
+        print("found " + search.linerSearch(transport, garage.getRepository()));
+        finish = System.nanoTime();
+        long liner = finish - start;
+
+        print("Binary search:");
+        garage = transportFactory.fillVehicleRepository(25);
+        transport = (Transport) garage.get(5);
+        start = System.nanoTime();
+        print("found " + search.binarySearch(transport, garage.getRepository()));
+        finish = System.nanoTime();
+        long binary = finish - start;
+
+
 
         print("Bubble sort took ns: " + ( buble ));
         print("Insert sort took ns: " + ( insert ));

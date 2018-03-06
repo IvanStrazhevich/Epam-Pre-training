@@ -22,41 +22,41 @@ public class SortTest {
 
         print("Bubble sort:");
         garage = transportFactory.fillVehicleRepository(25);
-        print(Arrays.toString(garage.getRepository()));
+        print(Arrays.toString(garage.getArrayOfElements()));
         long start = System.nanoTime();
-        print(Arrays.toString(sort.sortBubble(garage.getRepository())));
+        print(Arrays.toString(sort.sortBubble((Transport[]) garage.getArrayOfElements())));
         long finish = System.nanoTime();
         long buble = finish - start;
 
         print("Insert sort:");
         garage = transportFactory.fillVehicleRepository(25);
-        print(Arrays.toString(garage.getRepository()));
+        print(Arrays.toString(garage.getArrayOfElements()));
         start = System.nanoTime();
-        print(Arrays.toString(sort.sortInsert(garage.getRepository())));
+        print(Arrays.toString(sort.sortInsert((Transport[]) garage.getArrayOfElements())));
         finish = System.nanoTime();
         long insert = finish - start;
 
         print("Choice sort:");
         garage = transportFactory.fillVehicleRepository(25);
-        print(Arrays.toString(garage.getRepository()));
+        print(Arrays.toString(garage.getArrayOfElements()));
         start = System.nanoTime();
-        print(Arrays.toString(sort.sortChoice(garage.getRepository())));
+        print(Arrays.toString(sort.sortChoice((Transport[]) garage.getArrayOfElements())));
         finish = System.nanoTime();
         long choice = finish - start;
 
         print("Merge sort:");
         garage = transportFactory.fillVehicleRepository(25);
-        print(Arrays.toString(garage.getRepository()));
+        print(Arrays.toString(garage.getArrayOfElements()));
         start = System.nanoTime();
-        print(Arrays.toString(sort.sortMerge(garage.getRepository())));
+        print(Arrays.toString(sort.sortMerge((Transport[]) garage.getArrayOfElements())));
         finish = System.nanoTime();
         long merge = finish - start;
 
         print("Quick sort:");
         garage = transportFactory.fillVehicleRepository(25);
-        print(Arrays.toString(garage.getRepository()));
+        print(Arrays.toString(garage.getArrayOfElements()));
         start = System.nanoTime();
-        print(Arrays.toString(sort.sortQuick(garage.getRepository())));
+        print(Arrays.toString(sort.sortQuick((Transport[]) garage.getArrayOfElements())));
         finish = System.nanoTime();
         long quick = finish - start;
 
@@ -64,7 +64,7 @@ public class SortTest {
         garage = transportFactory.fillVehicleRepository(25);
         transport = (Transport) garage.get(5);
         start = System.nanoTime();
-        print("found " + search.linerSearch(transport, garage.getRepository()));
+        print("found " + search.linerSearch(transport, garage.getArrayOfElements()));
         finish = System.nanoTime();
         long liner = finish - start;
 
@@ -72,7 +72,7 @@ public class SortTest {
         garage = transportFactory.fillVehicleRepository(25);
         transport = (Transport) garage.get(5);
         start = System.nanoTime();
-        print("found " + search.binarySearch(transport, garage.getRepository()));
+        print("found " + search.binarySearch(transport, garage.getArrayOfElements()));
         finish = System.nanoTime();
         long binary = finish - start;
 

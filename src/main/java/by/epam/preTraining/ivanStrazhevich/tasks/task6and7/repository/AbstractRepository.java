@@ -1,43 +1,44 @@
 package by.epam.preTraining.ivanStrazhevich.tasks.task6and7.repository;
 
+import by.epam.preTraining.ivanStrazhevich.tasks.task5.entities.Transport;
 import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.exceptions.MaxSizeExceededException;
 import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.interfaces.Repositoryable;
 
 public abstract class AbstractRepository<T> implements Repositoryable<T> {
 
     @Override
-    public Object[] extendArray(Object[] extendingArray, int oldLength) {
+    public T[] extendArray(T[] extendingArray, int oldLength) {
         int size = ( oldLength ) * 2;
         int j = 0;
-        Object[] arrayExtended = new Object[size];
-        for (Object oldArrayElement : extendingArray
+        Transport[] arrayExtended = new Transport[size];
+        for (T oldArrayElement : extendingArray
                 ) {
-            arrayExtended[j++] = oldArrayElement;
+            arrayExtended[j++] = (Transport) oldArrayElement;
         }
-        return arrayExtended;
+        return (T[]) arrayExtended;
     }
 
     @Override
-    public Object[] addToArray(Object element, Object[] array, boolean resizable) {
+    public T[] addToArray(T element, T[] array, boolean resizable) {
         int i = 0;
-        for (Object existElement : array
+        for (T existElement : array
                 ) {
             if (existElement != null) {
                 i++;
             } else if (array.length - 1 == i && resizable) {
-                array = extendArray(array, array.length);
-                array[i] = element;
+                array = (T[]) extendArray(array, array.length);
+                array[i] = (T) element;
             } else if (i == array.length - 1 && !resizable) {
                 try {
-                    array[i] = element;
+                    array[i] = (T) element;
                     throw new MaxSizeExceededException("Stack is full and not resizable");
                 } catch (MaxSizeExceededException ex) {
                     ex.printStackTrace();
                 }
             } else {
-                array[i] = element;
+                array[i] = (T) element;
             }
         }
-        return array;
+        return (T[]) array;
     }
 }

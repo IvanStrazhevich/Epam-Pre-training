@@ -4,7 +4,7 @@ import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.exceptions.EmptyQueue
 import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.interfaces.Queueable;
 
 public class ArrayBasedQueue<T> extends AbstractRepository<T> implements Queueable<T> {
-    protected Object[] queueOfElements;
+    protected T[] queueOfElements;
     protected int queueSize;
     protected int incrementSize;
     protected boolean resizable;
@@ -14,7 +14,7 @@ public class ArrayBasedQueue<T> extends AbstractRepository<T> implements Queueab
             throw new IllegalArgumentException("Illegal Capacity: " +
                     size);
         }
-        this.queueOfElements = new Object[size];
+        this.queueOfElements = (T[]) new Object[size];
         this.queueSize = size;
         this.incrementSize = 2;
         this.resizable = resizable;
@@ -25,7 +25,7 @@ public class ArrayBasedQueue<T> extends AbstractRepository<T> implements Queueab
             throw new IllegalArgumentException("Illegal Capacity: " +
                     size);
         }
-        this.queueOfElements = new Object[size];
+        this.queueOfElements = (T[]) new Object[size];
         this.queueSize = size;
         this.incrementSize = 2;
         this.resizable = true;
@@ -34,7 +34,7 @@ public class ArrayBasedQueue<T> extends AbstractRepository<T> implements Queueab
 
     @Override
     public boolean enqueue(Object element) {
-        queueOfElements = addToArray(element, queueOfElements, resizable);
+        queueOfElements = addToArray((T) element, queueOfElements, resizable);
         return true;
     }
 

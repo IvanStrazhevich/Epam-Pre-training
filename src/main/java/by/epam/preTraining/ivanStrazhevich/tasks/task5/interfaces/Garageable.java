@@ -4,7 +4,7 @@ import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.interfaces.Repository
 
 import java.util.Collection;
 
-public interface Garageable<T> extends Repositoryable {
+public interface Garageable<T> extends Repositoryable<T> {
 
 
     boolean add(Object element);
@@ -27,6 +27,5 @@ public interface Garageable<T> extends Repositoryable {
 
     boolean containsAll(Collection c);
 
-    Object [] getRepository();
 
 }

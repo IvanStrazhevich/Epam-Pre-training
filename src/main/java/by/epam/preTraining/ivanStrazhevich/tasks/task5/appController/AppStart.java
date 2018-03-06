@@ -66,24 +66,24 @@ public class AppStart {
         print("Finding out if there is an element " + taxiRepository.contains(taxi1));
         print("Number of vehicles before merging " + taxiRepository2.elementsAtRepository());
         print("Second repository before merging:   "
-                + Arrays.toString(taxiRepository2.getRepository()));
-        taxiRepository2.addAll(taxiRepository.getRepository());
+                + Arrays.toString(taxiRepository2.getArrayOfElements()));
+        taxiRepository2.addAll(taxiRepository.getArrayOfElements());
         print("First repository after merging:   "
-                + Arrays.toString(taxiRepository.getRepository()));
+                + Arrays.toString(taxiRepository.getArrayOfElements()));
         print("Second repository after merging:   "
-                + Arrays.toString(taxiRepository2.getRepository()));
+                + Arrays.toString(taxiRepository2.getArrayOfElements()));
         print("Number of vehicles after merging " + taxiRepository2.elementsAtRepository());
         print("If there are all elements of the first repository contains in merged one : "
-                + taxiRepository2.containsAll(taxiRepository.getRepository()));
+                + taxiRepository2.containsAll(taxiRepository.getArrayOfElements()));
         print("Number of vehicles before removing one " + taxiRepository2.elementsAtRepository());
         print("Removing one: ");
         taxiRepository2.remove(7);
         print("Number of vehicles after removing one " + taxiRepository2.elementsAtRepository());
         print("If there are all elements of the first repository contains in merged one : "
-                + taxiRepository2.containsAll(taxiRepository.getRepository()));
+                + taxiRepository2.containsAll(taxiRepository.getArrayOfElements()));
 
         print("Select all that have electric tank: "
-                + Arrays.toString(transportService.findByTankType(new ElectricTankType(), taxiRepository).getRepository()));
+                + Arrays.toString(transportService.findByTankType(new ElectricTankType(), taxiRepository).getArrayOfElements()));
 
         print("Removing all: ");
         taxiRepository2.removeAll();

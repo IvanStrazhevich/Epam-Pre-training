@@ -1,15 +1,16 @@
 package by.epam.preTraining.ivanStrazhevich.tasks.task5.repository;
 
+import by.epam.preTraining.ivanStrazhevich.tasks.task5.entities.Transport;
 import by.epam.preTraining.ivanStrazhevich.tasks.task5.interfaces.Garageable;
 import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.repository.ArrayBasedStack;
 
 import java.util.Collection;
 
-public class TransportRepository<T> extends ArrayBasedStack implements Garageable<T> {
+public class TransportRepository<T> extends ArrayBasedStack<T> implements Garageable<T> {
 
-    protected Object[] vehicleRepository;
+    protected Transport[] vehicleRepository;
 
-    public TransportRepository(Object[] vehicleRepository) {
+    public TransportRepository(Transport[] vehicleRepository) {
         this.vehicleRepository = vehicleRepository;
     }
 
@@ -17,7 +18,7 @@ public class TransportRepository<T> extends ArrayBasedStack implements Garageabl
         if (size < 0)
             throw new IllegalArgumentException("Illegal Capacity: " +
                     size);
-        this.vehicleRepository = new Object[size];
+        this.vehicleRepository = new Transport[size];
     }
 
     public TransportRepository() {
@@ -50,16 +51,16 @@ public class TransportRepository<T> extends ArrayBasedStack implements Garageabl
     @Override
     public boolean add(Object element) {
         int i = 0;
-        for (Object existElement : vehicleRepository
+        for (Transport existElement : vehicleRepository
                 ) {
             if (existElement != null) {
                 i++;
             } else if (vehicleRepository.length - 1 == i) {
-                vehicleRepository[i] = element;
-                vehicleRepository = extendArray(vehicleRepository, vehicleRepository.length);
+                vehicleRepository[i] = (Transport) element;
+                vehicleRepository = (Transport[]) extendArray((T[]) vehicleRepository, vehicleRepository.length);
                 return true;
             } else {
-                vehicleRepository[i] = element;
+                vehicleRepository[i] = (Transport) element;
                 return true;
             }
         }
@@ -75,11 +76,11 @@ public class TransportRepository<T> extends ArrayBasedStack implements Garageabl
             if (to != null) {
                 i++;
             } else if (vehicleRepository.length - 1 - i + arrayFrom.length > vehicleRepository.length) {
-                vehicleRepository = extendArray(vehicleRepository, vehicleRepository.length);
+                vehicleRepository = (Transport[]) extendArray((T[]) vehicleRepository, vehicleRepository.length);
                 for (Object from : arrayFrom
                         ) {
                     if (from != null) {
-                        vehicleRepository[i++] = from;
+                        vehicleRepository[i++] = (Transport) from;
                         j++;
                     }
                 }
@@ -88,7 +89,7 @@ public class TransportRepository<T> extends ArrayBasedStack implements Garageabl
                 for (Object from : arrayFrom
                         ) {
                     if (from != null) {
-                        vehicleRepository[i++] = from;
+                        vehicleRepository[i++] = (Transport) from;
                         j++;
                     }
                 }
@@ -165,7 +166,8 @@ public class TransportRepository<T> extends ArrayBasedStack implements Garageabl
         return containsAll(cCopy);
     }
 
-    public Object[] getRepository() {
+    @Override
+    public Object[] getArrayOfElements() {
         return vehicleRepository;
     }
 

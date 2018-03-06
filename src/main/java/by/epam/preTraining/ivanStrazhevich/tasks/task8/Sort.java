@@ -6,14 +6,14 @@ import java.util.Arrays;
 public class Sort<T extends Comparable> {
 
     //O(n) best O(n*n) worst
-    public Object[] sortBubble(Object[] array) {
+    public T[] sortBubble(T[] array) {
         boolean swapped = true;
         while (swapped) {
             swapped = false;
             for (int i = 1; i < array.length; i++) {
                 if (array[i] != null && array[i - 1] != null) {
-                    if (array[i - 1].hashCode() > ( array[i] ).hashCode()) {
-                        Object temp = array[i];
+                    if (array[i - 1].compareTo(array[i]) > 0) {
+                        T temp = array[i];
                         array[i] = array[i - 1];
                         array[i - 1] = temp;
                         swapped = true;
@@ -25,11 +25,11 @@ public class Sort<T extends Comparable> {
     }
 
     //O(n) best O(n*n) worst
-    public Object[] sortInsert(Object[] array) {
+    public T[] sortInsert(T[] array) {
         int sortedRangeEndIndex = 1;
         while (sortedRangeEndIndex < array.length) {
             if (array[sortedRangeEndIndex] != null) {
-                if (array[sortedRangeEndIndex].hashCode() < array[sortedRangeEndIndex - 1].hashCode()) {
+                if (array[sortedRangeEndIndex].compareTo(array[sortedRangeEndIndex - 1]) < 0) {
                     int insertIndex = findInsertionIndex(array, array[sortedRangeEndIndex]);
                     insert(array, insertIndex, sortedRangeEndIndex);
                 }
@@ -39,18 +39,18 @@ public class Sort<T extends Comparable> {
         return array;
     }
 
-    private int findInsertionIndex(Object[] array, Object valueToInsert) {
+    private int findInsertionIndex(T[] array, T valueToInsert) {
         for (int index = 0; index < array.length; index++) {
-            if (array[index].hashCode() > valueToInsert.hashCode()) {
+            if (array[index].compareTo(valueToInsert) > 0) {
                 return index;
             }
         }
         return array.length - 1;
     }
 
-    private void insert(Object[] array, int indexInsertingAt, int indexInsertingFrom) {
+    private void insert(T[] array, int indexInsertingAt, int indexInsertingFrom) {
 
-        Object temp = array[indexInsertingAt];
+        T temp = array[indexInsertingAt];
         array[indexInsertingAt] = array[indexInsertingFrom];
         for (int current = indexInsertingFrom; current > indexInsertingAt; current--) {
             array[current] = array[current - 1];
@@ -59,12 +59,12 @@ public class Sort<T extends Comparable> {
     }
 
     //O(n) best O(n*n) worst
-    public Object[] sortChoice(Object[] array) {
+    public T[] sortChoice(T[] array) {
         int sortedRangeEnd = 0;
 
         while (sortedRangeEnd < array.length) {
             int nextIndex = findIndexOfSmallestFromIndex(array, sortedRangeEnd);
-            Object temp = array[sortedRangeEnd];
+            T temp = array[sortedRangeEnd];
             array[sortedRangeEnd] = array[nextIndex];
             array[nextIndex] = temp;
             sortedRangeEnd++;
@@ -72,13 +72,13 @@ public class Sort<T extends Comparable> {
         return array;
     }
 
-    private int findIndexOfSmallestFromIndex(Object[] array, int sortedRangeEnd) {
-        Object currentSmallest = array[sortedRangeEnd];
+    private int findIndexOfSmallestFromIndex(T[] array, int sortedRangeEnd) {
+        T currentSmallest = array[sortedRangeEnd];
         int currentSmallestIndex = sortedRangeEnd;
 
         for (int i = sortedRangeEnd + 1; i < array.length; i++) {
             if (currentSmallest != null && array[i] != null) {
-                if (currentSmallest.hashCode() > ( array[i].hashCode() )) {
+                if (currentSmallest.compareTo(array[i]) > 0) {
                     currentSmallest = array[i];
                     currentSmallestIndex = i;
                 }
@@ -88,44 +88,41 @@ public class Sort<T extends Comparable> {
     }
 
     //O(n.log(n)) anyway
-    public Object[] sortMerge(Object[] array) {
+    public T[] sortMerge(T[] array) {
         if (array.length == 1) {
             return array;
         } else {
             int leftSize = array.length / 2;
-            Object[] left = Arrays.copyOfRange(array, 0, leftSize);
-            Object[] right = Arrays.copyOfRange(array, leftSize, array.length);
-            return merge(sortMerge(left), sortMerge(right));
+            T[] left = Arrays.copyOfRange(array, 0, leftSize);
+            T[] right = Arrays.copyOfRange(array, leftSize, array.length);
+            return merge(array, sortMerge(left), sortMerge(right));
         }
     }
 
-    private Object[] merge(Object[] left, Object[] right) {
-        Object[] items = new Object[( left.length + right.length )];
+    private T[] merge(T[] array, T[] left, T[] right) {
         int leftIndex = 0;
         int rightIndex = 0;
         int targetIndex = 0;
         int remaining = left.length + right.length;
         while (remaining > 0) {
-
             if (leftIndex >= left.length) {
-                items[targetIndex] = right[rightIndex++];
+                array[targetIndex] = right[rightIndex++];
             } else if (rightIndex >= right.length) {
-                items[targetIndex] = left[leftIndex++];
+                array[targetIndex] = left[leftIndex++];
             } else if (left[leftIndex] != null && right[rightIndex] != null
-                    && left[leftIndex].hashCode() < right[rightIndex].hashCode()) {
-                items[targetIndex] = left[leftIndex++];
+                    && left[leftIndex].compareTo(right[rightIndex]) < 0) {
+                array[targetIndex] = left[leftIndex++];
             } else {
-                items[targetIndex] = right[rightIndex++];
+                array[targetIndex] = right[rightIndex++];
             }
             targetIndex++;
             remaining--;
-
         }
-        return items;
+        return array;
     }
 
     // O(.n*log(n)) best, O(n*n) worst
-    public Object[] sortQuick(Object[] array) {
+    public T[] sortQuick(T[] array) {
         return doSort(array, 0, array.length - 1);
     }
 
@@ -134,24 +131,24 @@ public class Sort<T extends Comparable> {
         return (int) ( Math.random() * ++max ) + min;
     }
 
-    private Object[] doSort(Object[] items, int left, int right) {
+    private T[] doSort(T[] array, int left, int right) {
         if (left < right) {
-            int newRnd = divide(items, left, right, randomRange(left, right));
-            items = doSort(items, left, newRnd - 1);
-            items = doSort(items, newRnd + 1, right);
+            int newRnd = divide(array, left, right, randomRange(left, right));
+            array = doSort(array, left, newRnd - 1);
+            array = doSort(array, newRnd + 1, right);
         }
-        return items;
+        return array;
     }
 
-    private int divide(Object[] array, int left, int right, int rndIndex) {
-        Object rndValue = array[rndIndex];
-        Object temp = array[rndIndex];
+    private int divide(T[] array, int left, int right, int rndIndex) {
+        T rndValue = array[rndIndex];
+        T temp = array[rndIndex];
         array[rndIndex] = array[right];
         array[right] = temp;
         int storeIndex = left;
         for (int i = left; i < right; i++) {
             if (array[i] != null && rndValue != null
-                    && array[i].hashCode() < ( rndValue ).hashCode()){
+                    && array[i].compareTo(rndValue) < 0) {
                 temp = array[i];
                 array[i] = array[storeIndex];
                 array[storeIndex] = temp;

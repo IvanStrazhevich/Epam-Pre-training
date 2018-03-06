@@ -6,7 +6,7 @@ import by.epam.preTraining.ivanStrazhevich.tasks.task6and7.interfaces.Stackable;
 public class ArrayBasedStack<T> extends AbstractRepository<T> implements Stackable<T> {
 
 
-    protected Object[] stackOfElements;
+    protected T[] stackOfElements;
     protected int stackSize;
     protected int incrementSize;
     protected boolean resizable;
@@ -16,7 +16,7 @@ public class ArrayBasedStack<T> extends AbstractRepository<T> implements Stackab
             throw new IllegalArgumentException("Illegal Capacity: " +
                     size);
         }
-        this.stackOfElements = new Object[size];
+        this.stackOfElements = (T[]) new Object[size];
         this.stackSize = size;
         this.resizable = resizable;
         this.incrementSize = 2;
@@ -27,7 +27,7 @@ public class ArrayBasedStack<T> extends AbstractRepository<T> implements Stackab
             throw new IllegalArgumentException("Illegal Capacity: " +
                     size);
         }
-        this.stackOfElements = new Object[size];
+        this.stackOfElements = (T[]) new Object[size];
         this.stackSize = size;
         this.resizable = true;
         this.incrementSize = 2;
@@ -38,7 +38,7 @@ public class ArrayBasedStack<T> extends AbstractRepository<T> implements Stackab
 
     @Override
     public boolean push(Object element) {
-        stackOfElements = addToArray(element, stackOfElements, resizable);
+        stackOfElements = addToArray((T) element, stackOfElements, resizable);
         return true;
     }
 

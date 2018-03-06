@@ -31,63 +31,64 @@ public class SortTest {
         print("Insert sort:");
         garage = transportFactory.fillVehicleRepository(25);
         print(Arrays.toString(garage.getArrayOfElements()));
-        start = System.nanoTime();
+        long start1 = System.nanoTime();
         print(Arrays.toString(sort.sortInsert((Transport[]) garage.getArrayOfElements())));
-        finish = System.nanoTime();
-        long insert = finish - start;
+        long finish1 = System.nanoTime();
+        long insert = finish1 - start1;
 
         print("Choice sort:");
         garage = transportFactory.fillVehicleRepository(25);
         print(Arrays.toString(garage.getArrayOfElements()));
-        start = System.nanoTime();
+        long start2 = System.nanoTime();
         print(Arrays.toString(sort.sortChoice((Transport[]) garage.getArrayOfElements())));
-        finish = System.nanoTime();
-        long choice = finish - start;
+        long finish2 = System.nanoTime();
+        long choice = finish2 - start2;
 
         print("Merge sort:");
         garage = transportFactory.fillVehicleRepository(25);
         print(Arrays.toString(garage.getArrayOfElements()));
-        start = System.nanoTime();
+        long start3 = System.nanoTime();
         print(Arrays.toString(sort.sortMerge((Transport[]) garage.getArrayOfElements())));
-        finish = System.nanoTime();
-        long merge = finish - start;
+        long finish3 = System.nanoTime();
+        long merge = finish3 - start3;
 
         print("Quick sort:");
         garage = transportFactory.fillVehicleRepository(25);
         print(Arrays.toString(garage.getArrayOfElements()));
-        start = System.nanoTime();
+        long start4 = System.nanoTime();
         print(Arrays.toString(sort.sortQuick((Transport[]) garage.getArrayOfElements())));
-        finish = System.nanoTime();
-        long quick = finish - start;
+        long finish4 = System.nanoTime();
+        long quick = finish4 - start4;
 
+        print("Binary search false:");
+        Garageable<Transport> garage4 = transportFactory.fillVehicleRepository(25);
+        Transport transport4 = new Transport();
+        long start5 = System.nanoTime();
+        print("found " + search.binarySearch(transport4, (Transport[]) garage4.getArrayOfElements()));
+        long finish5 = System.nanoTime();
+        long binaryFalse = finish5 - start5;
+
+        print("Binary search true:");
+        Garageable<Transport> garage5 = transportFactory.fillVehicleRepository(25);
+        Transport transport5 = (Transport) garage5.get(12);
+        long start6 = System.nanoTime();
+        print("found " + search.binarySearch(transport5, (Transport[]) garage5.getArrayOfElements()));
+        long finish6 = System.nanoTime();
+        long binaryTrue = finish6 - start6;
         print("Liner search:");
         garage = transportFactory.fillVehicleRepository(25);
         transport = new Transport();
-        start = System.nanoTime();
+        long start7 = System.nanoTime();
         print("found " + search.linerSearch(transport, (Transport[]) garage.getArrayOfElements()));
-        finish = System.nanoTime();
-        long linerFalse = finish - start;
-        transport = (Transport) garage.get(5);
-        start = System.nanoTime();
+        long finish7 = System.nanoTime();
+        long linerFalse = finish7 - start7;
+        transport = (Transport) garage.get(12);
+        long start8 = System.nanoTime();
         print("found " + search.linerSearch(transport, (Transport[]) garage.getArrayOfElements()));
-        finish = System.nanoTime();
-        long linerTrue = finish - start;
+        long finish8 = System.nanoTime();
+        long linerTrue = finish8 - start8;
 
-        print("Binary search false:");
-        Garageable<Transport> garage4 = transportFactory.fillVehicleRepository(26);
-        Transport transport4 = new Transport();
-        start = System.nanoTime();
-        print("found " + search.binarySearch(transport4, (Transport[]) garage4.getArrayOfElements()));
-        finish = System.nanoTime();
-        long binaryFalse = finish - start;
 
-        print("Binary search true:");
-        Garageable<Transport> garage5 = transportFactory.fillVehicleRepository(26);
-        Transport transport5 = (Transport) garage5.get(7);
-        start = System.nanoTime();
-        print("found " + search.binarySearch(transport5, (Transport[]) garage5.getArrayOfElements()));
-        finish = System.nanoTime();
-        long binaryTrue = finish - start;
 
         print("Bubble sort took ns: " + ( buble ));
         print("Insert sort took ns: " + ( insert ));

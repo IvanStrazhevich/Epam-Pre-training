@@ -74,16 +74,18 @@ public class SortTest {
         long linerTrue = finish - start;
 
         print("Binary search false:");
-        garage = transportFactory.fillVehicleRepository(25);
-        transport = new Transport();
+        Garageable<Transport> garage4 = transportFactory.fillVehicleRepository(26);
+        Transport transport4 = new Transport();
         start = System.nanoTime();
-        print("found " + search.binarySearch(transport, (Transport[]) garage.getArrayOfElements()));
+        print("found " + search.binarySearch(transport4, (Transport[]) garage4.getArrayOfElements()));
         finish = System.nanoTime();
         long binaryFalse = finish - start;
+
         print("Binary search true:");
-        transport = (Transport) garage.get(5);
+        Garageable<Transport> garage5 = transportFactory.fillVehicleRepository(26);
+        Transport transport5 = (Transport) garage5.get(7);
         start = System.nanoTime();
-        print("found " + search.binarySearch(transport, (Transport[]) garage.getArrayOfElements()));
+        print("found " + search.binarySearch(transport5, (Transport[]) garage5.getArrayOfElements()));
         finish = System.nanoTime();
         long binaryTrue = finish - start;
 

@@ -27,30 +27,26 @@ public class Search<T extends Comparable<T>> {
         if (array[halfLength] != null &&
                 array[halfLength].compareTo(element) < 0) {
             array = Arrays.copyOfRange(array, halfLength, array.length);
-            System.out.println("left" + array.length);
             return doSearch(element, array);
         } else if (array[halfLength] != null &&
                 array[halfLength].compareTo(element) > 0) {
             array = Arrays.copyOfRange(array, 0, halfLength);
-            System.out.println("right" + array.length);
             return doSearch(element, array);
-        } else if (array[halfLength] != null && halfLength > 1 &&
+        } else if (array[halfLength] != null && halfLength >= 1 &&
                 array[halfLength].compareTo(element) == 0) {
-            System.out.println("found" + true);
             return true;
-        } else if (array[halfLength - 1] != null &&
+        } else if (halfLength != 0 && array[halfLength - 1] != null &&
                 array[halfLength - 1].compareTo(element) == 0
                 || array[halfLength] != null && array[halfLength].compareTo(element) == 0) {
             return true;
         } else {
-            System.out.println("not found" + false);
             return false;
         }
     }
 
     private T[] sort(T[] array) {
         Sort sort = new Sort();
-        return (T[]) sort.sortQuick(array);
+        return (T[]) sort.sortMerge(array);
     }
 }
 

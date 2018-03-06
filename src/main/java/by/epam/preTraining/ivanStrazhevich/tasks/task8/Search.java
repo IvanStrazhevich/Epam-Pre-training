@@ -2,8 +2,8 @@ package by.epam.preTraining.ivanStrazhevich.tasks.task8;
 
 import java.util.Arrays;
 
-public class Search<T> {
-    public boolean linerSearch(T element, Object[] array) {
+public class Search<T extends Comparable<T>> {
+    public boolean linerSearch(T element, T[] array) {
         boolean b = false;
         for (Object o : array
                 ) {
@@ -17,28 +17,40 @@ public class Search<T> {
         return b;
     }
 
-    public boolean binarySearch(T element, Object[] array) {
-        boolean b = false;
-        if (array.length == 1) {
-            if (array[0] != null &&
-                    array[0].equals(element)) {
-                b = true;
-                return b;
-            } else {
-                return b;
-            }
+    public boolean binarySearch(T element, T[] array) {
+        array = sort(array);
+        return doSearch(element, array);
+    }
+
+    private boolean doSearch(T element, T[] array) {
+        int halfLength = array.length / 2;
+        if (array[halfLength] != null &&
+                array[halfLength].compareTo(element) < 0) {
+            array = Arrays.copyOfRange(array, halfLength, array.length);
+            System.out.println("left" + array.length);
+            return doSearch(element, array);
+        } else if (array[halfLength] != null &&
+                array[halfLength].compareTo(element) > 0) {
+            array = Arrays.copyOfRange(array, 0, halfLength);
+            System.out.println("right" + array.length);
+            return doSearch(element, array);
+        } else if (array[halfLength] != null && halfLength > 1 &&
+                array[halfLength].compareTo(element) == 0) {
+            System.out.println("found" + true);
+            return true;
+        } else if (array[halfLength - 1] != null &&
+                array[halfLength - 1].compareTo(element) == 0
+                || array[halfLength] != null && array[halfLength].compareTo(element) == 0) {
+            return true;
         } else {
-            int leftSize = array.length / 2;
-            Object[] left = Arrays.copyOfRange(array, 0, leftSize);
-            Object[] right = Arrays.copyOfRange(array, leftSize, array.length);
-            b = binarySearch(element, left);
-            if (b) {
-                return true;
-            } else {
-                b = binarySearch(element, right);
-                return b;
-            }
+            System.out.println("not found" + false);
+            return false;
         }
+    }
+
+    private T[] sort(T[] array) {
+        Sort sort = new Sort();
+        return (T[]) sort.sortQuick(array);
     }
 }
 

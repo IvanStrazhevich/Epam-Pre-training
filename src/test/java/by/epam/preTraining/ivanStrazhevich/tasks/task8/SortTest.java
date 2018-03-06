@@ -62,29 +62,40 @@ public class SortTest {
 
         print("Liner search:");
         garage = transportFactory.fillVehicleRepository(25);
+        transport = new Transport();
+        start = System.nanoTime();
+        print("found " + search.linerSearch(transport, (Transport[]) garage.getArrayOfElements()));
+        finish = System.nanoTime();
+        long linerFalse = finish - start;
         transport = (Transport) garage.get(5);
         start = System.nanoTime();
-        print("found " + search.linerSearch(transport, garage.getArrayOfElements()));
+        print("found " + search.linerSearch(transport, (Transport[]) garage.getArrayOfElements()));
         finish = System.nanoTime();
-        long liner = finish - start;
+        long linerTrue = finish - start;
 
-        print("Binary search:");
+        print("Binary search false:");
         garage = transportFactory.fillVehicleRepository(25);
+        transport = new Transport();
+        start = System.nanoTime();
+        print("found " + search.binarySearch(transport, (Transport[]) garage.getArrayOfElements()));
+        finish = System.nanoTime();
+        long binaryFalse = finish - start;
+        print("Binary search true:");
         transport = (Transport) garage.get(5);
         start = System.nanoTime();
-        print("found " + search.binarySearch(transport, garage.getArrayOfElements()));
+        print("found " + search.binarySearch(transport, (Transport[]) garage.getArrayOfElements()));
         finish = System.nanoTime();
-        long binary = finish - start;
-
-
+        long binaryTrue = finish - start;
 
         print("Bubble sort took ns: " + ( buble ));
         print("Insert sort took ns: " + ( insert ));
         print("Choice sort took ns: " + ( choice ));
         print("Merge sort took ns: " + ( merge ));
         print("Quick sort took ns: " + ( quick ));
-        print("Binary search took ns: " + ( binary ));
-        print("Liner search: took ns: " + ( liner ));
+        print("Binary true search took ns: " + ( binaryTrue ));
+        print("Binary false search took ns: " + ( binaryFalse));
+        print("Liner true search: took ns: " + ( linerTrue ));
+        print("Liner false search: took ns: " + ( linerFalse ));
 
 
     }

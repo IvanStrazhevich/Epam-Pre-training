@@ -20,8 +20,10 @@ public class ParserResolver {
         Parsable parseTextFromString = new ParsingUtilityForText();
         if (source != null &&
                 ( source.contains(".txt") || source.contains(".rtf") )) {
+            System.out.println("for file");
             return parseTextFromFile;
         } else {
+            System.out.println("for text");
             return parseTextFromString;
         }
     }

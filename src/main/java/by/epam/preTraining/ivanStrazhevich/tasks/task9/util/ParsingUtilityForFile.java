@@ -9,7 +9,6 @@ public class ParsingUtilityForFile<T> implements Parsable<Text> {
     @Override
     public Text parseText(String fileLocation) {
         Text text = new Text();
-        System.out.println(fileLocation);
         try (BufferedReader reader = new BufferedReader(new FileReader(fileLocation))) {
             StringBuffer buffer = new StringBuffer();
             int charRead;

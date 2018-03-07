@@ -5,11 +5,11 @@ import java.util.ArrayList;
 public class Text {
     private String sourceText;
     private String parsedText;
-    private ArrayList<String> sentences;
-    private ArrayList<String> words;
+    private ArrayList<Sentence> sentences;
+    private ArrayList<Word> words;
     private ArrayList<Character> chars;
 
-    public Text(String sourceText, String parsedText, ArrayList<String> sentences, ArrayList<String> words, ArrayList<Character> chars) {
+    public Text(String sourceText, String parsedText, ArrayList<Sentence> sentences, ArrayList<Word> words, ArrayList<Character> chars) {
         this.sourceText = sourceText;
         this.parsedText = parsedText;
         this.sentences = sentences;
@@ -36,19 +36,19 @@ public class Text {
         this.parsedText = parsedText;
     }
 
-    public ArrayList<String> getSentences() {
+    public ArrayList<Sentence> getSentences() {
         return sentences;
     }
 
-    public void setSentences(ArrayList<String> sentences) {
+    public void setSentences(ArrayList<Sentence> sentences) {
         this.sentences = sentences;
     }
 
-    public ArrayList<String> getWords() {
+    public ArrayList<Word> getWords() {
         return words;
     }
 
-    public void setWords(ArrayList<String> words) {
+    public void setWords(ArrayList<Word> words) {
         this.words = words;
     }
 

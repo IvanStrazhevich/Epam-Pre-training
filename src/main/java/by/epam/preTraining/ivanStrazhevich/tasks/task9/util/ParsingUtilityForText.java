@@ -4,7 +4,6 @@ import by.epam.preTraining.ivanStrazhevich.tasks.task9.entities.Text;
 import by.epam.preTraining.ivanStrazhevich.tasks.task9.interfaces.Parsable;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.StringReader;
 
@@ -19,8 +18,6 @@ public class ParsingUtilityForText<T> implements Parsable<Text> {
                 buffer.append((char) charRead);
             }
             text.setSourceText(buffer.toString());
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }

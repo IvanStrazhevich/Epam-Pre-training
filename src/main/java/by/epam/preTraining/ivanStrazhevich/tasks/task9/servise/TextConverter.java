@@ -3,6 +3,8 @@ package by.epam.preTraining.ivanStrazhevich.tasks.task9.servise;
 import by.epam.preTraining.ivanStrazhevich.tasks.task9.entities.ParsingParameters;
 import by.epam.preTraining.ivanStrazhevich.tasks.task9.entities.Sentence;
 import by.epam.preTraining.ivanStrazhevich.tasks.task9.entities.Text;
+import by.epam.preTraining.ivanStrazhevich.tasks.task9.entities.Word;
+import by.epam.preTraining.ivanStrazhevich.tasks.task9.util.SortBySpecialLetterNumber;
 import by.epam.preTraining.ivanStrazhevich.tasks.task9.util.SortByWords;
 
 import java.io.BufferedReader;
@@ -18,32 +20,34 @@ public class TextConverter {
         this.parsingParameters = parsingParameters;
     }
 
-
-    public Text sortWordsByQuantityOfSpecificLetter(Text text) {
-        ArrayList<String> listOfWords = new ArrayList<>();
-        try (BufferedReader reader = new BufferedReader(new StringReader(text.getSourceText()))) {
+    private Word countSpecificLetterInWord(Word word) {
+        int letterNumbers = 0;
+        try (BufferedReader reader = new BufferedReader(new StringReader(word.getWord()))) {
             int charRead;
-            int key = 0;
-            StringBuffer buffer = new StringBuffer();
             while (( charRead = reader.read() ) != -1) {
                 if (charRead == parsingParameters.getLetterToFind().charAt(0)) {
-                    key++;
-                }
-                if (charRead != ' ') {
-                    buffer.append((char) charRead);
-                } else {
-                    listOfWords.add(buffer.toString());
-                    buffer.delete(0, buffer.length());
-                    key = 0;
+                    letterNumbers++;
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+        word.setLetterNumbers(letterNumbers);
+        return word;
+    }
+
+
+    public Text sortWordsByQuantityOfSpecificLetter(Text text) {
+        ArrayList<Word> words = text.getWords();
         StringBuffer stringBuffer = new StringBuffer();
-        for (String words : listOfWords
+        for (Word word : words
                 ) {
-            stringBuffer.append(words + " ");
+            countSpecificLetterInWord(word);
+        }
+        Collections.sort(words, new SortBySpecialLetterNumber());
+        for (Word word : words
+                ) {
+            stringBuffer.append(" " + word.getLetterNumbers() + " " + word.getWord() + " ");
         }
         text.setParsedText(stringBuffer.toString());
         return text;

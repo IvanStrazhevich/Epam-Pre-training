@@ -5,6 +5,7 @@ import by.epam.preTraining.ivanStrazhevich.tasks.task9.entities.Text;
 import by.epam.preTraining.ivanStrazhevich.tasks.task9.interfaces.Parsable;
 import by.epam.preTraining.ivanStrazhevich.tasks.task9.servise.SentenceParser;
 import by.epam.preTraining.ivanStrazhevich.tasks.task9.servise.TextConverter;
+import by.epam.preTraining.ivanStrazhevich.tasks.task9.servise.WordsParser;
 import by.epam.preTraining.ivanStrazhevich.tasks.task9.util.ParserResolver;
 import by.epam.preTraining.ivanStrazhevich.tasks.view.Viewer;
 
@@ -15,6 +16,7 @@ public class ParserApp {
         Viewer.print("Enter plain text, or file with plain text location: ");
         ParsingParameters parsingParameters = new ParsingParameters();
         SentenceParser sentenceParser = new SentenceParser();
+        WordsParser wordsParser = new WordsParser();
         TextConverter textConverter = new TextConverter(parsingParameters);
         Scanner scanner = new Scanner(System.in);
         String textSource = scanner.nextLine();
@@ -22,15 +24,20 @@ public class ParserApp {
         ParserResolver parserResolver = ParserResolver.getParserResolver();
         Parsable<Text> parsingUtility = parserResolver.deliverParser(textSource.toString());
         Text text = parsingUtility.parseText(textSource.toString());
-        text = sentenceParser.parseTextToSentences(text);
 
         Viewer.print("Now we parse text to sentences and sort it by words quantity in each: ");
+        text = sentenceParser.parseTextToSentences(text);
         text = textConverter.sortTextBySentenceLength(text);
         Viewer.print("Check source " + "\n" + text.getSourceText());
         Viewer.print("Check result " + "\n" + text.getParsedText());
 
         Viewer.print("Enter letter to filter words in order this letter appears");
         parsingParameters.setLetterToFind(scanner.next());
+        Viewer.print("Now we parse text to words and sort it by number of your letter in each word: ");
+        text = wordsParser.praseTextToWords(text);
         text = textConverter.sortWordsByQuantityOfSpecificLetter(text);
+
+        Viewer.print("Check source " + "\n" + text.getSourceText());
+        Viewer.print("Check result " + "\n" + text.getParsedText());
     }
 }

@@ -2,11 +2,11 @@ package by.epam.preTraining.ivanStrazhevich.tasks.task9.entities;
 
 public class Word {
     private String word;
-    private int lettersNumber;
+    private int letterNumbers;
 
-    public Word(String word, int lettersNumber) {
+    public Word(String word, int letterNumbers) {
         this.word = word;
-        this.lettersNumber = lettersNumber;
+        this.letterNumbers = letterNumbers;
     }
 
     public Word() {
@@ -20,12 +20,12 @@ public class Word {
         this.word = word;
     }
 
-    public int getLettersNumber() {
-        return lettersNumber;
+    public int getLetterNumbers() {
+        return letterNumbers;
     }
 
-    public void setLettersNumber(int lettersNumber) {
-        this.lettersNumber = lettersNumber;
+    public void setLetterNumbers(int letterNumbers) {
+        this.letterNumbers = letterNumbers;
     }
 
     @Override
@@ -35,14 +35,14 @@ public class Word {
 
         Word word1 = (Word) o;
 
-        if (lettersNumber != word1.lettersNumber) return false;
+        if (letterNumbers != word1.letterNumbers) return false;
         return word != null ? word.equals(word1.word) : word1.word == null;
     }
 
     @Override
     public int hashCode() {
         int result = word != null ? word.hashCode() : 0;
-        result = 31 * result + lettersNumber;
+        result = 31 * result + letterNumbers;
         return result;
     }
 }

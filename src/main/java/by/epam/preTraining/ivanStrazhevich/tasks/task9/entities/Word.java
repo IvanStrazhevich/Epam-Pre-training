@@ -1,6 +1,6 @@
 package by.epam.preTraining.ivanStrazhevich.tasks.task9.entities;
 
-public class Word {
+public class Word implements Comparable<Word> {
     private String word;
     private int letterNumbers;
 
@@ -44,5 +44,15 @@ public class Word {
         int result = word != null ? word.hashCode() : 0;
         result = 31 * result + letterNumbers;
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return " " + letterNumbers + " " + word;
+    }
+
+    @Override
+    public int compareTo(Word o) {
+        return this.toString().compareTo(o.toString());
     }
 }

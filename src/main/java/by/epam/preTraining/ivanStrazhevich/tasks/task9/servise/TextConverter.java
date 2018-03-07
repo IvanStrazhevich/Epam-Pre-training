@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.TreeSet;
 
 public class TextConverter {
     ParsingParameters parsingParameters;
@@ -45,7 +46,12 @@ public class TextConverter {
             countSpecificLetterInWord(word);
         }
         Collections.sort(words, new SortBySpecialLetterNumber());
-        for (Word word : words
+        TreeSet<Word> alfabetical = new TreeSet<>();
+        for (Word word: words
+             ) {
+            alfabetical.add(word);
+        }
+        for (Word word : alfabetical
                 ) {
             stringBuffer.append(" " + word.getLetterNumbers() + " " + word.getWord() + " ");
         }

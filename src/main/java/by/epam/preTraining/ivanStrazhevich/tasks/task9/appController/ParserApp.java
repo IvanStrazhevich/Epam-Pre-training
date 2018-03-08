@@ -3,7 +3,7 @@ package by.epam.preTraining.ivanStrazhevich.tasks.task9.appController;
 import by.epam.preTraining.ivanStrazhevich.tasks.task9.entities.ParsingParameters;
 import by.epam.preTraining.ivanStrazhevich.tasks.task9.entities.Text;
 import by.epam.preTraining.ivanStrazhevich.tasks.task9.interfaces.Parsable;
-import by.epam.preTraining.ivanStrazhevich.tasks.task9.servise.SentenceParser;
+import by.epam.preTraining.ivanStrazhevich.tasks.task9.servise.SentencesParser;
 import by.epam.preTraining.ivanStrazhevich.tasks.task9.servise.TextConverter;
 import by.epam.preTraining.ivanStrazhevich.tasks.task9.servise.WordsParser;
 import by.epam.preTraining.ivanStrazhevich.tasks.task9.util.ParserResolver;
@@ -15,7 +15,7 @@ public class ParserApp {
     public static void main(String[] args) {
         Viewer.print("Enter plain text, or file with plain text location: ");
         ParsingParameters parsingParameters = new ParsingParameters();
-        SentenceParser sentenceParser = new SentenceParser();
+        SentencesParser sentencesParser = new SentencesParser();
         WordsParser wordsParser = new WordsParser();
         TextConverter textConverter = new TextConverter(parsingParameters);
         Scanner scanner = new Scanner(System.in);
@@ -26,17 +26,17 @@ public class ParserApp {
         Text text = parsingUtility.parseText(textSource.toString());
 
         Viewer.print("Now we parse text to sentences and sort it by words quantity in each: ");
-        text = sentenceParser.parseTextToSentences(text);
+        text = sentencesParser.parseTextToSentences(text);
         text = textConverter.sortTextBySentenceLength(text);
         Viewer.print("Check source " + "\n" + text.getSourceText());
         Viewer.print("Check result " + "\n" + text.getParsedText());
 
         Viewer.print("Enter letter to filter words in order this letter appears");
         parsingParameters.setLetterToFind(scanner.next());
-        Viewer.print("Now we parse text to words and sort it by number of your letter in each word: ");
-        text = wordsParser.praseTextToWords(text);
-        text = textConverter.sortWordsByQuantityOfSpecificLetter(text);
 
+        Viewer.print("Now we parse text to words and sort it by number of your letter in each word: ");
+        text = wordsParser.parseTextToWords(text);
+        text = textConverter.sortWordsByQuantityOfSpecificLetter(text);
         Viewer.print("Check source " + "\n" + text.getSourceText());
         Viewer.print("Check result " + "\n" + text.getParsedText());
     }

@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.util.ArrayList;
 
-public class SentenceParser {
+public class SentencesParser {
     public Text parseTextToSentences(Text text) {
         ArrayList<Sentence> listOfSentences = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new StringReader(text.getSourceText()))) {

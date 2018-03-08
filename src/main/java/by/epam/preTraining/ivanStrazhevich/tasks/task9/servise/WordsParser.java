@@ -9,8 +9,7 @@ import java.io.StringReader;
 import java.util.ArrayList;
 
 public class WordsParser {
-
-    public Text praseTextToWords(Text text) {
+    public Text parseTextToWords(Text text) {
         ArrayList<Word> listOfWords = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new StringReader(text.getSourceText()))) {
             int charRead;

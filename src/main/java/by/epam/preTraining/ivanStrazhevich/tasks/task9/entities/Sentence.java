@@ -1,9 +1,9 @@
 package by.epam.preTraining.ivanStrazhevich.tasks.task9.entities;
 
 public class Sentence {
-    String sentence;
+    private String sentence;
 
-    int wordsNumber;
+    private int wordsNumber;
 
     public Sentence(String sentence, int wordsNumber) {
         this.sentence = sentence;

@@ -4,6 +4,7 @@ import by.epam.preTraining.ivanStrazhevich.tasks.task9.entities.ParsingParameter
 import by.epam.preTraining.ivanStrazhevich.tasks.task9.entities.Sentence;
 import by.epam.preTraining.ivanStrazhevich.tasks.task9.entities.Text;
 import by.epam.preTraining.ivanStrazhevich.tasks.task9.entities.Word;
+import by.epam.preTraining.ivanStrazhevich.tasks.task9.exceptions.EmptyArrayExtendedException;
 import by.epam.preTraining.ivanStrazhevich.tasks.task9.util.SortBySpecialLetterNumber;
 import by.epam.preTraining.ivanStrazhevich.tasks.task9.util.SortByWords;
 
@@ -15,7 +16,7 @@ import java.util.Collections;
 import java.util.TreeSet;
 
 public class TextConverter {
-    ParsingParameters parsingParameters;
+    private ParsingParameters parsingParameters;
 
     public TextConverter(ParsingParameters parsingParameters) {
         this.parsingParameters = parsingParameters;
@@ -41,21 +42,29 @@ public class TextConverter {
     public Text sortWordsByQuantityOfSpecificLetter(Text text) {
         ArrayList<Word> words = text.getWords();
         StringBuffer stringBuffer = new StringBuffer();
-        for (Word word : words
-                ) {
-            countSpecificLetterInWord(word);
+        if (words != null) {
+            for (Word word : words
+                    ) {
+                countSpecificLetterInWord(word);
+            }
+            Collections.sort(words, new SortBySpecialLetterNumber());
+            TreeSet<Word> alphabetical = new TreeSet<>();
+            for (Word word : words
+                    ) {
+                alphabetical.add(word);
+            }
+            for (Word word : alphabetical
+                    ) {
+                stringBuffer.append(" " + word.getLetterNumbers() + " " + word.getWord() + " ");
+            }
+            text.setParsedText(stringBuffer.toString());
+        } else {
+            try {
+                throw new EmptyArrayExtendedException("There is no parsed words, use WordsParser on Text");
+            } catch (EmptyArrayExtendedException e) {
+                e.printStackTrace();
+            }
         }
-        Collections.sort(words, new SortBySpecialLetterNumber());
-        TreeSet<Word> alfabetical = new TreeSet<>();
-        for (Word word: words
-             ) {
-            alfabetical.add(word);
-        }
-        for (Word word : alfabetical
-                ) {
-            stringBuffer.append(" " + word.getLetterNumbers() + " " + word.getWord() + " ");
-        }
-        text.setParsedText(stringBuffer.toString());
         return text;
     }
 
@@ -77,17 +86,25 @@ public class TextConverter {
 
     public Text sortTextBySentenceLength(Text text) {
         ArrayList<Sentence> sentences = text.getSentences();
-        StringBuffer stringBuffer = new StringBuffer();
-        for (Sentence sentence : sentences
-                ) {
-            countWordsInSentence(sentence);
+        if(sentences!=null) {
+            StringBuffer stringBuffer = new StringBuffer();
+            for (Sentence sentence : sentences
+                    ) {
+                countWordsInSentence(sentence);
+            }
+            Collections.sort(sentences, new SortByWords());
+            for (Sentence sentence : sentences
+                    ) {
+                stringBuffer.append(" " + sentence.getWordsNumber() + " " + sentence.getSentense() + ".");
+            }
+            text.setParsedText(stringBuffer.toString());
+        } else {
+            try {
+                throw new EmptyArrayExtendedException("There is no parsed sentences, use SentencesParser on Text");
+            } catch (EmptyArrayExtendedException e) {
+                e.printStackTrace();
+            }
         }
-        Collections.sort(sentences, new SortByWords());
-        for (Sentence sentence : sentences
-                ) {
-            stringBuffer.append(" " + sentence.getWordsNumber() + " " + sentence.getSentense() + ".");
-        }
-        text.setParsedText(stringBuffer.toString());
         return text;
     }
 }

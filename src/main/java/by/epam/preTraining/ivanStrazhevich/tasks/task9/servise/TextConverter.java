@@ -5,6 +5,7 @@ import by.epam.preTraining.ivanStrazhevich.tasks.task9.entities.Sentence;
 import by.epam.preTraining.ivanStrazhevich.tasks.task9.entities.Text;
 import by.epam.preTraining.ivanStrazhevich.tasks.task9.entities.Word;
 import by.epam.preTraining.ivanStrazhevich.tasks.task9.exceptions.EmptyArrayExtendedException;
+import by.epam.preTraining.ivanStrazhevich.tasks.task9.interfaces.Convertable;
 import by.epam.preTraining.ivanStrazhevich.tasks.task9.util.SortBySpecialLetterNumber;
 import by.epam.preTraining.ivanStrazhevich.tasks.task9.util.SortByWords;
 
@@ -15,7 +16,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.TreeSet;
 
-public class TextConverter {
+public class TextConverter implements Convertable{
     private ParsingParameters parsingParameters;
 
     public TextConverter(ParsingParameters parsingParameters) {
@@ -60,7 +61,7 @@ public class TextConverter {
             text.setParsedText(stringBuffer.toString());
         } else {
             try {
-                throw new EmptyArrayExtendedException("There is no parsed words, use WordsParser on Text");
+                throw new EmptyArrayExtendedException("There is no parsed words, use TextParser on Text");
             } catch (EmptyArrayExtendedException e) {
                 e.printStackTrace();
             }
@@ -100,7 +101,7 @@ public class TextConverter {
             text.setParsedText(stringBuffer.toString());
         } else {
             try {
-                throw new EmptyArrayExtendedException("There is no parsed sentences, use SentencesParser on Text");
+                throw new EmptyArrayExtendedException("There is no parsed sentences, use TextParser on Text");
             } catch (EmptyArrayExtendedException e) {
                 e.printStackTrace();
             }

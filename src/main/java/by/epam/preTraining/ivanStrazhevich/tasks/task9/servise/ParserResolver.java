@@ -1,6 +1,8 @@
-package by.epam.preTraining.ivanStrazhevich.tasks.task9.util;
+package by.epam.preTraining.ivanStrazhevich.tasks.task9.servise;
 
 import by.epam.preTraining.ivanStrazhevich.tasks.task9.interfaces.Parsable;
+import by.epam.preTraining.ivanStrazhevich.tasks.task9.util.ParsingUtilityForFile;
+import by.epam.preTraining.ivanStrazhevich.tasks.task9.util.ParsingUtilityForText;
 
 public class ParserResolver {
     private static ParserResolver parserResolver;
